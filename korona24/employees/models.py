@@ -16,7 +16,8 @@ class Employee(models.Model):
     avatar = models.ImageField(
         upload_to='sys/employee_avatars/',
         verbose_name=_('Аватар сотрудника'),
-        default=...,  # TODO: Придумать дефолтную аватарку.
+        default='sys/employee_avatars/default.png',
+        blank=True,
     )
 
     class Meta:
