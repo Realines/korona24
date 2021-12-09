@@ -16,12 +16,11 @@ class Article(models.Model):
         upload_to='sys/article_images/',
         verbose_name=_('Изображение статьи'),
         help_text=_('Будет отображаться в статье и в '
-                    'ее миниатюре в списке статей.')
+                    'ее миниатюре в списке статей.'),
     )
     information_markdown = models.TextField(
         verbose_name=_('Основная информация'),
-        help_text=_('Эта информация будет находится '
-                    'после описания и изображения статьи.')
+        help_text=_('Поддерживает markdown.'),
     )
     information_html = models.TextField(
         editable=False,

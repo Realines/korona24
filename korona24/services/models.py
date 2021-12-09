@@ -52,14 +52,27 @@ class Therapy(models.Model):
 
 
 class InformationBlock(models.Model):
-    title = models.TextField(
-        verbose_name=_('Заголовок блока'),
+    information_markdown = models.TextField(
+        verbose_name=_('Дополнительная информация об услуге'),
+        help_text=_('Поддерживает markdown.'),
     )
-    information_markdown = models.TextField()
-    information_html = models.TextField(editable=False)
+    information_html = models.TextField(
+        editable=False,
+    )
     service = models.OneToOneField(
         to=Service,
         on_delete=models.CASCADE,
         related_name='information_set',
         related_query_name='information',
     )
+
+    class Meta:
+        verbose_name = _('Дополнительная информация')
+        verbose_name_plural = _('Дополнительная информация')
+
+    def save(self, *args, **kwargs):
+        self.information_html = markdown(self.information_markdown)
+        super(InformationBlock, self).save(*args, **kwargs)
+
+    def __str__(self) -> str:
+        return f'Информация услуги {self.pk}'
