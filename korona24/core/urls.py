@@ -22,7 +22,11 @@ from django.urls import (
 )
 
 urlpatterns = [
-    path('test/', include('blog.urls')),
+    path('', include('main.urls')),
+    path('blog/', include('blog.urls')),
+    path('comments/', include('comments.urls')),
+    path('services/', include('services.urls')),
+    path('employees/', include('employees.urls')),
     path('admin/', admin.site.urls),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
