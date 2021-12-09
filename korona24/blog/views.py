@@ -1,3 +1,11 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Article
+
+
+def test(request):
+    return render(
+        request=request,
+        template_name='test.html',
+        context={'articles': Article.objects.all()}
+    )
