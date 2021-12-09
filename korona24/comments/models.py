@@ -4,6 +4,11 @@ from django.core import validators
 
 
 class Comment(models.Model):
+    class Status(models.TextChoices):
+        ON_MODERATION = 'OM', 'На модерации'
+        REJECTED = 'R', 'Отклонено'
+        APPROVED = 'A', 'Одобрено'
+
     client_name = models.CharField(
         max_length=128,
         verbose_name=_('Имя клиента'),
@@ -25,6 +30,12 @@ class Comment(models.Model):
     date_added = models.DateField(
         verbose_name=_('Дата добавления отзыва'),
         auto_now_add=True,
+    )
+    status = models.CharField(
+        max_length=2,
+        verbose_name=_('Статус комментария'),
+        choices=Status.choices,
+        default=Status.ON_MODERATION,
     )
 
     class Meta:
