@@ -33,11 +33,11 @@ class Education(models.Model):
         verbose_name=_('Учебное заведение'),
     )
     start_study = models.IntegerField(
-        verbose_name=_('Начало обучения'),
+        verbose_name=_('Год начала обучения'),
         validators=[validators.MinValueValidator(0)],
     )
     end_study = models.IntegerField(
-        verbose_name=_('Конец обучения'),
+        verbose_name=_('Год окончания обучения'),
         validators=[validators.MinValueValidator(0)],
     )
     specialization = models.TextField(
@@ -76,8 +76,15 @@ class SkillDevelop(models.Model):
         related_query_name='skill_develop',
     )
 
+    class Meta:
+        verbose_name = _('Повышение квалификации')
+        verbose_name_plural = _('Повышения квалификаций')
 
-class EmployeeInformation(models.Model):
+    def __str__(self) -> str:
+        return str(self.name)
+
+
+class EmployeeInfo(models.Model):
     year = models.IntegerField(
         verbose_name=_('Год'),
         validators=[validators.MinValueValidator(0)],

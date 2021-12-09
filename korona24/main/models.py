@@ -8,7 +8,10 @@ class Consultation(models.Model):
         max_length=128,
         verbose_name=_('Имя клиента'),
     )
-    phone_number = ... # TODO: Найти хороший способ валидации номеров.
+    phone_number = models.CharField(  # TODO: Найти хороший способ валидации номеров.
+        max_length=16,
+        verbose_name=_('Номер телефона'),
+    )
     date_added = models.DateField(
         verbose_name=_('Дата заявки'),
         auto_now_add=True,

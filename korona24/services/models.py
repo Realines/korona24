@@ -51,7 +51,7 @@ class Therapy(models.Model):
         return str(self.name)
 
 
-class InformationBlock(models.Model):
+class InformationService(models.Model):
     information_markdown = models.TextField(
         verbose_name=_('Дополнительная информация об услуге'),
         help_text=_('Поддерживает markdown.'),
