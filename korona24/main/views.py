@@ -2,7 +2,13 @@ from django.shortcuts import render
 from django.http import (
     HttpResponse,
     HttpRequest,
+    JsonResponse,
 )
+
+from .models import Gallery
+from services.models import Service
+from employees.models import Employee
+from comments.models import Comment
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -17,7 +23,15 @@ def index(request: HttpRequest) -> HttpResponse:
     # за контроль стилей сайта
     visually_impaired_version = request.GET.get('visually_version', None)
 
-    context = {}
+    services_set = Service.objects.all()[:4]
+    gallery_set = Gallery.objects.all()[:6]
+    all_employees = Employee.objects.all()
+    comments_set = Comment.objects.filter(status=Comment.Status.APPROVED)
+
+    context = {'services': services_set,
+               'gallery': gallery_set,
+               'employees': all_employees,
+               'comments': comments_set}
 
     return render(request=request,
                   template_name='main/index.html',

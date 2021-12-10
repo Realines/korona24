@@ -1,4 +1,6 @@
-{% extends 'layouts/base.html' %}{% load static %}
+{% extends 'layouts/base.html' %}
+{% load static %}
+
 
 {% block content %}
 
@@ -282,33 +284,33 @@
             </div>
             <div class="zone__items">
                 <div class="zone__item">
-                    <a data-fancybox='gallery' href='{% static 'img/zone1.jpg' %}'>
-                        <img src='{% static 'img/zone1.jpg' %}' alt=''>
+                    <a data-fancybox='gallery' href="{% static 'img/zone1.jpg' %}">
+                        <img src="{% static 'img/zone1.jpg' %}" alt=''>
                     </a>
                 </div>
                 <div class="zone__item">
-                    <a data-fancybox='gallery' href='{% static 'img/zone2.jpg' %}'>
-                        <img src='{% static 'img/zone2.jpg' %}' alt=''>
+                    <a data-fancybox='gallery' href="{% static 'img/zone2.jpg' %}">
+                        <img src="{% static 'img/zone2.jpg' %}" alt=''>
                     </a>
                 </div>
                 <div class="zone__item">
-                    <a data-fancybox='gallery' href='{% static 'img/zone3.jpg' %}'>
-                        <img src='{% static 'img/zone3.jpg' %}' alt=''>
+                    <a data-fancybox='gallery' href="{% static 'img/zone3.jpg' %}">
+                        <img src="{% static 'img/zone3.jpg' %}" alt=''>
                     </a>
                 </div>
                 <div class="zone__item">
-                    <a data-fancybox='gallery' href='{% static 'img/zone4.jpg' %}'>
-                        <img src='{% static 'img/zone4.jpg' %}' alt=''>
+                    <a data-fancybox='gallery' href="{% static 'img/zone4.jpg' %}">
+                        <img src="{% static 'img/zone4.jpg' %}" alt=''>
                     </a>
                 </div>
                 <div class="zone__item">
-                    <a data-fancybox='gallery' href='{% static 'img/zone5.jpg' %}'>
-                        <img src='{% static 'img/zone5.jpg' %}' alt=''>
+                    <a data-fancybox='gallery' href="{% static 'img/zone5.jpg' %}">
+                        <img src="{% static 'img/zone5.jpg' %}" alt=''>
                     </a>
                 </div>
                 <div class="zone__item">
-                    <a data-fancybox='gallery' href='{% static 'img/zone6.jpg' %}'>
-                        <img src='{% static 'img/zone6.jpg' %}' alt=''>
+                    <a data-fancybox='gallery' href="{% static 'img/zone6.jpg' %}">
+                        <img src="{% static 'img/zone6.jpg' %}" alt=''>
                     </a>
                 </div>
             </div>
@@ -487,7 +489,7 @@
                 <div class="feedback__left">
                     <div class="feedback__left-title">Остаьте свой отзыв о нашей клинике</div>
                     <div class="feedback__left-desc">Так вы можете помочь нашей клинике стать лучше</div>
-                    <a href="" class="feedback__left-link">
+                    <a href="{% url 'comments:comments' %}" class="feedback__left-link">
                         <i>
                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16.869 6.14062L15.8084 7.20127L20.3083 11.7011H0.75V13.2012H20.3081L15.8084 17.7009L16.869 18.7615L23.1796 12.4511L16.869 6.14062Z" fill="#C39F7B"/>

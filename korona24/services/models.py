@@ -7,6 +7,12 @@ from blog.models import Article
 
 
 class Service(models.Model):
+    icon = models.ImageField(
+        upload_to='sys/service_icons/',
+        verbose_name=_('Иконка услуги'),
+        default='sys/service_icons/default.png',
+        blank=True,
+    )
     name = models.TextField(
         verbose_name=_('Название услуги'),
     )
@@ -72,7 +78,7 @@ class InformationService(models.Model):
 
     def save(self, *args, **kwargs):
         self.information_html = markdown(self.information_markdown)
-        super(InformationBlock, self).save(*args, **kwargs)
+        super(InformationService, self).save(*args, **kwargs)
 
     def __str__(self) -> str:
         return f'Информация услуги {self.pk}'
