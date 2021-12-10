@@ -7,14 +7,6 @@ from django.http import (
 from .models import Article
 
 
-def test(request):
-    return render(
-        request=request,
-        template_name='test.html',
-        context={'articles': Article.objects.all()}
-    )
-
-
 def articles(request: HttpRequest) -> HttpResponse:
     """
     Функция-контроллер страницы статей.
@@ -23,7 +15,11 @@ def articles(request: HttpRequest) -> HttpResponse:
     :return: Объект ответа со старницей статей.
     """
 
-    return render()
+    context = {}
+
+    return render(request=request,
+                  template_name='blog.html',
+                  context=context)
 
 
 def article(request: HttpRequest, article_id: int) -> HttpResponse:
@@ -35,4 +31,8 @@ def article(request: HttpRequest, article_id: int) -> HttpResponse:
     :return: Объект ответа со старницей статей.
     """
 
-    return render()
+    context = {}
+
+    return render(request=request,
+                  template_name='blog-item.html',
+                  context=context)

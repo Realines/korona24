@@ -13,4 +13,8 @@ def comments(request: HttpRequest) -> HttpResponse:
     :return: Объект ответа со страницей отзывов.
     """
 
-    return render()
+    context = {}
+
+    return render(request=request,
+                  template_name='feedback.html',
+                  context=context)

@@ -16,7 +16,12 @@ def index(request: HttpRequest) -> HttpResponse:
     # Получаем необязательный параметр из GET-запроса, отвечающий
     # за контроль стилей сайта
     visually_impaired_version = request.GET.get('visually_version', None)
-    return render()
+
+    context = {}
+
+    return render(request=request,
+                  template_name='index.html',
+                  context=context)
 
 
 def contacts(request: HttpRequest) -> HttpResponse:
@@ -27,7 +32,11 @@ def contacts(request: HttpRequest) -> HttpResponse:
     :return: Объект ответа со страницей контактов.
     """
 
-    return render()
+    context = {}
+
+    return render(request=request,
+                  template_name='contacts.html',
+                  context=context)
 
 
 def gallery(request: HttpRequest) -> HttpResponse:
@@ -38,4 +47,8 @@ def gallery(request: HttpRequest) -> HttpResponse:
     :return: Объект ответа со старницей галереи.
     """
 
-    return render()
+    context = {}
+
+    return render(request=request,
+                  template_name='gallery.html',
+                  context=context)

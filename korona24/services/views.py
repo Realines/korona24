@@ -13,7 +13,11 @@ def services(request: HttpRequest) -> HttpResponse:
     :return: Объект ответа со страницей услуг.
     """
 
-    return render()
+    context = {}
+
+    return render(request=request,
+                  template_name='services.html',
+                  context=context)
 
 
 def service(request: HttpRequest, service_id: int) -> HttpResponse:
@@ -25,7 +29,11 @@ def service(request: HttpRequest, service_id: int) -> HttpResponse:
     :return: Объект ответа со страницей услуги.
     """
 
-    return render()
+    context = {}
+
+    return render(request=request,
+                  template_name='service.html',
+                  context=context)
 
 
 def prices(request: HttpRequest) -> HttpResponse:
@@ -36,4 +44,8 @@ def prices(request: HttpRequest) -> HttpResponse:
     :return: Объект ответа со страницей цен на услуги.
     """
 
-    return render()
+    context = {}
+
+    return render(request=request,
+                  template_name='price.html',
+                  context=context)
