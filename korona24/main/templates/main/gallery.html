@@ -1,0 +1,52 @@
+{% extends 'layouts/base.html' %}{% load static %}
+
+{% block title %} Галлерея {% endblock %}
+
+{% block content %}
+
+
+    <section class='zone'>
+        <div class='container'>
+            <div class='zone__top'>
+                <h2 class="zone__title">
+                    галерея
+                </h2>
+            </div>
+            <div class="zone__items">
+                <div class="zone__item">
+                    <a data-fancybox='gallery' href='{% static 'img/zone1.jpg' %}'>
+                        <img src='{% static 'img/zone1.jpg' %}' alt=''>
+                    </a>
+                </div>
+                <div class="zone__item">
+                    <a data-fancybox='gallery' href='{% static 'img/zone2.jpg' %}'>
+                        <img src='{% static 'img/zone2.jpg' %}' alt=''>
+                    </a>
+                </div>
+                <div class="zone__item">
+                    <a data-fancybox='gallery' href='{% static 'img/zone3.jpg' %}'>
+                        <img src='{% static 'img/zone3.jpg' %}' alt=''>
+                    </a>
+                </div>
+                <div class="zone__item">
+                    <a data-fancybox='gallery' href='{% static 'img/zone4.jpg' %}'>
+                        <img src='{% static 'img/zone4.jpg' %}' alt=''>
+                    </a>
+                </div>
+                <div class="zone__item">
+                    <a data-fancybox='gallery' href='{% static 'img/zone5.jpg' %}'>
+                        <img src='{% static 'img/zone5.jpg' %}' alt=''>
+                    </a>
+                </div>
+                <div class="zone__item">
+                    <a data-fancybox='gallery' href='{% static 'img/zone6.jpg' %}'>
+                        <img src='{% static 'img/zone6.jpg' %}' alt=''>
+                    </a>
+                </div>
+            </div>
+            <a href="" class="zone__all btn">Показать еще</a>
+        </div>
+    </section>
+
+
+{% endblock %}

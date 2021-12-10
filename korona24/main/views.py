@@ -20,7 +20,7 @@ def index(request: HttpRequest) -> HttpResponse:
     context = {}
 
     return render(request=request,
-                  template_name='index.html',
+                  template_name='main/index.html',
                   context=context)
 
 
@@ -35,7 +35,7 @@ def contacts(request: HttpRequest) -> HttpResponse:
     context = {}
 
     return render(request=request,
-                  template_name='contacts.html',
+                  template_name='main/contacts.html',
                   context=context)
 
 
@@ -50,5 +50,5 @@ def gallery(request: HttpRequest) -> HttpResponse:
     context = {}
 
     return render(request=request,
-                  template_name='gallery.html',
+                  template_name='main/gallery.html',
                   context=context)

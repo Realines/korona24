@@ -16,7 +16,7 @@ def services(request: HttpRequest) -> HttpResponse:
     context = {}
 
     return render(request=request,
-                  template_name='services.html',
+                  template_name='services/services.html',
                   context=context)
 
 
@@ -32,7 +32,7 @@ def service(request: HttpRequest, service_id: int) -> HttpResponse:
     context = {}
 
     return render(request=request,
-                  template_name='service.html',
+                  template_name='services/service.html',
                   context=context)
 
 
@@ -47,5 +47,5 @@ def prices(request: HttpRequest) -> HttpResponse:
     context = {}
 
     return render(request=request,
-                  template_name='price.html',
+                  template_name='services/price.html',
                   context=context)

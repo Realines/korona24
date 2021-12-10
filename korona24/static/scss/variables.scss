@@ -1,0 +1,21 @@
+$brown: #C39F7B;
+$black: #282626;
+$white: #fff;
+$druk: "Druk Text Wide Cyr",
+sans-serif;
+%flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+%flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+%flex {
+    display: flex;
+    align-items: center;
+}

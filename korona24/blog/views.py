@@ -18,7 +18,7 @@ def articles(request: HttpRequest) -> HttpResponse:
     context = {}
 
     return render(request=request,
-                  template_name='blog.html',
+                  template_name='blog/blog.html',
                   context=context)
 
 
@@ -34,5 +34,5 @@ def article(request: HttpRequest, article_id: int) -> HttpResponse:
     context = {}
 
     return render(request=request,
-                  template_name='blog-item.html',
+                  template_name='blog/blog-item.html',
                   context=context)

@@ -1,0 +1,92 @@
+{% extends 'layouts/base.html' %}{% load static %}
+
+{% block title %} Блог {% endblock %}
+
+{% block content %}
+
+    <section class='blog blog-page'>
+        <div class='container'>
+            <div class='blog__top'>
+                <h2 class="blog__title">блог</h2>
+                <div class="pagination">
+                    <a href="" class="pagination__btn">« Предыдущая страница</a>
+                    <div class="pagination__items">
+                        <a href="" class="pagination__item pagination__item--active">1</a>
+                        <a href="" class="pagination__item">2</a>
+                        <a href="" class="pagination__item">3</a>
+                    </div>
+                    <a href="" class="pagination__btn">Следующая страница »</a>
+                </div>
+            </div>
+            <div class="blog__items">
+                <div class="blog__item">
+                    <a href="" class="blog__item-img">
+                        <img src="{% static 'img/blog1.jpg' %}" alt="">
+                    </a>
+                    <a href="" class="blog__item-title">Что такое эстетическая стоматология?</a>
+                    <div class="blog__item-desc">Эстетическая стоматология – это одно из наиболее востребованных
+                        направлений в современной зубной медицине
+                    </div>
+                </div>
+                <div class="blog__item">
+                    <a href="" class="blog__item-img">
+                        <img src="{% static 'img/blog2.jpg' %}" alt="">
+                    </a>
+                    <a href="" class="blog__item-title">Назначение и преимущества зубных виниров!</a>
+                    <div class="blog__item-desc">Винир – это специальная стоматологическая накладка, толщина которой
+                        составляет не более 0,5 миллиметра
+                    </div>
+                </div>
+                <div class="blog__item">
+                    <a href="" class="blog__item-img">
+                        <img src="{% static 'img/blog3.jpg' %}" alt="">
+                    </a>
+                    <a href="" class="blog__item-title">Самые распространенные причины зубной боли</a>
+                    <div class="blog__item-desc">Зубная боль может быть вызвана разрушением, повреждениями или
+                        истиранием зубной эмали. Когда эмаль теряет свою целостность
+                    </div>
+                </div>
+                <div class="blog__item">
+                    <a href="" class="blog__item-img">
+                        <img src="{% static 'img/blog4.jpg' %}" alt="">
+                    </a>
+                    <a href="" class="blog__item-title">Нужно ли удалять ребенку молочные зубы?</a>
+                    <div class="blog__item-desc">После достижения ребенком возраста трех лет корни под молочными зубами
+                        постепенно растворяются
+                    </div>
+                </div>
+                <div class="blog__item">
+                    <a href="" class="blog__item-img">
+                        <img src="{% static 'img/blog5.jpg' %}" alt="">
+                    </a>
+                    <a href="" class="blog__item-title">Отбеливающие пасты. Есть ли эффект?</a>
+                    <div class="blog__item-desc">Специальные пасты для отбеливания зубов пользуются большой
+                        популярностью в современном обществе
+                    </div>
+                </div>
+                <div class="blog__item">
+                    <a href="" class="blog__item-img">
+                        <img src="{% static 'img/blog6.jpg' %}" alt="">
+                    </a>
+                    <a href="" class="blog__item-title">Как правильно ухаживать за брекетами?</a>
+                    <div class="blog__item-desc">Установка брекетов является наиболее распространенным и эффективным
+                        методом устранения дефектов прикуса...
+                    </div>
+                </div>
+            </div>
+            <div class='blog__bottom'>
+                <button class="blog__more">Показать еще на этой странице</button>
+                <div class="pagination">
+                    <a href="" class="pagination__btn">« Предыдущая страница</a>
+                    <div class="pagination__items">
+                        <a href="" class="pagination__item pagination__item--active">1</a>
+                        <a href="" class="pagination__item">2</a>
+                        <a href="" class="pagination__item">3</a>
+                    </div>
+                    <a href="" class="pagination__btn">Следующая страница »</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

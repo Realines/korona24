@@ -16,5 +16,5 @@ def comments(request: HttpRequest) -> HttpResponse:
     context = {}
 
     return render(request=request,
-                  template_name='feedback.html',
+                  template_name='comments/comments.html',
                   context=context)
