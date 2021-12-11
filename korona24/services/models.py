@@ -25,6 +25,10 @@ class Service(models.Model):
         related_name='services',
         related_query_name='service',
     )
+    show_on_main = models.BooleanField(
+        verbose_name=_('Показать на главной'),
+        default=False,
+    )
 
     class Meta:
         verbose_name = _('Услуга')
