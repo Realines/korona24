@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'comments.apps.CommentsConfig',
     'employees.apps.EmployeesConfig',
     'services.apps.ServicesConfig',
+    'visually_version.apps.VisuallyVersionConfig',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'visually_version.middleware.visually_impaired',
             ],
         },
     },

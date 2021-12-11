@@ -21,10 +21,6 @@ def index(request: HttpRequest) -> HttpResponse:
     :return: Объект ответа с главной страницей.
     """
 
-    # Получаем необязательный параметр из GET-запроса, отвечающий
-    # за контроль стилей сайта
-    visually_impaired_version = request.GET.get('visually_version', None)
-
     services_set = Service.objects.filter(show_on_main=True)
     gallery_set = Gallery.objects.all()[:6]
     all_employees = Employee.objects.all()
