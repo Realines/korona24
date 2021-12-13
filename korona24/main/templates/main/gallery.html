@@ -7,7 +7,13 @@
 
 {% block content %}
 
+    <div id="test_block">
 
+    </div>
+    <form id="test_form">
+        {% csrf_token %}
+        <input type="submit" value="test_btn">
+    </form>
     <section class='zone'>
         <div class='container'>
             <div class='zone__top'>
@@ -50,6 +56,32 @@
             <a href="" class="zone__all btn">Показать еще</a>
         </div>
     </section>
+{% endblock %}
 
 
+{% block scripts %}
+    <script>
+        $(document).ready(function() {
+            let page_nums = 1;
+
+            $("#test_form").submit(function() {
+                page_nums++;
+                $.ajax({
+                    url: "{% url 'main:gallery_pagination' %}",
+                    method: "post",
+                    dataType: "html",
+                    data: {'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val(),
+                            page_num: page_nums},
+                    success: function(data) {
+                        for (let i = 0; i < 6; i++) {
+                            let element = document.createElement('img');
+                            element.src = data.images[i];
+                            document.getElementById("test_block").appendChild(element);
+                        }
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
 {% endblock %}

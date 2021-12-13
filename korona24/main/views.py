@@ -5,6 +5,7 @@ from django.http import (
     JsonResponse,
 )
 from django.utils.translation import gettext as _
+from django.core.paginator import Paginator
 
 from .models import Gallery
 from services.models import Service
@@ -91,3 +92,24 @@ def gallery(request: HttpRequest) -> HttpResponse:
     return render(request=request,
                   template_name='main/gallery.html',
                   context=context)
+
+
+def pagination_gallery(request: HttpRequest) -> JsonResponse:
+    """
+    Функция-контроллер для пагинации по галерее.
+    :param request: Объект запроса.
+    :param page_num: Номер страницы в пагинаторе.
+    :return: Возвращает список ссылок на изображеня.
+    """
+
+    page_num = request.POST.get('page_num', 0)
+
+    gallery_set = Gallery.objects.all()
+    paginator = Paginator(gallery_set, 6)
+
+    if page_num < 1 or page_num > len(gallery_set):
+        return JsonResponse(data={'errors': _('Error page number.')},
+                            status=401)
+
+    return JsonResponse(data={'images': [gallery_image.image.url for gallery_image in paginator.get_page(page_num).object_list]},
+                        status=200)
