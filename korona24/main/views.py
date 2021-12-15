@@ -1,3 +1,5 @@
+import math
+
 from django.shortcuts import render
 from django.http import (
     HttpResponse,
@@ -98,18 +100,28 @@ def pagination_gallery(request: HttpRequest) -> JsonResponse:
     """
     Функция-контроллер для пагинации по галерее.
     :param request: Объект запроса.
-    :param page_num: Номер страницы в пагинаторе.
     :return: Возвращает список ссылок на изображеня.
     """
 
-    page_num = request.POST.get('page_num', 0)
+    page_num = request.POST.get('page_num', None)
+
+    if page_num is None:
+        return JsonResponse(data={'errors': _('Error page number.')},
+                            status=403)
+    if page_num.isdigit():
+        page_num = int(page_num)
+    else:
+        page_num = 1
 
     gallery_set = Gallery.objects.all()
     paginator = Paginator(gallery_set, 6)
 
-    if page_num < 1 or page_num > len(gallery_set):
+    if page_num < 1 or page_num > int(math.ceil(len(gallery_set) / 6)):
         return JsonResponse(data={'errors': _('Error page number.')},
-                            status=401)
+                            status=403)
 
-    return JsonResponse(data={'images': [gallery_image.image.url for gallery_image in paginator.get_page(page_num).object_list]},
+    url_list = [gallery_image.image.url
+                for gallery_image in paginator.get_page(page_num).object_list]
+    print(url_list)
+    return JsonResponse(data={'images': url_list},
                         status=200)

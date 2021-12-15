@@ -13,6 +13,7 @@
     <form id="test_form">
         {% csrf_token %}
         <input type="submit" value="test_btn">
+        <input type="hidden" name="page_num">
     </form>
     <section class='zone'>
         <div class='container'>
@@ -62,17 +63,18 @@
 {% block scripts %}
     <script>
         $(document).ready(function() {
-            let page_nums = 1;
+            let page_nums = 0;
 
             $("#test_form").submit(function() {
                 page_nums++;
+                $("input[name=page_num]").val(page_nums);
                 $.ajax({
                     url: "{% url 'main:gallery_pagination' %}",
                     method: "post",
                     dataType: "html",
-                    data: {'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val(),
-                            page_num: page_nums},
+                    data: $(this).serialize(),
                     success: function(data) {
+                        data = JSON.parse(data);
                         for (let i = 0; i < 6; i++) {
                             let element = document.createElement('img');
                             element.src = data.images[i];
@@ -82,6 +84,9 @@
                 });
                 return false;
             });
+
+            // Для загрузки первых 6 фото при загрузке страницы.
+            $("#test_form").submit();
         });
     </script>
 {% endblock %}
