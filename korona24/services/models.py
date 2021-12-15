@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core import validators
+from django.urls import reverse
 
 from markdown import markdown
 from blog.models import Article
@@ -33,6 +34,9 @@ class Service(models.Model):
     class Meta:
         verbose_name = _('Услуга')
         verbose_name_plural = _('Услуги')
+
+    def get_absolute_url(self) -> str:
+        return reverse('services:service', args=[str(self.pk)])
 
     def __str__(self) -> str:
         return str(self.name)

@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core import validators
+from django.urls import reverse
 
 
 class Employee(models.Model):
@@ -23,6 +24,9 @@ class Employee(models.Model):
     class Meta:
         verbose_name = _('Работник')
         verbose_name_plural = _('Работники')
+
+    def get_absolute_url(self) -> str:
+        return reverse('employees.views.employee', args=[str(self.pk)])
 
     def __str__(self) -> str:
         return str(self.name)

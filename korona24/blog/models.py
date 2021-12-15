@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core import validators
+from django.urls import reverse
+
 from markdown import markdown
 
 
@@ -33,6 +35,9 @@ class Article(models.Model):
     def save(self, *args, **kwargs):
         self.information_html = markdown(self.information_markdown)
         super(Article, self).save(*args, **kwargs)
+
+    def get_absolute_url(self) -> str:
+        return reverse('blog.views.article', args=[str(self.pk)])
 
     def __str__(self) -> str:
         return str(self.title)
