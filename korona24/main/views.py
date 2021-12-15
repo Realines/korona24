@@ -105,6 +105,7 @@ def pagination_gallery(request: HttpRequest) -> JsonResponse:
 
     page_num = request.POST.get('page_num', None)
 
+    # Проверка номера запрашиваемого блока с изображениями.
     if page_num is None:
         return JsonResponse(data={'errors': _('Error page number.')},
                             status=403)
@@ -113,15 +114,18 @@ def pagination_gallery(request: HttpRequest) -> JsonResponse:
     else:
         page_num = 1
 
+    # Разбивка изображений на блоки в пагинаторе.
     gallery_set = Gallery.objects.all()
     paginator = Paginator(gallery_set, 6)
 
+    # Проверка, что номер запрашиваемого блока входит в длину пагинатора.
     if page_num < 1 or page_num > int(math.ceil(len(gallery_set) / 6)):
         return JsonResponse(data={'errors': _('Error page number.')},
                             status=403)
 
+    # Формирования списка url изображений.
     url_list = [gallery_image.image.url
                 for gallery_image in paginator.get_page(page_num).object_list]
-    print(url_list)
+
     return JsonResponse(data={'images': url_list},
                         status=200)

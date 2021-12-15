@@ -4,6 +4,8 @@ from django.http import (
     HttpRequest,
 )
 
+from .models import Service
+
 
 def services(request: HttpRequest) -> HttpResponse:
     """
@@ -44,7 +46,9 @@ def prices(request: HttpRequest) -> HttpResponse:
     :return: Объект ответа со страницей цен на услуги.
     """
 
-    context = {}
+    services_set = Service.objects.all()
+
+    context = {'services_set': services_set}
 
     return render(request=request,
                   template_name='services/price.html',
