@@ -26,7 +26,7 @@ class Employee(models.Model):
         verbose_name_plural = _('Работники')
 
     def get_absolute_url(self) -> str:
-        return reverse('employees.views.employee', args=[str(self.pk)])
+        return reverse('employees.views.employee', args=(str(self.pk), ))
 
     def __str__(self) -> str:
         return str(self.name)

@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import (
+    render,
+    get_object_or_404,
+)
 from django.http import (
     HttpResponse,
     HttpRequest,
@@ -17,7 +20,9 @@ def services(request: HttpRequest) -> HttpResponse:
 
     services_set = Service.objects.all()
 
-    context = {'services': services_set}
+    context = {
+        'services': services_set,
+    }
 
     return render(request=request,
                   template_name='services/services.html',
@@ -33,7 +38,13 @@ def service(request: HttpRequest, service_id: int) -> HttpResponse:
     :return: Объект ответа со страницей услуги.
     """
 
-    context = {}
+    needed_service = get_object_or_404(Service, pk=service_id)
+    services_set = Service.objects.all()
+
+    context = {
+        'current_service': needed_service,
+        'services': services_set,
+    }
 
     return render(request=request,
                   template_name='services/service.html',
@@ -50,7 +61,9 @@ def prices(request: HttpRequest) -> HttpResponse:
 
     services_set = Service.objects.all()
 
-    context = {'services': services_set}
+    context = {
+        'services': services_set,
+    }
 
     return render(request=request,
                   template_name='services/price.html',

@@ -20,105 +20,38 @@
                 <div class="service-page__sidebar">
                     <h3 class="service-page__title">Категории</h3>
                     <div class="service-page__sidebar-items">
-                        <a href="" class="service-page__sidebar-item">
-                            <span>Терапия (лечение)</span>
+                        {% for service in services %}
+                        <a href="{{ service.get_absolute_url }}" class="service-page__sidebar-item">
+                            <span>{{ service.name }}</span>
                             <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
                             </svg>
                         </a>
-                        <a href="" class="service-page__sidebar-item service-page__sidebar-item--active">
-                            <span>Хирургия</span>
-                            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                            </svg>
-                        </a>
-                        <a href="" class="service-page__sidebar-item">
-                            <span>Эстетическая стоматология</span>
-                            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                            </svg>
-                        </a>
-                        <a href="" class="service-page__sidebar-item">
-                            <span>Детская стоматология</span>
-                            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                            </svg>
-                        </a>
-                        <a href="" class="service-page__sidebar-item">
-                            <span>Профилактика и гигиена</span>
-                            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                            </svg>
-                        </a>
-                        <a href="" class="service-page__sidebar-item">
-                            <span>Ортодонтия</span>
-                            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                            </svg>
-                        </a>
-                        <a href="" class="service-page__sidebar-item">
-                            <span>Имплатнация</span>
-                            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                            </svg>
-                        </a>
-                        <a href="" class="service-page__sidebar-item">
-                            <span>Протозирование</span>
-                            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                            </svg>
-                        </a>
-                        <a href="" class="service-page__sidebar-item">
-                            <span>Парадонтология</span>
-                            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                            </svg>
-                        </a>
-                        <a href="" class="service-page__sidebar-item">
-                            <span>Рентген</span>
-                            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                            </svg>
-                        </a>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="service-page__content">
-                    <h3 class="service-page__title">Терапия (лечение зубов)</h3>
+                    <h3 class="service-page__title">{{ current_service.name }}</h3>
                     <div class="blog-item__text">
                         <p>
-                            Каждый из нас знает: верный способ сохранить здоровые и красивые зубы – это посещение стоматолога два раза в год. Однако, повседневные дела настолько заматывают нас, что мы забываем посетить стоматолога. Когда же начинается боль, пациенты предпочитают
-                            терпеть или ждать, когда она пройдет, поскольку страх лечения зубов выше, чем здравый смысл. Стоматологическая клиника «Корона» готова развеять подобные стереотипы! Современная стоматология предполагает абсолютно безболезненный
-                            и максимально комфортный процесс по лечению зубов. В Красноярске наша клиника одна из немногих, кто успешно справляется даже с самой старой и сложной проблемой, а также гарантирует безопасное лечение!
+                            {{ current_service.description }}
                         </p>
                         <div class="service-page__items-block">
                             <div class="service-page__items">
+                                {% for article in current_service.blog_articles.all %}
                                 <div class="service-page__item">
                                     <div class="service-page__item-img">
-                                        <img src="{% static 'img/service-item1.jpg' %}" alt="">
+                                        <img src="{{ article.image.url }}" alt="">
                                     </div>
-                                    <div class="service-page__item-title">Лечение кариеса</div>
-                                    <a href="" class="service-page__item-link">Подробнее</a>
+                                    <div class="service-page__item-title">{{ article.title }}</div>
+                                    <a href="{{ article.get_absolute_url }}" class="service-page__item-link">Подробнее</a>
                                 </div>
-                                <div class="service-page__item">
-                                    <div class="service-page__item-img">
-                                        <img src="{% static 'img/service-item2.jpg' %}" alt="">
-                                    </div>
-                                    <div class="service-page__item-title">Лечение пульпита</div>
-                                    <a href="" class="service-page__item-link">Подробнее</a>
-                                </div>
-                                <div class="service-page__item">
-                                    <div class="service-page__item-img">
-                                        <img src="{% static 'img/service-item3.jpg' %}" alt="">
-                                    </div>
-                                    <div class="service-page__item-title">Реставрация фронтальных зубов</div>
-                                    <a href="" class="service-page__item-link">Подробнее</a>
-                                </div>
-                            </div>
+                                {% endfor %}
                         </div>
 
-                        <h4>Лечение зубов цены</h4>
-                        <p>Боль зачастую возникает внезапно. Чем раньше вы обратитесь к стоматологу, тем быстрее пройдет терапия. Необходимо в кротчайшие сроки найти хорошую стоматологию с адекватными ценами. Лечением зубов любой сложности готова заняться
-                            <a href="">стоматологическая клиника «Корона»</a> . Наша стоматология – это команда врачей-профессионалов, зона максимального комфорта и доступные цены!
+                        <h4>{{ current_service.title_price_block }}</h4>
+                        <p>
+                            {{ current_service.description_price_block|safe }}
                         </p>
 
                         <div class="service-page__table">
@@ -134,66 +67,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for therapy in current_service.therapies.all %}
                                     <tr>
-                                        <td>Средний/легкий кариес (вместе с пломбой)</td>
-                                        <td>4 700 руб</td>
+                                        <td>{{ therapy.name }}</td>
+                                        <td>{{ therapy.price }} руб</td>
                                     </tr>
-                                    <tr>
-                                        <td>Осложненный кариес, 1 корень (вместе с пломбой)</td>
-                                        <td>6 000 руб</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Осложненный кариес, 2 корня (вместе с пломбой)</td>
-                                        <td>10 000 руб</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Осложненный кариес, 3 корня (вместе с пломбой) </td>
-                                        <td>15 000 руб</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Реставрация фотополимером</td>
-                                        <td>7 000 руб</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Лечение пульпита </td>
-                                        <td>6 500 руб</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Извлечение инородного тела под микроскопом </td>
-                                        <td>5 000 руб</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Лечение под микроскопом 1 канал</td>
-                                        <td>1 500 руб</td>
-                                    </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
 
-                        <h4>Виды терапевтических услуг</h4>
-                        <h5>Врачи стоматологи-терапевты стоматологической клиники «Корона» занимаются:</h5>
-                        <ul>
-                            <li>Лечением кариеса, каналов, пульпита;</li>
-                            <li>Установкой пломбы;</li>
-                            <li>Восстановлением разрушенных зубов;</li>
-                            <li>Профессиональной чисткой (ультразвуковая чистка и air flow);</li>
-                            <li>Профессиональным отбеливание зубов.</li>
-                        </ul>
-
-                        <h4>Как мы работаем</h4>
-                        <p>Для начала вам необходимо записаться на прием (сделать это можно через сайт или по телефону). Если у вас острая боль, то мы примем вас без очереди. На первичной консультации ваш лечащий врач-стоматолог составит вам план. После
-                            обсуждения цены можно приступить к необходимым процедурам. Стоит отметить, что терапия подходит не всегда. Например, в большинстве случаев рекомендуется удалить зубы мудрости, если они неправильно растут или поражены кариесом.</p>
-
-                        <h4>Преимущества стоматологии «Корона»</h4>
-                        <ul>
-                            <li>Наша стоматология оказывает все виды услуг (терапия, пародонтология, ортопедия, хирургия, ортодонтия и детская стоматология);</li>
-                            <li>Только лучшие квалифицированные врачи, которые регулярно обучаются по всей России и за границей;</li>
-                            <li>Безопасное и безболезненное лечение зубов;</li>
-                            <li>Современные материалы и технологии (аппарат для лечения пародонтоза, микроскоп и др.);</li>
-                            <li>Мы готовы решить самые сложные проблемы с зубами;</li>
-                            <li>Приятная дружеская атмосфера;</li>
-                            <li>Гибкая система скидок.</li>
-                        </ul>
+                        <div>
+                            {{ current_service.information.information_html|safe }}
+                        </div>
                     </div>
                     <button class="service-page__btn btn btn-brown">Записаться на прием</button>
                 </div>

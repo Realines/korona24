@@ -37,7 +37,7 @@ class Article(models.Model):
         super(Article, self).save(*args, **kwargs)
 
     def get_absolute_url(self) -> str:
-        return reverse('blog.views.article', args=[str(self.pk)])
+        return reverse('blog:article', args=(str(self.pk), ))
 
     def __str__(self) -> str:
         return str(self.title)

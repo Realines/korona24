@@ -26,6 +26,13 @@ class Service(models.Model):
         related_name='services',
         related_query_name='service',
     )
+    title_price_block = models.TextField(
+        verbose_name=_('Заголовок для блока цен'),
+    )
+    description_price_block = models.TextField(
+        verbose_name=_('Описание для блока цен'),
+    )
+
     show_on_main = models.BooleanField(
         verbose_name=_('Показать на главной'),
         default=False,
@@ -36,7 +43,7 @@ class Service(models.Model):
         verbose_name_plural = _('Услуги')
 
     def get_absolute_url(self) -> str:
-        return reverse('services:service', args=[str(self.pk)])
+        return reverse('services:service', args=(str(self.pk), ))
 
     def __str__(self) -> str:
         return str(self.name)
@@ -76,7 +83,7 @@ class InformationService(models.Model):
     service = models.OneToOneField(
         to=Service,
         on_delete=models.CASCADE,
-        related_name='information_set',
+        related_name='information',
         related_query_name='information',
     )
 
