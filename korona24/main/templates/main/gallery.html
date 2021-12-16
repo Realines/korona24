@@ -39,7 +39,7 @@
                 // Отправляем ajax-запроса на сервер для получения списка
                 // url-адресов изображений.
                 $.ajax({
-                    url: "{% url 'main:gallery_pagination' %}",
+                    url: "{% url 'gallery:pagination' %}",
                     method: "post",
                     dataType: "html",
                     data: $(this).serialize(),

@@ -6,29 +6,28 @@ from django.http import (
     HttpRequest,
     JsonResponse,
 )
-from django.core.paginator import Paginator
 from django.utils.translation import gettext as _
-from django.core import serializers
+from django.core.paginator import Paginator
 
-from .models import Article
+from .models import Gallery
 
 
-def articles(request: HttpRequest) -> HttpResponse:
+def gallery(request: HttpRequest) -> HttpResponse:
     """
-    Функция-контроллер страницы статей.
+    Функция-контроллер галереи.
 
     :param request: Объект запроса.
-    :return: Объект ответа со старницей статей.
+    :return: Объект ответа со старницей галереи.
     """
 
     context = {}
 
     return render(request=request,
-                  template_name='blog/blog.html',
+                  template_name='main/gallery.html',
                   context=context)
 
 
-def pagination_articles(request: HttpRequest) -> JsonResponse:
+def pagination_gallery(request: HttpRequest) -> JsonResponse:
     """
     Функция-контроллер для пагинации по галерее.
     :param request: Объект запроса.
@@ -47,32 +46,18 @@ def pagination_articles(request: HttpRequest) -> JsonResponse:
         page_num = 1
 
     # Разбивка изображений на блоки в пагинаторе.
-    article_set = Article.objects.all()
-    paginator = Paginator(article_set, 6)
+    gallery_set = Gallery.objects.all()
+    paginator = Paginator(gallery_set, 6)
 
     # Проверка, что номер запрашиваемого блока входит в длину пагинатора.
-    if page_num < 1 or page_num > int(math.ceil(len(article_set) / 6)):
+    if page_num < 1 or page_num > int(math.ceil(len(gallery_set) / 6)):
         return JsonResponse(data={'errors': _('Error page number.')},
                             status=403)
 
-    # Сериализация списка объектов в JSON-формат.
-    json_article_set = serializers.serialize('json', paginator.get_page(page_num).object_list)
+    # Формирования списка url изображений.
+    url_list = [gallery_image.image.url
+                for gallery_image in paginator.get_page(page_num).object_list]
 
-    return JsonResponse(data={'articles': json_article_set},
+    return JsonResponse(data={'images': url_list},
                         status=200)
 
-
-def article(request: HttpRequest, article_id: int) -> HttpResponse:
-    """
-    Функция-контроллер страницы статей.
-
-    :param request: Объект запроса.
-    :param article_id: id статьи.
-    :return: Объект ответа со старницей статей.
-    """
-
-    context = {}
-
-    return render(request=request,
-                  template_name='blog/blog-item.html',
-                  context=context)

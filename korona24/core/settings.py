@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'comments.apps.CommentsConfig',
     'employees.apps.EmployeesConfig',
     'services.apps.ServicesConfig',
-    'visually_version.apps.VisuallyVersionConfig',
+    'gallery.apps.GalleryConfig',
+    'visual_version_handler.apps.VisualVersionHandlerConfig',
 ]
 
 MIDDLEWARE = [
