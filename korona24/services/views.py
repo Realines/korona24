@@ -38,11 +38,11 @@ def service(request: HttpRequest, service_id: int) -> HttpResponse:
     :return: Объект ответа со страницей услуги.
     """
 
-    needed_service = get_object_or_404(Service, pk=service_id)
+    current_service = get_object_or_404(Service, pk=service_id)
     services_set = Service.objects.all()
 
     context = {
-        'current_service': needed_service,
+        'current_service': current_service,
         'services': services_set,
     }
 

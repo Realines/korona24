@@ -1,6 +1,13 @@
 import math
+import random
+from itertools import chain
+from functools import reduce
+from typing import Optional
 
-from django.shortcuts import render
+from django.shortcuts import (
+    render,
+    get_object_or_404,
+)
 from django.http import (
     HttpResponse,
     HttpRequest,
@@ -9,6 +16,7 @@ from django.http import (
 from django.core.paginator import Paginator
 from django.utils.translation import gettext as _
 from django.core import serializers
+from django.db.models import Q
 
 from .models import Article
 
@@ -72,7 +80,25 @@ def article(request: HttpRequest, article_id: int) -> HttpResponse:
     :return: Объект ответа со старницей статей.
     """
 
-    context = {}
+    # Текущая статья.
+    current_article = get_object_or_404(Article, pk=article_id)
+
+    # Генерируем рандомную подборку статей.
+    # Получаем список id всех статей.
+    all_articles_id = list(chain(*Article.objects.values_list('id')))
+    count_articles = 3 if len(all_articles_id) > 3 else len(all_articles_id)
+
+    # Перемешиваем id'шники и берем первые 3 (либо сколько есть).
+    random.shuffle(all_articles_id)
+    articles_id_set = all_articles_id[:count_articles]
+
+    # Строим запрос на выборку рандомных статей.
+    random_article = Article.objects.filter(pk__in=articles_id_set)
+
+    context = {
+        'current_article': current_article,
+        'articles_set': random_article,
+    }
 
     return render(request=request,
                   template_name='blog/blog-item.html',
