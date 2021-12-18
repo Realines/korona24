@@ -15,11 +15,12 @@ from django.http import (
 )
 from django.core.paginator import Paginator
 from django.utils.translation import gettext as _
+from django.views.decorators.csrf  import csrf_exempt
 from django.core import serializers
+from django.core.serializers.json import DjangoJSONEncoder
 from django.db.models import Q
-
-from .models import Article
-
+import json
+from .models import Article 
 
 def articles(request: HttpRequest) -> HttpResponse:
     """
@@ -35,21 +36,23 @@ def articles(request: HttpRequest) -> HttpResponse:
                   template_name='blog/blog.html',
                   context=context)
 
-
+@csrf_exempt
 def pagination_articles(request: HttpRequest) -> JsonResponse:
     """
     Функция-контроллер для пагинации по статьям блога.
     :param request: Объект запроса.
     :return: Возвращает сериализованный в JSON список статей.
     """
-
-    page_num = request.POST.get('page_num', None)
-
+    data = json.loads(request.body)
+    #page_num = request.POST.get('page_num', None)
+    print(data)
+    page_num = int(data['page_num']) 
     # Проверка номера запрашиваемого блока с изображениями.
     if page_num is None:
         return JsonResponse(data={'errors': _('Error page number.')},
                             status=403)
-    if page_num.isdigit():
+
+    if page_num:
         page_num = int(page_num)
     else:
         page_num = 1
@@ -65,9 +68,12 @@ def pagination_articles(request: HttpRequest) -> JsonResponse:
                             status=403)
 
     # Сериализация списка объектов в JSON-формат.
-    json_article_set = serializers.serialize('json', paginator.get_page(page_num).object_list)
-
-    return JsonResponse(data={'articles': json_article_set},
+    articles_list = paginator.get_page(page_num).object_list
+    articles_json = []
+    for acticle_item in articles_list:
+        articles_json.append(acticle_item.data_json())
+      
+    return JsonResponse(data={'articles': articles_json},
                         status=200)
 
 
