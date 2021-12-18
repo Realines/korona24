@@ -93,11 +93,11 @@ def article(request: HttpRequest, article_id: int) -> HttpResponse:
     articles_id_set = all_articles_id[:count_articles]
 
     # Строим запрос на выборку рандомных статей.
-    random_article = Article.objects.filter(pk__in=articles_id_set)
+    random_articles = Article.objects.filter(pk__in=articles_id_set)
 
     context = {
         'current_article': current_article,
-        'articles_set': random_article,
+        'articles_set': random_articles,
     }
 
     return render(request=request,

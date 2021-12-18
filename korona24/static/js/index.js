@@ -69,7 +69,7 @@ function expertSlider() {
     var swiper = new Swiper('.expert .swiper-container', {
         slidesPerView: 3,
         spaceBetween: 30,
-        loop: true,
+        loop: false,
         speed: 1000,
         pagination: {
             el: '.expert .swiper-pagination',

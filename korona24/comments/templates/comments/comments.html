@@ -166,18 +166,19 @@
                         <br> очень важно для улучшения качества обслуживания
                     </div>
                 </div>
-                <form>
+                <form id="comments_form">
+                    {% csrf_token %}
                     <div class="feedback-form__group">
                         <label for="">Ваше имя</label>
-                        <input type="text" placeholder="Ввведите имя">
+                        <input name="client_name" type="text" placeholder="Ввведите имя">
                     </div>
                     <div class="feedback-form__group">
                         <label for="">Ваш телефон</label>
-                        <input type="tel" placeholder="Введите телефон">
+                        <input name="phone_number" type="tel" placeholder="Введите телефон">
                     </div>
                     <div class="feedback-form__group">
                         <label for="">Ваш отзыв</label>
-                        <textarea placeholder="Введите текст отзыва"></textarea>
+                        <textarea name="text" placeholder="Введите текст отзыва"></textarea>
                     </div>
                     <div class="feedback-form__nav">
                         <button class="feedback-form__btn">Отправить запрос</button>
@@ -188,6 +189,23 @@
             </div>
         </div>
     </section>
+{% endblock %}
 
 
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        $("#comments_form").submit(function() {
+            $.ajax({
+                url: "{% url 'comments:send_comment' %}",
+                method: "post",
+                dataType: "html",
+                data: $(this).serialize(),
+                success: function(data) {
+                    alert(data);
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}
