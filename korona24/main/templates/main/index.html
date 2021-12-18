@@ -354,7 +354,7 @@
                     Запишитесь на <br> консультацию <span>к нашим <br> специалистам</span>
                 </h2>
                 <div class="make-order__desc">Заполните форму ниже и в ближайшее время с Вами <br> свяжется наш специалист, чтобы уточнить подробности</div>
-                <form action="" class="make-order__form">
+                <form id="application_form" class="make-order__form">
                     {% csrf_token %}
                     <div class="make-order__form-group">
                         <label for="">Ваше имя</label>
@@ -362,7 +362,7 @@
                     </div>
                     <div class="make-order__form-group">
                         <label for="">Ваш телефон</label>
-                        <input type="tel" placeholder="Введите телефон">
+                        <input name="phone_number" type="tel" placeholder="Введите телефон">
                     </div>
                     <div class="make-order__form-group">
                         <button class="make-order__form-btn btn-brown">Отправить запрос</button>
@@ -666,4 +666,23 @@
         </div>
     </section>
 
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        $("#application_form").submit(function() {
+            $.ajax({
+                url: "{% url 'main:send_app' %}",
+                method: "post",
+                dataType: "html",
+                data: $(this).serialize(),
+                success: function(data) {
+                    alert(data);
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}
