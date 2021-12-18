@@ -69,7 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'visually_version.middleware.visually_impaired',
+                'visual_version_handler.middleware.visually_impaired',
             ],
         },
     },

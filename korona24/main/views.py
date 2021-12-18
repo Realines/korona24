@@ -9,6 +9,7 @@ from django.utils.translation import gettext as _
 from services.models import Service
 from employees.models import Employee
 from comments.models import Comment
+from gallery.models import Gallery
 from .forms import ConsultationForm
 
 
@@ -22,12 +23,12 @@ def index(request: HttpRequest) -> HttpResponse:
 
     services_set = Service.objects.filter(show_on_main=True)
     gallery_set = Gallery.objects.all()[:6]
-    all_employees = Employee.objects.all()
+    employees_set = Employee.objects.all()
     comments_set = Comment.objects.filter(status=Comment.Status.APPROVED)
 
     context = {'services': services_set,
                'gallery': gallery_set,
-               'employees': all_employees,
+               'employees': employees_set,
                'comments': comments_set}
 
     return render(request=request,

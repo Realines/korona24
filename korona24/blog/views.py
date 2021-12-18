@@ -30,9 +30,9 @@ def articles(request: HttpRequest) -> HttpResponse:
 
 def pagination_articles(request: HttpRequest) -> JsonResponse:
     """
-    Функция-контроллер для пагинации по галерее.
+    Функция-контроллер для пагинации по статьям блога.
     :param request: Объект запроса.
-    :return: Возвращает список ссылок на изображеня.
+    :return: Возвращает сериализованный в JSON список статей.
     """
 
     page_num = request.POST.get('page_num', None)
@@ -48,10 +48,11 @@ def pagination_articles(request: HttpRequest) -> JsonResponse:
 
     # Разбивка изображений на блоки в пагинаторе.
     article_set = Article.objects.all()
-    paginator = Paginator(article_set, 6)
+    block_articles = 6
+    paginator = Paginator(article_set, block_articles)
 
     # Проверка, что номер запрашиваемого блока входит в длину пагинатора.
-    if page_num < 1 or page_num > int(math.ceil(len(article_set) / 6)):
+    if page_num < 1 or page_num > int(math.ceil(len(article_set) / block_articles)):
         return JsonResponse(data={'errors': _('Error page number.')},
                             status=403)
 
