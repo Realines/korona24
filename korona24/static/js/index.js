@@ -234,10 +234,22 @@ $(document).ready(function() {
         $(this).toggleClass("header__burger--active")
         $(".header").toggleClass("header--active")
             // $(".header__right").slideToggle()
+        $("body").toggleClass("fixed-body")
     })
 
 
     $(".header__service-item").hover(onIn, onOut);
+
+    $(".header__service-show").click(function() {
+        if (window.innerWidth < 992) {
+            if ($(this).hasClass("header__service-show--active")) {
+                $(this).removeClass("header__service-show--active")
+            } else {
+                $(".header__service-show").removeClass("header__service-show--active")
+                $(this).addClass("header__service-show--active")
+            }
+        }
+    })
 })
 
 
