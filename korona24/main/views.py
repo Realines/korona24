@@ -76,3 +76,18 @@ def contacts(request: HttpRequest) -> HttpResponse:
     return render(request=request,
                   template_name='main/contacts.html',
                   context=context)
+
+
+def about(request: HttpRequest) -> HttpResponse:
+    """
+    Функция-контроллер страницы "О нас".
+
+    :param request: Объект запроса.
+    :return: Объект ответа со страницей "О нас".
+    """
+
+    context = {}
+
+    return render(request=request,
+                  template_name='main/about.html',
+                  context=context)
