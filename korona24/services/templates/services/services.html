@@ -11,7 +11,7 @@
         <div class='container'>
             <h2 class="services__title">Услуги</h2>
             <div class='services__items'>
-                {% for service in services %}
+                {% for service in all_services %}
                 <div class="services__item">
                     <div class="services__item-icon">
                         <img src="{{ service.icon.url }}" alt="">

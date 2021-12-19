@@ -20,7 +20,7 @@
                 <div class="service-page__sidebar">
                     <h3 class="service-page__title">Категории</h3>
                     <div class="service-page__sidebar-items">
-                        {% for service in services %}
+                        {% for service in all_services %}
                         <a href="{{ service.get_absolute_url }}" class="service-page__sidebar-item">
                             <span>{{ service.name }}</span>
                             <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'visual_version_handler.middleware.visually_impaired',
+                'services.middleware.get_all_services',
             ],
         },
     },
