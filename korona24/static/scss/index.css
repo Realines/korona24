@@ -1,6 +1,6 @@
 /*
 Error: Undefined variable: "$brown".
-        on line 39 of D:\work\freelance\korona\scss\index.scss
+        on line 39 of D:\work\freelance\korona-git\korona24\korona24\static\scss\index.scss
 
 34:                 margin: 0 4px;
 35:                 opacity: 1;
@@ -15,7 +15,7 @@ Error: Undefined variable: "$brown".
 44:             bottom: 120px;
 
 Backtrace:
-D:\work\freelance\korona\scss\index.scss:39
+D:\work\freelance\korona-git\korona24\korona24\static\scss\index.scss:39
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/variable.rb:49:in `_perform'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/node.rb:50:in `perform'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:402:in `visit_prop'
@@ -95,4 +95,4 @@ C:/Program Files (x86)/Koala/bin/sass:22:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$brown\".\A         on line 39 of D:\work\freelance\korona\scss\index.scss\A \A 34:                 margin: 0 4px;\A 35:                 opacity: 1;\A 36:             }\A 37:             .swiper-pagination-bullet-active {\A 38:                 width: 35px;\A 39:                 background-color: $brown;\A 40:             }\A 41:         }\A 42:         &-nav {\A 43:             position: absolute;\A 44:             bottom: 120px;"; }
+  content: "Error: Undefined variable: \"$brown\".\A         on line 39 of D:\work\freelance\korona-git\korona24\korona24\static\scss\index.scss\A \A 34:                 margin: 0 4px;\A 35:                 opacity: 1;\A 36:             }\A 37:             .swiper-pagination-bullet-active {\A 38:                 width: 35px;\A 39:                 background-color: $brown;\A 40:             }\A 41:         }\A 42:         &-nav {\A 43:             position: absolute;\A 44:             bottom: 120px;"; }

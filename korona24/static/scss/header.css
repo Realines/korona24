@@ -1,6 +1,6 @@
 /*
 Error: Undefined variable: "$brown".
-        on line 35 of D:\work\freelance\korona\scss\header.scss
+        on line 35 of D:\work\freelance\korona-git\korona24\korona24\static\scss\header.scss
 
 30:         }
 31:     }
@@ -15,7 +15,7 @@ Error: Undefined variable: "$brown".
 40:         &:hover {
 
 Backtrace:
-D:\work\freelance\korona\scss\header.scss:35
+D:\work\freelance\korona-git\korona24\korona24\static\scss\header.scss:35
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/variable.rb:49:in `_perform'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/node.rb:50:in `perform'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:402:in `visit_prop'
@@ -73,4 +73,4 @@ C:/Program Files (x86)/Koala/bin/sass:22:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$brown\".\A         on line 35 of D:\work\freelance\korona\scss\header.scss\A \A 30:         }\A 31:     }\A 32:     &__make-order {\A 33:         font-weight: bold;\A 34:         font-size: 14px;\A 35:         color: $brown;\A 36:     }\A 37:     &__phone {\A 38:         font-weight: bold;\A 39:         font-size: 14px;\A 40:         &:hover {"; }
+  content: "Error: Undefined variable: \"$brown\".\A         on line 35 of D:\work\freelance\korona-git\korona24\korona24\static\scss\header.scss\A \A 30:         }\A 31:     }\A 32:     &__make-order {\A 33:         font-weight: bold;\A 34:         font-size: 14px;\A 35:         color: $brown;\A 36:     }\A 37:     &__phone {\A 38:         font-weight: bold;\A 39:         font-size: 14px;\A 40:         &:hover {"; }
