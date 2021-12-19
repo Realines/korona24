@@ -10,39 +10,17 @@
             <div class='main__inner'>
                 <div class="main__slider">
                     <div class='swiper-container'>
-                        <div class='swiper-wrapper'>
+                        <div class='swiper-wrapper'> 
+                            {% for discount in all_discount %}
                             <div class='swiper-slide'>
                                 <div class="main__slider-item">
                                     <h1 class="main__slider-title">
-                                        <span>Современная</span> стоматология <br> в красноярске
+                                        {{ discount.title | safe }}
                                     </h1>
-                                    <p class="main__slider-desc subtitle">Вы получите лечение на уровне лучших <br> клиник Европы</p>
+                                    <p class="main__slider-desc subtitle"> {{ discount.description | safe}}</p>
                                 </div>
-                            </div>
-                            <div class='swiper-slide'>
-                                <div class="main__slider-item">
-                                    <h1 class="main__slider-title">
-                                        <span>Современная</span> стоматология <br> в красноярске 2
-                                    </h1>
-                                    <p class="main__slider-desc subtitle">Вы получите лечение на уровне лучших <br> клиник Европы</p>
-                                </div>
-                            </div>
-                            <div class='swiper-slide'>
-                                <div class="main__slider-item">
-                                    <h1 class="main__slider-title">
-                                        <span>Современная</span> стоматология <br> в красноярске 3
-                                    </h1>
-                                    <p class="main__slider-desc subtitle">Вы получите лечение на уровне лучших <br> клиник Европы</p>
-                                </div>
-                            </div>
-                            <div class='swiper-slide'>
-                                <div class="main__slider-item">
-                                    <h1 class="main__slider-title">
-                                        <span>Современная</span> стоматология <br> в красноярске 4
-                                    </h1>
-                                    <p class="main__slider-desc subtitle">Вы получите лечение на уровне лучших <br> клиник Европы</p>
-                                </div>
-                            </div>
+                            </div> 
+                            {% endfor %}
                         </div>
 
                     </div>

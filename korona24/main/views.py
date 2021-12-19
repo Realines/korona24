@@ -5,7 +5,7 @@ from django.http import (
     JsonResponse,
 )
 from django.utils.translation import gettext as _
-
+from .models import *
 from services.models import Service
 from employees.models import Employee
 from comments.models import Comment
@@ -20,13 +20,14 @@ def index(request: HttpRequest) -> HttpResponse:
     :param request: Объект запроса.
     :return: Объект ответа с главной страницей.
     """
-
+    all_discount = Discount.objects.all()
     all_services = Service.objects.all()
     gallery_set = Gallery.objects.all()[:6]
     employees_set = Employee.objects.all()
     comments_set = Comment.objects.filter(status=Comment.Status.APPROVED)
 
-    context = {'main_services': all_services.filter(show_on_main=True),
+    context = {'all_discount': all_discount.filter(show_on_main=True),
+               'main_services': all_services.filter(show_on_main=True),
                'all_services': all_services,
                'gallery': gallery_set,
                'employees': employees_set,

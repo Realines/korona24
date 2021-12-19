@@ -3,6 +3,31 @@ from django.utils.translation import gettext_lazy as _
 from django.core import validators
 
 
+class Discount(models.Model):
+    title = models.TextField( 
+        verbose_name=_('Заголовок'),
+    )
+    description = models.TextField( 
+        verbose_name=_('Описание'),
+    )
+
+    date_added = models.DateField(
+        verbose_name=_('Дата заявки'),
+        auto_now_add=True,
+    )
+    show_on_main = models.BooleanField(
+        verbose_name=_('Показать на главной'),
+        default=False,
+    )
+    class Meta:
+        verbose_name = _('Акции на главной')
+        verbose_name_plural = _('Акции на главной')
+        ordering = ['-date_added']
+        get_latest_by = 'date_added'
+
+    def __str__(self) -> str:
+        return f'{self.client_name}#{self.pk}'
+
 class Consultation(models.Model):
     client_name = models.CharField(
         max_length=128,
