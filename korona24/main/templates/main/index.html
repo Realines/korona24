@@ -87,87 +87,25 @@
     <section class='service'>
         <div class='container'>
             <p class="service__title">Наши услуги</p>
-            <div class='service__items'>
+            <div class='service__items'> 
+                {% for preview in main_services %}
                 <div class="service__item">
                     <p class="service__item-title text-druk">
-                        Оперативная помощь <br><span>и лечение</span>
+                        {{ preview.name | safe }}
                     </p>
                     <ul class="service__item-list">
-                        <li>Консультация</li>
-                        <li>Устранение острой боли</li>
-                        <li>Безболезненное удаление зубов</li>
-                        <li>Лечение кариеса</li>
-                        <li>Лечение пародонтоза, пародонтита</li>
+                        {{ preview.description | safe }}
                     </ul>
-                    <a href="" class="service__item-link btn-brown">
+                    <a href="{{ preview.get_absolute_url }}" class="service__item-link btn-brown">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.869 5.68958L15.8084 6.75022L20.3083 11.2501H0.75V12.7501H20.3081L15.8084 17.2498L16.869 18.3105L23.1796 12L16.869 5.68958Z" fill="white"/>
                         </svg>
                     </a>
                     <div class="service__item-icon">
-                        <img src="{% static 'img/service1.png' %}" alt="">
+                        <img src="{{ preview.icon.url }}" alt="{{ preview.name }}">
                     </div>
                 </div>
-                <div class="service__item">
-                    <p class="service__item-title text-druk">
-                        Эстетическая <br> <span>стоматология</span>
-                    </p>
-                    <ul class="service__item-list">
-                        <li>Консультация</li>
-                        <li>Устранение острой боли</li>
-                        <li>Безболезненное удаление зубов</li>
-                        <li>Лечение кариеса</li>
-                        <li>Лечение пародонтоза, пародонтита</li>
-                    </ul>
-                    <a href="" class="service__item-link btn-brown">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.869 5.68958L15.8084 6.75022L20.3083 11.2501H0.75V12.7501H20.3081L15.8084 17.2498L16.869 18.3105L23.1796 12L16.869 5.68958Z" fill="white"/>
-                        </svg>
-                    </a>
-                    <div class="service__item-icon">
-                        <img src="{% static 'img/service2.png' %}" alt="">
-                    </div>
-                </div>
-                <div class="service__item">
-                    <p class="service__item-title text-druk">
-                        ИМПЛАНТАЦИЯ <br> <span>И ВОССТАНОВЛЕНИЕ</span>
-                    </p>
-                    <ul class="service__item-list">
-                        <li>Консультация</li>
-                        <li>Устранение острой боли</li>
-                        <li>Безболезненное удаление зубов</li>
-                        <li>Лечение кариеса</li>
-                        <li>Лечение пародонтоза, пародонтита</li>
-                    </ul>
-                    <a href="" class="service__item-link btn-brown">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.869 5.68958L15.8084 6.75022L20.3083 11.2501H0.75V12.7501H20.3081L15.8084 17.2498L16.869 18.3105L23.1796 12L16.869 5.68958Z" fill="white"/>
-                        </svg>
-                    </a>
-                    <div class="service__item-icon">
-                        <img src="{% static 'img/service3.png' %}" alt="">
-                    </div>
-                </div>
-                <div class="service__item">
-                    <p class="service__item-title text-druk">
-                        ДЕТСКАЯ <br> <span>СТОМАТОЛОГИЯ</span>
-                    </p>
-                    <ul class="service__item-list">
-                        <li>Консультация</li>
-                        <li>Устранение острой боли</li>
-                        <li>Безболезненное удаление зубов</li>
-                        <li>Лечение кариеса</li>
-                        <li>Лечение пародонтоза, пародонтита</li>
-                    </ul>
-                    <a href="" class="service__item-link btn-brown">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.869 5.68958L15.8084 6.75022L20.3083 11.2501H0.75V12.7501H20.3081L15.8084 17.2498L16.869 18.3105L23.1796 12L16.869 5.68958Z" fill="white"/>
-                        </svg>
-                    </a>
-                    <div class="service__item-icon">
-                        <img src="{% static 'img/service4.png' %}" alt="">
-                    </div>
-                </div>
+                {% endfor %} 
             </div>
         </div>
     </section>
@@ -253,7 +191,7 @@
                 <h2 class="zone__title">
                     зона максимального <br> <span>комфорта</span>
                 </h2>
-                <a href="" class="zone__link">
+                <a href="https://vr.korona24.ru/" class="zone__link">
                     <span>Виртуальный тур по клинике</span>
                     <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.5565 13L8.125 7.5286V18.4714L17.5565 13ZM18.8435 11.869C19.0427 11.983 19.2083 12.1477 19.3234 12.3463C19.4386 12.5449 19.4992 12.7704 19.4992 13C19.4992 13.2295 19.4386 13.455 19.3234 13.6536C19.2083 13.8523 19.0427 14.0169 18.8435 14.131L8.50362 20.1305C7.65862 20.6212 6.5 20.0606 6.5 18.9995V7.00048C6.5 5.93935 7.65862 5.37873 8.50362 5.86948L18.8435 11.869Z" fill="#C39F7B"/>

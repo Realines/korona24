@@ -12,49 +12,29 @@
         <div class='service-page__inner'>
             <div class="service-page__sidebar">
                 <h3 class="service-page__title">Категории</h3>
-                <div class="service-page__sidebar-items">
-                    <a href="" class="service-page__sidebar-item">
-                        <span>Лицензия</span>
+                <div class="service-page__sidebar-items"> 
+                    {% for page in all_pages %}
+                    <a href="{{ page.get_absolute_url}}" class="service-page__sidebar-item">
+                        <span>{{page.title}}</span>
                         <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
                         </svg>
-                    </a>
-                    <a href="" class="service-page__sidebar-item">
-                        <span>О нас</span>
+                    </a> 
+                    {% endfor %}
+                    {% for category in all_category %}
+                    <a href="{{ category.get_absolute_url}}" class="service-page__sidebar-item">
+                        <span>{{category.title}}</span>
                         <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
                         </svg>
-                    </a>
-                    <a href="" class="service-page__sidebar-item">
-                        <span>ЕГРЮЛ</span>
-                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                        </svg>
-                    </a>
-                    <a href="" class="service-page__sidebar-item">
-                        <span>Гарантии</span>
-                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                        </svg>
-                    </a>
-                    <a href="" class="service-page__sidebar-item">
-                        <span>Достижения</span>
-                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                        </svg>
-                    </a>
-                    <a href="" class="service-page__sidebar-item">
-                        <span>Маломобильному населению</span>
-                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                        </svg>
-                    </a>
-                    <a href="" class="service-page__sidebar-item">
-                        <span>Документы</span>
-                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                        </svg>
-                    </a>
+                        <div class="header__service-hidden">  
+                            {% for page in category.pages.all %}
+                                <a href="{{ page.get_absolute_url}}" class="header__service-link">{{page.title}}</a>
+                            {% endfor %}
+                           
+                        </div>
+                    </a> 
+                    {% endfor %}
                 </div>
             </div>
             <div class="service-page__content">

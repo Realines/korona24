@@ -7,6 +7,7 @@ class DiscountAdmin(admin.ModelAdmin):
     list_display_links = ('title', )
     ordering = ('-date_added', )
     
+
 @admin.register(models.Consultation)
 class ConsultationAdmin(admin.ModelAdmin):
     list_display = ('client_name', 'phone_number')

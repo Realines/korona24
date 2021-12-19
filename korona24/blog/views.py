@@ -45,7 +45,6 @@ def pagination_articles(request: HttpRequest) -> JsonResponse:
     """
     data = json.loads(request.body)
     #page_num = request.POST.get('page_num', None)
-    print(data)
     page_num = int(data['page_num']) 
     # Проверка номера запрашиваемого блока с изображениями.
     if page_num is None:

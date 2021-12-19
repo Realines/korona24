@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'employees.apps.EmployeesConfig',
     'services.apps.ServicesConfig',
     'gallery.apps.GalleryConfig',
+    'pages.apps.PagesConfig',
     'visual_version_handler.apps.VisualVersionHandlerConfig',
     'mdeditor',
 ]

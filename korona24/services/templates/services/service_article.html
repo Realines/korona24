@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+
+{% block title %} Статья {% endblock %}
+
+
+{% block content %}
+
+    <section class='blog-item'>
+        <div class='container'>
+            <div class="blog-item__inner">
+                <a href="" class="back-link blog-item__back">
+                    <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 1L2 8L9 15" stroke="#C39F7B" stroke-width="1.5"/>
+                    </svg>
+                    <span>Назад</span>
+                </a>
+                <div class='blog-item__text'>
+                    <h3>{{ current_article.title }}</h3>
+                    <p>{{ current_article.description }}</p>
+                    <div>{{ current_article.information_html|safe }}</div>
+                </div> 
+            </div>
+
+        </div>
+    </section>
+ 
+
+{% endblock %}

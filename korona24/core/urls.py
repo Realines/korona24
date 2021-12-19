@@ -29,6 +29,7 @@ urlpatterns = [
     path('services/', include('services.urls')),
     path('employees/', include('employees.urls')),
     path('gallery/', include('gallery.urls')),
+    path('about/', include('pages.urls')),
     path('visual-version/', include('visual_version_handler.urls')),
     path('admin/', admin.site.urls),
     url(r'mdeditor/', include('mdeditor.urls'))

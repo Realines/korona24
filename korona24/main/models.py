@@ -26,7 +26,7 @@ class Discount(models.Model):
         get_latest_by = 'date_added'
 
     def __str__(self) -> str:
-        return f'{self.client_name}#{self.pk}'
+        return f'{self.title}#{self.pk}'
 
 class Consultation(models.Model):
     client_name = models.CharField(
