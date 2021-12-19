@@ -283,36 +283,13 @@
                 </a>
             </div>
             <div class="zone__items">
+                {% for image in gallery %}
                 <div class="zone__item">
-                    <a data-fancybox='gallery' href="{% static 'img/zone1.jpg' %}">
-                        <img src="{% static 'img/zone1.jpg' %}" alt=''>
+                    <a data-fancybox='gallery' href="{{ image.image.url }}">
+                        <img src="{{ image.image.url }}" alt=''>
                     </a>
                 </div>
-                <div class="zone__item">
-                    <a data-fancybox='gallery' href="{% static 'img/zone2.jpg' %}">
-                        <img src="{% static 'img/zone2.jpg' %}" alt=''>
-                    </a>
-                </div>
-                <div class="zone__item">
-                    <a data-fancybox='gallery' href="{% static 'img/zone3.jpg' %}">
-                        <img src="{% static 'img/zone3.jpg' %}" alt=''>
-                    </a>
-                </div>
-                <div class="zone__item">
-                    <a data-fancybox='gallery' href="{% static 'img/zone4.jpg' %}">
-                        <img src="{% static 'img/zone4.jpg' %}" alt=''>
-                    </a>
-                </div>
-                <div class="zone__item">
-                    <a data-fancybox='gallery' href="{% static 'img/zone5.jpg' %}">
-                        <img src="{% static 'img/zone5.jpg' %}" alt=''>
-                    </a>
-                </div>
-                <div class="zone__item">
-                    <a data-fancybox='gallery' href="{% static 'img/zone6.jpg' %}">
-                        <img src="{% static 'img/zone6.jpg' %}" alt=''>
-                    </a>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -350,82 +327,17 @@
                     <div class="expert__slider">
                         <div class='swiper-container'>
                             <div class='swiper-wrapper'>
+                                {% for employee in employees %}
                                 <div class='swiper-slide'>
                                     <div class="expert__slider-item">
                                         <div class="expert__slider-item-img">
-                                            <img src="{% static 'img/doctor1.jpg' %}" alt="">
+                                            <img src="{{ employee.avatar.url }}" alt="">
                                         </div>
-                                        <div class="expert__slider-item-title">Антон Сергеевич Коробанько</div>
-                                        <div class="expert__slider-item-profession">Врач стоматолог-терапевт</div>
+                                        <div class="expert__slider-item-title">{{ employee.name }}</div>
+                                        <div class="expert__slider-item-profession">{{ employee.position }}</div>
                                     </div>
                                 </div>
-                                <div class='swiper-slide'>
-                                    <div class="expert__slider-item">
-                                        <div class="expert__slider-item-img">
-                                            <img src="{% static 'img/doctor2.jpg' %}" alt="">
-                                        </div>
-                                        <div class="expert__slider-item-title">Илья Сергеевич Мунгалов
-                                        </div>
-                                        <div class="expert__slider-item-profession">Врач стоматолог-терапевт</div>
-                                    </div>
-                                </div>
-                                <div class='swiper-slide'>
-                                    <div class="expert__slider-item">
-                                        <div class="expert__slider-item-img">
-                                            <img src="{% static 'img/doctor1.jpg' %}" alt="">
-                                        </div>
-                                        <div class="expert__slider-item-title">Антон Сергеевич Коробанько</div>
-                                        <div class="expert__slider-item-profession">Врач стоматолог-терапевт</div>
-                                    </div>
-                                </div>
-                                <div class='swiper-slide'>
-                                    <div class="expert__slider-item">
-                                        <div class="expert__slider-item-img">
-                                            <img src="{% static 'img/doctor2.jpg' %}" alt="">
-                                        </div>
-                                        <div class="expert__slider-item-title">Илья Сергеевич Мунгалов
-                                        </div>
-                                        <div class="expert__slider-item-profession">Врач стоматолог-терапевт</div>
-                                    </div>
-                                </div>
-                                <div class='swiper-slide'>
-                                    <div class="expert__slider-item">
-                                        <div class="expert__slider-item-img">
-                                            <img src="{% static 'img/doctor1.jpg' %}" alt="">
-                                        </div>
-                                        <div class="expert__slider-item-title">Антон Сергеевич Коробанько</div>
-                                        <div class="expert__slider-item-profession">Врач стоматолог-терапевт</div>
-                                    </div>
-                                </div>
-                                <div class='swiper-slide'>
-                                    <div class="expert__slider-item">
-                                        <div class="expert__slider-item-img">
-                                            <img src="{% static 'img/doctor2.jpg' %}" alt="">
-                                        </div>
-                                        <div class="expert__slider-item-title">Илья Сергеевич Мунгалов
-                                        </div>
-                                        <div class="expert__slider-item-profession">Врач стоматолог-терапевт</div>
-                                    </div>
-                                </div>
-                                <div class='swiper-slide'>
-                                    <div class="expert__slider-item">
-                                        <div class="expert__slider-item-img">
-                                            <img src="{% static 'img/doctor1.jpg' %}" alt="">
-                                        </div>
-                                        <div class="expert__slider-item-title">Антон Сергеевич Коробанько</div>
-                                        <div class="expert__slider-item-profession">Врач стоматолог-терапевт</div>
-                                    </div>
-                                </div>
-                                <div class='swiper-slide'>
-                                    <div class="expert__slider-item">
-                                        <div class="expert__slider-item-img">
-                                            <img src="{% static 'img/doctor2.jpg' %}" alt="">
-                                        </div>
-                                        <div class="expert__slider-item-title">Илья Сергеевич Мунгалов
-                                        </div>
-                                        <div class="expert__slider-item-profession">Врач стоматолог-терапевт</div>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -442,14 +354,15 @@
                     Запишитесь на <br> консультацию <span>к нашим <br> специалистам</span>
                 </h2>
                 <div class="make-order__desc">Заполните форму ниже и в ближайшее время с Вами <br> свяжется наш специалист, чтобы уточнить подробности</div>
-                <form action="" class="make-order__form">
+                <form id="application_form" class="make-order__form">
+                    {% csrf_token %}
                     <div class="make-order__form-group">
                         <label for="">Ваше имя</label>
-                        <input type="text" placeholder="Ввведите имя">
+                        <input name="client_name" type="text" placeholder="Ввведите имя">
                     </div>
                     <div class="make-order__form-group">
                         <label for="">Ваш телефон</label>
-                        <input type="tel" placeholder="Введите телефон">
+                        <input name="phone_number" type="tel" placeholder="Введите телефон">
                     </div>
                     <div class="make-order__form-group">
                         <button class="make-order__form-btn btn-brown">Отправить запрос</button>
@@ -753,4 +666,23 @@
         </div>
     </section>
 
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        $("#application_form").submit(function() {
+            $.ajax({
+                url: "{% url 'main:send_app' %}",
+                method: "post",
+                dataType: "html",
+                data: $(this).serialize(),
+                success: function(data) {
+                    alert(data);
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}

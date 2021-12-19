@@ -18,11 +18,7 @@ def services(request: HttpRequest) -> HttpResponse:
     :return: Объект ответа со страницей услуг.
     """
 
-    services_set = Service.objects.all()
-
-    context = {
-        'services': services_set,
-    }
+    context = {}
 
     return render(request=request,
                   template_name='services/services.html',
@@ -39,11 +35,9 @@ def service(request: HttpRequest, service_id: int) -> HttpResponse:
     """
 
     current_service = get_object_or_404(Service, pk=service_id)
-    services_set = Service.objects.all()
 
     context = {
         'current_service': current_service,
-        'services': services_set,
     }
 
     return render(request=request,
@@ -59,11 +53,7 @@ def prices(request: HttpRequest) -> HttpResponse:
     :return: Объект ответа со страницей цен на услуги.
     """
 
-    services_set = Service.objects.all()
-
-    context = {
-        'services': services_set,
-    }
+    context = {}
 
     return render(request=request,
                   template_name='services/price.html',

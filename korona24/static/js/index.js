@@ -69,7 +69,7 @@ function expertSlider() {
     var swiper = new Swiper('.expert .swiper-container', {
         slidesPerView: 3,
         spaceBetween: 30,
-        loop: true,
+        loop: false,
         speed: 1000,
         pagination: {
             el: '.expert .swiper-pagination',
@@ -234,6 +234,39 @@ $(document).ready(function() {
         $(this).toggleClass("header__burger--active")
         $(".header").toggleClass("header--active")
             // $(".header__right").slideToggle()
+        $("body").toggleClass("fixed-body")
     })
 
+
+    $(".header__service-item").hover(onIn, onOut);
+
+    $(".header__service-show").click(function() {
+        if (window.innerWidth < 992) {
+            if ($(this).hasClass("header__service-show--active")) {
+                $(this).removeClass("header__service-show--active")
+            } else {
+                $(".header__service-show").removeClass("header__service-show--active")
+                $(this).addClass("header__service-show--active")
+            }
+        }
+    })
 })
+
+
+function onIn() {
+    if (window.innerWidth > 992) {
+        let el = $(this)
+        setTimeout(function() {
+            if (el.is(':hover')) {
+                console.log(el)
+                el.children(".header__service-show").addClass("header__service-show--active")
+            }
+        }, 200);
+    }
+}
+
+function onOut() {
+    if (window.innerWidth > 992) {
+        $(this).children(".header__service-show").removeClass("header__service-show--active")
+    }
+}

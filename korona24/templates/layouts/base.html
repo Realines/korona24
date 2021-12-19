@@ -3,10 +3,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %} Главная {% endblock %}</title>
     <link rel="stylesheet" href="{%  static 'css/nice-select.css' %}">
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{%  static 'css/jquery.fancybox.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
     <header class="header">
         <section class='header-top'>
@@ -65,11 +66,32 @@
                                 </svg>
                             </i>
                         </div>
+                        <div class="header__service-menu">
+                            {% for service in all_services %}
+                            <div class="header__service-item">
+                                <div class="header__service-show">
+                                    <span>
+                                        <a href="{{ service.get_absolute_url }}">
+                                            {{ service.name }}
+                                        </a>
+                                    </span>
+                                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="header__service-hidden">
+                                    {% for therapy in service.therapies.all %}
+                                    <a href="" class="header__service-link">{{ therapy.name }}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
                     <div class="nav">
                         <a href="{% url 'services:prices' %}" class="nav__item">Цены</a>
                         <a href="{% url 'comments:comments' %}" class="nav__item">Отзывы</a>
-                        <a href="" class="nav__item">О нас</a>
+                        <a href="{% url 'main:about' %}" class="nav__item">О нас</a>
                         <a href="{% url 'blog:articles' %}" class="nav__item">Блог</a>
                         <a href="" class="nav__item">Акции</a>
                         <a href="" class="nav__item">Вопросы врачу</a>
@@ -114,7 +136,7 @@
                     <a href="{% url 'services:services' %}" class="footer__item">Услуги</a>
                     <a href="{% url 'services:prices' %}" class="footer__item">Цены</a>
                     <a href="{% url 'comments:comments' %}" class="footer__item">Отзывы</a>
-                    <a href="" class="footer__item">О нас</a>
+                    <a href="{% url 'main:about' %}" class="footer__item">О нас</a>
                     <a href="{% url 'blog:articles' %}" class="footer__item">Блог</a>
                     <a href="" class="footer__item">Акции</a>
                     <a href="" class="footer__item">Вопросы врачу</a>
@@ -262,9 +284,8 @@
     <script src="{% static 'js/index.js' %}"></script>
     <script src="{% static 'js/pagination.js' %}"></script>
 
-    {% block scripts %}
-    
-    {% endblock %}
+    {% block scripts %} {% endblock %}
 
 </body>
+
 </html>

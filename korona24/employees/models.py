@@ -53,7 +53,7 @@ class Education(models.Model):
     employee = models.OneToOneField(
         to=Employee,
         on_delete=models.CASCADE,
-        related_name='educations',
+        related_name='education',
         related_query_name='education',
     )
 

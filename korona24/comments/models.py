@@ -13,6 +13,10 @@ class Comment(models.Model):
         max_length=128,
         verbose_name=_('Имя клиента'),
     )
+    phone_number = models.CharField(  # TODO: Найти хороший способ валидации номеров.
+        max_length=16,
+        verbose_name=_('Номер телефона'),
+    )
     image = models.ImageField(
         upload_to='comments/',
         verbose_name=_('Аватар клиента'),
@@ -26,6 +30,8 @@ class Comment(models.Model):
         verbose_name=_('Оценка клиента'),
         validators=[validators.MinValueValidator(0),
                     validators.MaxValueValidator(5)],
+        null=True,
+        blank=True,
     )
     date_added = models.DateField(
         verbose_name=_('Дата добавления отзыва'),
