@@ -1,5 +1,11 @@
-{% extends 'layouts/base.html' %} {% load static %} {% block title %} Контакты {% endblock %} {% block content %}
+{% extends 'layouts/base.html' %} 
+{% load static %} 
 
+
+{% block title %} Контакты {% endblock %} 
+
+
+{% block content %}
 
 <section class='employee'>
     <div class='container'>
@@ -11,13 +17,13 @@
         </a>
         <div class='employee__inner'>
             <div class="employee__img">
-                <img src="{% static 'img/employee.jpg' %}" alt="">
+                <img src="{{ current_employee.avatar.url }}" alt="">
             </div>
             <div class="employee__right">
                 <div class="employee__top">
                     <div class="employee__top-right">
-                        <div class="employee__name">Артем Юрьевич Калоша</div>
-                        <div class="employee__profession">Врач стоматолог-терапевт</div>
+                        <div class="employee__name">{{ current_employee.name }}</div>
+                        <div class="employee__profession">{{ current_employee.position }}</div>
                     </div>
                     <button class="employee__btn btn btn-brown">Записаться на прием</button>
                 </div>
@@ -33,7 +39,7 @@
                                 <span>График работы</span>
                             </div>
                             <div class="employee__item-text">
-                                <p>Вторник-четверг с 15.00-19.00</p>
+                                <p>{{ current_employee.work_schedule }}</p>
                             </div>
                         </div>
                     </div>
@@ -48,10 +54,10 @@
                                 <span>Образование</span>
                             </div>
                             <div class="employee__item-text">
-                                <p>Красноярский государственный медицинский университет</p>
-                                <p>Годы обучения: 1996 - 2002</p>
-                                <p>Специальность: 060201 - Стоматология</p>
-                                <p>Квалификация: Врач</p>
+                                <p>{{ current_employee.education.institution }}</p>
+                                <p>Годы обучения: {{ current_employee.education.start_study }} - {{ current_employee.education.end_study }}</p>
+                                <p>Специальность: {{ current_employee.education.specialization }}</p>
+                                <p>Квалификация: {{ current_employee.education.qualification }}</p>
                             </div>
                         </div>
                     </div>
@@ -66,8 +72,9 @@
                                 <span>Повышение квалификации</span>
                             </div>
                             <div class="employee__item-text">
-                                <p>2011г. Ортопедическая стоматология</p>
-                                <p>2011г. Основы дентальной имплантологии</p>
+                                {% for skill_develop in current_employee.skill_develops.all %}
+                                <p>{{ skill_develop.year }}г. {{ skill_develop.name }}</p>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -82,8 +89,9 @@
                                 <span>Дополнительная информация</span>
                             </div>
                             <div class="employee__item-text">
-                                <p>2004г. Публикации: Фурцев Т.В., Калоша А.Ю. Применение съмных седловидных протезов из сверхэластичного никелида титана на ригельном атачмене МК-1 // Материалы международной конференции Биосовместимые материалы с памятью
-                                    формы и новые технологии в медицине.- Томск.- 2004.- С.344-345.</p>
+                                {% for add_info in current_employee.add_information_set.all %}
+                                <p>{{ add_info.year }}г. {{ add_info.text }}</p>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
