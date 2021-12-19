@@ -191,7 +191,7 @@
                 <h2 class="zone__title">
                     зона максимального <br> <span>комфорта</span>
                 </h2>
-                <a href="https://vr.korona24.ru/" class="zone__link">
+                <a href="http://vr.korona24.ru/" class="zone__link">
                     <span>Виртуальный тур по клинике</span>
                     <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.5565 13L8.125 7.5286V18.4714L17.5565 13ZM18.8435 11.869C19.0427 11.983 19.2083 12.1477 19.3234 12.3463C19.4386 12.5449 19.4992 12.7704 19.4992 13C19.4992 13.2295 19.4386 13.455 19.3234 13.6536C19.2083 13.8523 19.0427 14.0169 18.8435 14.131L8.50362 20.1305C7.65862 20.6212 6.5 20.0606 6.5 18.9995V7.00048C6.5 5.93935 7.65862 5.37873 8.50362 5.86948L18.8435 11.869Z" fill="#C39F7B"/>
@@ -202,7 +202,7 @@
                 {% for image in gallery %}
                 <div class="zone__item">
                     <a data-fancybox='gallery' href="{{ image.image.url }}">
-                        <img src="{{ image.image.url }}" alt=''>
+                        <img src="{{ image.image.url }}" alt='{{ image.description }}'>
                     </a>
                 </div>
                 {% endfor %}

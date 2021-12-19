@@ -20,4 +20,6 @@ class Gallery(models.Model):
 
     def __str__(self) -> str:
         return f'Image#{self.pk}'
-
+        
+    def data_json(self):
+        return { "id":self.pk, "image_url":self.image.url,"description":self.description}
