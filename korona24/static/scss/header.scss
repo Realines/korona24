@@ -241,6 +241,36 @@
                 background: #A58668;
             }
         }
+        &__service {
+            &-menu {
+                display: block;
+                position: static;
+                padding: 0;
+                background-color: transparent;
+                width: 100%;
+            }
+            &-show {
+                &--active {
+                    svg {
+                        transform: rotate(90deg);
+                    }
+                }
+            }
+            &-hidden {
+                position: static;
+                transform: translate(0, 0);
+                // display: block;
+                padding: 0;
+                padding-left: 30px;
+                background-color: transparent;
+            }
+            &-link {
+                color: #C39F7B;
+                &:hover {
+                    color: #282626;
+                }
+            }
+        }
     }
     .header--active {
         top: 97px;

@@ -20,9 +20,11 @@ def employee(request: HttpRequest, employee_id: int) -> HttpResponse:
     """
 
     current_employee = get_object_or_404(Employee, pk=employee_id)
+    employees_set = Employee.objects.all()
 
     context = {
         'current_employee': current_employee,
+        'employees': employees_set,
     }
 
     return render(request=request,

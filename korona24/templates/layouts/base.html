@@ -67,172 +67,31 @@
                             </i>
                         </div>
                         <div class="header__service-menu">
+                            {% for service in all_services %}
                             <div class="header__service-item">
                                 <div class="header__service-show">
-                                    <span>Терапия (лечение)</span>
+                                    <span>
+                                        <a href="{{ service.get_absolute_url }}">
+                                            {{ service.name }}
+                                        </a>
+                                    </span>
                                     <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
                                     </svg>
                                 </div>
                                 <div class="header__service-hidden">
-                                    <a href="" class="header__service-link">Удаление зуба</a>
-                                    <a href="" class="header__service-link">Удаление зуба мудрости</a>
-                                    <a href="" class="header__service-link">Резекция вехушки корня</a>
-                                    <a href="" class="header__service-link">Костные пластинки</a>
-                                    <a href="" class="header__service-link">Синус-лифтинг</a>
+                                    {% for therapy in service.therapies.all %}
+                                    <a href="" class="header__service-link">{{ therapy.name }}</a>
+                                    {% endfor %}
                                 </div>
                             </div>
-                            <div class="header__service-item">
-                                <div class="header__service-show">
-                                    <span>Хирургия</span>
-                                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                                    </svg>
-                                </div>
-                                <div class="header__service-hidden">
-                                    <a href="" class="header__service-link">Удаление зуба</a>
-                                    <a href="" class="header__service-link">Удаление зуба мудрости</a>
-                                    <a href="" class="header__service-link">Резекция вехушки корня</a>
-                                    <a href="" class="header__service-link">Костные пластинки</a>
-                                    <a href="" class="header__service-link">Синус-лифтинг</a>
-                                </div>
-                            </div>
-                            <div class="header__service-item">
-                                <div class="header__service-show">
-                                    <span>Эстетическая стоматология</span>
-                                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                                    </svg>
-                                </div>
-                                <div class="header__service-hidden">
-                                    <a href="" class="header__service-link">Удаление зуба</a>
-                                    <a href="" class="header__service-link">Удаление зуба мудрости</a>
-                                    <a href="" class="header__service-link">Резекция вехушки корня</a>
-                                    <a href="" class="header__service-link">Костные пластинки</a>
-                                    <a href="" class="header__service-link">Синус-лифтинг</a>
-                                </div>
-                            </div>
-                            <div class="header__service-item">
-                                <div class="header__service-show">
-                                    <span>Детская стоматология</span>
-                                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                                    </svg>
-                                </div>
-                                <div class="header__service-hidden">
-                                    <a href="" class="header__service-link">Удаление зуба</a>
-                                    <a href="" class="header__service-link">Удаление зуба мудрости</a>
-                                    <a href="" class="header__service-link">Резекция вехушки корня</a>
-                                    <a href="" class="header__service-link">Костные пластинки</a>
-                                    <a href="" class="header__service-link">Синус-лифтинг</a>
-                                </div>
-                            </div>
-                            <div class="header__service-item">
-                                <div class="header__service-show">
-                                    <span>Профилактика и гигиена</span>
-                                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                                    </svg>
-                                </div>
-                                <div class="header__service-hidden">
-                                    <a href="" class="header__service-link">Удаление зуба</a>
-                                    <a href="" class="header__service-link">Удаление зуба мудрости</a>
-                                    <a href="" class="header__service-link">Резекция вехушки корня</a>
-                                    <a href="" class="header__service-link">Костные пластинки</a>
-                                    <a href="" class="header__service-link">Синус-лифтинг</a>
-                                </div>
-                            </div>
-                            <div class="header__service-item">
-                                <div class="header__service-show">
-                                    <span>Ортодонтия</span>
-                                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                                    </svg>
-                                </div>
-                                <div class="header__service-hidden">
-                                    <a href="" class="header__service-link">Удаление зуба</a>
-                                    <a href="" class="header__service-link">Удаление зуба мудрости</a>
-                                    <a href="" class="header__service-link">Резекция вехушки корня</a>
-                                    <a href="" class="header__service-link">Костные пластинки</a>
-                                    <a href="" class="header__service-link">Синус-лифтинг</a>
-                                </div>
-                            </div>
-                            <div class="header__service-item">
-                                <div class="header__service-show">
-                                    <span>Имплатнация</span>
-                                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                                    </svg>
-                                </div>
-                                <div class="header__service-hidden">
-                                    <a href="" class="header__service-link">Удаление зуба</a>
-                                    <a href="" class="header__service-link">Удаление зуба мудрости</a>
-                                    <a href="" class="header__service-link">Резекция вехушки корня</a>
-                                    <a href="" class="header__service-link">Костные пластинки</a>
-                                    <a href="" class="header__service-link">Синус-лифтинг</a>
-                                </div>
-                            </div>
-                            <div class="header__service-item">
-                                <div class="header__service-show">
-                                    <span>Протозирование</span>
-                                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                                    </svg>
-                                </div>
-                                <div class="header__service-hidden">
-                                    <a href="" class="header__service-link">Удаление зуба</a>
-                                    <a href="" class="header__service-link">Удаление зуба мудрости</a>
-                                    <a href="" class="header__service-link">Резекция вехушки корня</a>
-                                    <a href="" class="header__service-link">Костные пластинки</a>
-                                    <a href="" class="header__service-link">Синус-лифтинг</a>
-                                </div>
-                            </div>
-                            <div class="header__service-item">
-                                <div class="header__service-show">
-                                    <span>Парадонтология</span>
-                                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                                    </svg>
-                                </div>
-                                <div class="header__service-hidden">
-                                    <a href="" class="header__service-link">Удаление зуба</a>
-                                    <a href="" class="header__service-link">Удаление зуба мудрости</a>
-                                    <a href="" class="header__service-link">Резекция вехушки корня</a>
-                                    <a href="" class="header__service-link">Костные пластинки</a>
-                                    <a href="" class="header__service-link">Синус-лифтинг</a>
-                                </div>
-                            </div>
-                            <div class="header__service-item">
-                                <div class="header__service-show">
-                                    <span>Рентген</span>
-                                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                                    </svg>
-                                </div>
-                                <div class="header__service-hidden">
-                                    <a href="" class="header__service-link">Удаление зуба</a>
-                                    <a href="" class="header__service-link">Удаление зуба мудрости</a>
-                                    <a href="" class="header__service-link">Резекция вехушки корня</a>
-                                    <a href="" class="header__service-link">Костные пластинки</a>
-                                    <a href="" class="header__service-link">Синус-лифтинг</a>
-                                </div>
-                            </div>
-
-
-
-
-
-
-
-
-
-
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="nav">
                         <a href="{% url 'services:prices' %}" class="nav__item">Цены</a>
                         <a href="{% url 'comments:comments' %}" class="nav__item">Отзывы</a>
-                        <a href="" class="nav__item">О нас</a>
+                        <a href="{% url 'main:about' %}" class="nav__item">О нас</a>
                         <a href="{% url 'blog:articles' %}" class="nav__item">Блог</a>
                         <a href="" class="nav__item">Акции</a>
                         <a href="" class="nav__item">Вопросы врачу</a>
@@ -277,7 +136,7 @@
                     <a href="{% url 'services:services' %}" class="footer__item">Услуги</a>
                     <a href="{% url 'services:prices' %}" class="footer__item">Цены</a>
                     <a href="{% url 'comments:comments' %}" class="footer__item">Отзывы</a>
-                    <a href="" class="footer__item">О нас</a>
+                    <a href="{% url 'main:about' %}" class="footer__item">О нас</a>
                     <a href="{% url 'blog:articles' %}" class="footer__item">Блог</a>
                     <a href="" class="footer__item">Акции</a>
                     <a href="" class="footer__item">Вопросы врачу</a>

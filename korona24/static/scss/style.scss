@@ -168,7 +168,8 @@ body {
     color: $black;
     overflow-x: hidden;
     font-feature-settings: 'pnum' on, 'lnum' on;
-    &.openmodal {
+    &.openmodal,
+    &.fixed-body {
         overflow-y: hidden;
     }
 }
@@ -216,3 +217,4 @@ h2 {
 @import 'contacts';
 @import 'services';
 @import 'popups';
+@import 'pages';
