@@ -7,7 +7,7 @@ from django.http import (
     HttpRequest,
 )
 
-from .models import Service
+from .models import Service, ServiceArticle
 
 
 def services(request: HttpRequest) -> HttpResponse:
@@ -35,7 +35,6 @@ def service(request: HttpRequest, service_id: int) -> HttpResponse:
     """
 
     current_service = get_object_or_404(Service, pk=service_id)
-
     context = {
         'current_service': current_service,
     }
@@ -44,6 +43,24 @@ def service(request: HttpRequest, service_id: int) -> HttpResponse:
                   template_name='services/service.html',
                   context=context)
 
+def service_article(request: HttpRequest, article_id: int) -> HttpResponse:
+    """
+    Функция-контроллер страницы статьи об услуги.
+
+    :param request: Объект запроса.
+    :param service_id: id услуги.
+    :return: Объект ответа со страницей услуги.
+    """
+
+    current_article = get_object_or_404(ServiceArticle, pk=article_id)
+
+    context = {
+        'current_article': current_article,
+    }
+
+    return render(request=request,
+                  template_name='services/service_article.html',
+                  context=context)
 
 def prices(request: HttpRequest) -> HttpResponse:
     """
