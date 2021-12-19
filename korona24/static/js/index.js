@@ -236,4 +236,25 @@ $(document).ready(function() {
             // $(".header__right").slideToggle()
     })
 
+
+    $(".header__service-item").hover(onIn, onOut);
 })
+
+
+function onIn() {
+    if (window.innerWidth > 992) {
+        let el = $(this)
+        setTimeout(function() {
+            if (el.is(':hover')) {
+                console.log(el)
+                el.children(".header__service-show").addClass("header__service-show--active")
+            }
+        }, 200);
+    }
+}
+
+function onOut() {
+    if (window.innerWidth > 992) {
+        $(this).children(".header__service-show").removeClass("header__service-show--active")
+    }
+}
