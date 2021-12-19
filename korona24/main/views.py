@@ -21,12 +21,13 @@ def index(request: HttpRequest) -> HttpResponse:
     :return: Объект ответа с главной страницей.
     """
 
-    services_set = Service.objects.filter(show_on_main=True)
+    all_services = Service.objects.all()
     gallery_set = Gallery.objects.all()[:6]
     employees_set = Employee.objects.all()
     comments_set = Comment.objects.filter(status=Comment.Status.APPROVED)
 
-    context = {'services': services_set,
+    context = {'main_services': all_services.filter(show_on_main=True),
+               'all_services': all_services,
                'gallery': gallery_set,
                'employees': employees_set,
                'comments': comments_set}
