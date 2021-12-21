@@ -174,8 +174,8 @@ body {
     }
 }
 
-h1,
-h2 {
+.title,
+.title2 {
     font-family: $druk;
     font-size: 36px;
     line-height: 130%;
@@ -186,7 +186,7 @@ h2 {
     }
 }
 
-h2 {
+.title2 {
     font-size: 30px;
 }
 
@@ -197,10 +197,10 @@ h2 {
 }
 
 @media screen and (max-width: 992px) {
-    h1 {
+    .title {
         font-size: 20px;
     }
-    h2 {
+    .title2 {
         font-size: 16px;
     }
     input {
@@ -218,3 +218,4 @@ h2 {
 @import 'services';
 @import 'popups';
 @import 'pages';
+@import 'impared';

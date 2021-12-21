@@ -1,28 +1,22 @@
-{% extends 'layouts/base.html' %}
-{% load static %}
+{% extends 'layouts/base.html' %} {% load static %} {% block description %}
+<meta name="description" content="Профессиональные услуги врачей-стоматологов в Красноярске в клинике Корона."> {% endblock %} {% block title %} Услуги {% endblock %} {% block content %}
 
-
-{% block title %} Услуги {% endblock %}
-
-
-{% block content %}
-
-    <section class='services'>
-        <div class='container'>
-            <h2 class="services__title">Услуги</h2>
-            <div class='services__items'>
-                {% for service in all_services %}
-                <div class="services__item">
-                    <div class="services__item-icon">
-                        <img src="{{ service.icon.url }}" alt="">
-                    </div>
-                    <div class="services__item-title">{{ service.name }}</div>
-                    <a href="{{ service.get_absolute_url }}" class="services__item-link">Подробнее</a>
+<section class='services'>
+    <div class='container'>
+        <h1 class="services__title title">Услуги</h1>
+        <div class='services__items'>
+            {% for service in all_services %}
+            <div class="services__item">
+                <div class="services__item-icon">
+                    <img src="{{ service.icon.url }}" alt="">
                 </div>
-                {% endfor %}
+                <div class="services__item-title">{{ service.name }}</div>
+                <a href="{{ service.get_absolute_url }}" class="services__item-link">Подробнее</a>
             </div>
+            {% endfor %}
         </div>
-    </section>
+    </div>
+</section>
 
 
 {% endblock %}

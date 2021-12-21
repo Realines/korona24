@@ -1,84 +1,75 @@
-{% extends 'layouts/base.html' %}
-{% load static %}
-
-
-{% block title %} Галерея {% endblock %}
-
-
-{% block content %}
-    <section class='zone'>
-        <div class='container'>
-            <div class='zone__top'>
-                <h2 class="zone__title">
-                    галерея
-                </h2>
-            </div>
-            <div id="zone__items" class="zone__items">
-                <!--Заполняется через ajax-запрос-->
-            </div>
-            <form id="get_images_form">
-                {% csrf_token %}
-                <input type="submit" value="Показать еще" class="zone__all btn">
-                <input type="hidden" name="page_num" id="page_num">
-            </form>
+{% extends 'layouts/base.html' %} {% load static %} {% block description %}
+<meta name="description" content="Атмосферные фото и видео из стоматологической клиники Корона."> {% endblock %} {% block title %} Галерея {% endblock %} {% block content %}
+<section class='zone'>
+    <div class='container'>
+        <div class='zone__top'>
+            <h1 class="zone__title title2">
+                галерея
+            </h1>
         </div>
-    </section>
-{% endblock %}
+        <div id="zone__items" class="zone__items">
+            <!--Заполняется через ajax-запрос-->
+        </div>
+        <form id="get_images_form">
+            {% csrf_token %}
+            <input type="submit" value="Показать еще" class="zone__all btn">
+            <input type="hidden" name="page_num" id="page_num">
+        </form>
+    </div>
+</section>
+{% endblock %} {% block scripts %}
+<script>
+    $(document).ready(function() {
+        let page_nums = 0;
 
+        $("#get_images_form").submit(function() {
+            // Меняем счетчик блоков и записываем в форму.
+            page_nums++;
+            $("#page_num").val(page_nums);
 
-{% block scripts %}
-    <script>
-        $(document).ready(function() {
-            let page_nums = 0;
+            // Отправляем ajax-запроса на сервер для получения списка
+            // url-адресов изображений.
+            $.ajax({
+                url: "{% url 'gallery:pagination' %}",
+                method: "post",
+                dataType: "html",
+                data: $(this).serialize(),
+                success: function(data) {
+                    // Парсим массив url-адресов изображений.
+                    data = JSON.parse(data);
 
-            $("#get_images_form").submit(function() {
-                // Меняем счетчик блоков и записываем в форму.
-                page_nums++;
-                $("#page_num").val(page_nums);
+                    // Генерируем блоки для изображений с самими изображениями.
+                    for (let i = 0; i < 6; i++) {
+                        // Структура html-разметки после выполнения скрипта.
+                        // <div class="zone__item">
+                        //     <a data-fancybox='gallery' href="{% static 'img/zone6.jpg' %}"">
+                        //         <img src="{% static 'img/zone6.jpg' %}" alt=''>
+                        //     </a>
+                        // </div>
 
-                // Отправляем ajax-запроса на сервер для получения списка
-                // url-адресов изображений.
-                $.ajax({
-                    url: "{% url 'gallery:pagination' %}",
-                    method: "post",
-                    dataType: "html",
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        // Парсим массив url-адресов изображений.
-                        data = JSON.parse(data);
+                        let div = document.createElement("div");
+                        div.setAttribute("class", "zone__item");
 
-                        // Генерируем блоки для изображений с самими изображениями.
-                        for (let i = 0; i < 6; i++) {
-                            // Структура html-разметки после выполнения скрипта.
-                            // <div class="zone__item">
-                            //     <a data-fancybox='gallery' href="{% static 'img/zone6.jpg' %}"">
-                            //         <img src="{% static 'img/zone6.jpg' %}" alt=''>
-                            //     </a>
-                            // </div>
-                            
-                            let div = document.createElement("div");
-                            div.setAttribute("class", "zone__item");
+                        let a = document.createElement("a");
+                        a.setAttribute("data-fancybox", "gallery");
+                        a.href = data.images[i];
 
-                            let a = document.createElement("a");
-                            a.setAttribute("data-fancybox", "gallery");
-                            a.href = data.images[i];
+                        let img = document.createElement("img");
+                        img.src = data.images[i];
 
-                            let img = document.createElement("img");
-                            img.src = data.images[i];
+                        a.appendChild(img);
+                        div.appendChild(a);
 
-                            a.appendChild(img);
-                            div.appendChild(a);
-
-                            document.getElementById("zone__items").appendChild(div);
-                        }
+                        document.getElementById("zone__items").appendChild(div);
                     }
-                });
-
-                return false;
+                }
             });
 
-            // Для загрузки первых 6 фото при загрузке страницы.
-            $("#get_images_form").submit();
+            return false;
         });
-    </script>
+
+        // Для загрузки первых 6 фото при загрузке страницы.
+        $("#get_images_form").submit();
+    });
+</script>
 {% endblock %}

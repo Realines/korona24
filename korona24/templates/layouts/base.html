@@ -1,19 +1,24 @@
 {% load static %}
 
 
-<!DOCTYPE html>
+<!DOCTYPE html> {% if visually_impaired %}
+<html lang="en" impaired="true">
+{% else %}
 <html lang="en">
+{% endif %}
+
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% block description %}{% endblock %}
     <title>{% block title %} Главная {% endblock %}</title>
     <link rel="stylesheet" href="{%  static 'css/nice-select.css' %}">
     <link rel="stylesheet" href="{%  static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{%  static 'css/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{%  static 'css/jquery.fancybox.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
 
 <body>
@@ -38,7 +43,7 @@
                             <span>Версия для слабовидящих</span>
                         </button>
                     </a>
-                    <button class="header__make-order btn">Записаться на прием</button>
+                    <button class="header__make-order btn" data-toggle="modal" data-target="#modal1">Записаться на прием</button>
                     <a href="tel:+73912232339" class="header__phone">+7 (391) 223-23-39</a>
                 </div>
             </div>
@@ -81,8 +86,7 @@
                                 </div>
                                 <div class="header__service-hidden">
                                     {% for therapy in service.therapies.all %}
-                                    <a href="" class="header__service-link">{{ therapy.name }}</a>
-                                    {% endfor %}
+                                    <a href="" class="header__service-link">{{ therapy.name }}</a> {% endfor %}
                                 </div>
                             </div>
                             {% endfor %}
@@ -108,7 +112,7 @@
         <div class='container'>
             <div class='header-mob__inner'>
                 <a href="{% url 'main:index' %}" class="header-mob__logo">
-                    <img src="{% static 'img/logo.png' %}" alt="">
+                    <img src="{% static 'img/logo.png' %}" alt="СК Корона">
                 </a>
                 <button class="header__burger">
                     <span></span>
@@ -122,11 +126,7 @@
     {% block content %}{% endblock %}
 
     <section class='map'>
-        <div class='container'>
-            <div class='map__inner'>
-                <img src="{% static 'img/map.jpg' %}" alt="">
-            </div>
-        </div>
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aad968702fc0c4c82b36712cf0bd9a8d025adc12c0ebddc61cd89ae40f2811dd4&amp;width=100%&amp;height=100%&amp;lang=ru_RU&amp;scroll=true"></script>
     </section>
 
     <footer class='footer'>
@@ -256,7 +256,7 @@
             <div class="footer__center">
                 <div class="footer__col">
                     <a href="{% url 'main:index' %}" class="footer__logo">
-                        <img src="{% static 'img/logo2.png' %}" alt="">
+                        <img src="{% static 'img/logo2.png' %}" alt="СК Корона">
                     </a>
                 </div>
                 <div class="footer__col">
@@ -271,7 +271,9 @@
                 </div>
             </div>
             <div class="footer__bottom">
-                <img src="{% static 'img/prodoctorov.png' %}" alt="">
+                <a href="https://prodoctorov.ru/krasnoyarsk/lpu/27705-korona/" rel="nofollow" target="_blank">
+                    <img src="{% static 'img/prodoctorov.png' %}" title="ПроДокторов - Стоматологическая клиника «Корона», Красноярск" alt="ПроДокторов - Стоматологическая клиника «Корона», Красноярск">
+                </a>
             </div>
         </div>
     </footer>
@@ -323,7 +325,7 @@
                 </div>
                 <div class="modal__desc">Мы свяжемся с Вами в течение суток</div>
                 <div class="modal__icon">
-                    <img src="img/modal-icon.png" alt="">
+                    <img src="img/modal-icon.png" alt="Зуб">
                 </div>
             </div>
         </div>

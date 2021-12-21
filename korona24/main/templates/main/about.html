@@ -1,4 +1,5 @@
-{% extends 'layouts/base.html' %} {% load static %} {% block title %} Контакты {% endblock %} {% block content %}
+{% extends 'layouts/base.html' %} {% load static %} {% block description %}
+<meta name="description" content="Информация о стоматологии «Корона» в городе Красноярск."> {% endblock %} {% block title %} Контакты {% endblock %} {% block content %}
 
 
 <section class='service-page'>
@@ -11,7 +12,7 @@
         </a>
         <div class='service-page__inner'>
             <div class="service-page__sidebar">
-                <h3 class="service-page__title">Категории</h3>
+                <h3 class="service-page__title title">Категории</h3>
                 <div class="service-page__sidebar-items">
                     <a href="" class="service-page__sidebar-item">
                         <span>Лицензия</span>
@@ -59,7 +60,7 @@
             </div>
             <div class="service-page__content">
                 <div class="about">
-                    <h3 class="service-page__title">О нас</h3>
+                    <h1 class="service-page__title title2">О нас</h1>
                     <div class="about__inner">
                         <div class="about__text">
                             <p>Первый филиал стоматология «Корона» открылся в 2003 году. Тогда у нас была только терапия, ортопедия. Со временем , я поняла, что перспектива за имплантами и я задумала открыть второй филиал с уклоном на хирургическую стоматологию.
@@ -69,7 +70,7 @@
                                 пациента. Подробнее о стоматологической клинике «Корона»:</p>
                         </div>
                         <div class="about__img">
-                            <img src="{% static 'img/about.jpg' %}" alt="">
+                            <img src="{% static 'img/about.jpg' %}" alt="Девушка">
                         </div>
                     </div>
                 </div>

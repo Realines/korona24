@@ -1,11 +1,4 @@
-{% extends 'layouts/base.html' %} 
-{% load static %} 
-
-
-{% block title %} Контакты {% endblock %} 
-
-
-{% block content %}
+{% extends 'layouts/base.html' %} {% load static %} {% block title %} Контакты {% endblock %} {% block content %}
 
 <section class='employee'>
     <div class='container'>
@@ -17,18 +10,18 @@
         </a>
         <div class='employee__inner'>
             <div class="employee__img">
-                <img src="{{ current_employee.avatar.url }}" alt="">
+                <img src="{{ current_employee.avatar.url }}" alt="Аватарка">
             </div>
             <div class="employee__right">
                 <div class="employee__top">
                     <div class="employee__top-right">
-                        <div class="employee__name">{{ current_employee.name }}</div>
+                        <h1 class="employee__name">{{ current_employee.name }}</h1>
                         <div class="employee__profession">{{ current_employee.position }}</div>
                     </div>
-                    <button class="employee__btn btn btn-brown">Записаться на прием</button>
+                    <button class="employee__btn btn btn-brown" data-toggle="modal" data-target="#modal1">Записаться на прием</button>
                 </div>
                 <div class="employee__items">
-                    <div class="employee__item">
+                    <article class="employee__item">
                         <i>
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8.99199 0.666626C4.39199 0.666626 0.666992 4.39996 0.666992 8.99996C0.666992 13.6 4.39199 17.3333 8.99199 17.3333C13.6003 17.3333 17.3337 13.6 17.3337 8.99996C17.3337 4.39996 13.6003 0.666626 8.99199 0.666626ZM11.742 12.925L8.16699 9.34163V4.83329H9.83366V8.65829L12.9253 11.75L11.742 12.925V12.925Z" fill="#C39F7B"/>
@@ -42,8 +35,8 @@
                                 <p>{{ current_employee.work_schedule }}</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="employee__item">
+                    </article>
+                    <article class="employee__item">
                         <i>
                             <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.58366 10.0817V13.7483L11.0003 17.25L17.417 13.7483V10.0817L11.0003 13.5833L4.58366 10.0817ZM11.0003 0.75L0.916992 6.25L11.0003 11.75L19.2503 7.24917V13.5833H21.0837V6.25L11.0003 0.75Z" fill="#C39F7B"/>
@@ -60,8 +53,8 @@
                                 <p>Квалификация: {{ current_employee.education.qualification }}</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="employee__item">
+                    </article>
+                    <article class="employee__item">
                         <i>
                             <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M13.3998 2.70002H15.1998V17.1H3.4998C2.0058 17.1 0.799805 15.894 0.799805 14.4V3.60002C0.799805 2.10602 2.0058 0.900024 3.4998 0.900024H11.5998V13.5H3.4998C3.0048 13.5 2.5998 13.905 2.5998 14.4C2.5998 14.895 3.0048 15.3 3.4998 15.3H13.3998V2.70002Z" fill="#C39F7B"/>
@@ -77,8 +70,8 @@
                                 {% endfor %}
                             </div>
                         </div>
-                    </div>
-                    <div class="employee__item">
+                    </article>
+                    <article class="employee__item">
                         <i>
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9 0.25C4.16797 0.25 0.25 4.16797 0.25 9C0.25 13.832 4.16797 17.75 9 17.75C13.832 17.75 17.75 13.832 17.75 9C17.75 4.16797 13.832 0.25 9 0.25ZM9.625 13.2188C9.625 13.3047 9.55469 13.375 9.46875 13.375H8.53125C8.44531 13.375 8.375 13.3047 8.375 13.2188V7.90625C8.375 7.82031 8.44531 7.75 8.53125 7.75H9.46875C9.55469 7.75 9.625 7.82031 9.625 7.90625V13.2188ZM9 6.5C8.75467 6.49499 8.52108 6.39402 8.34935 6.21875C8.17763 6.04348 8.08144 5.80788 8.08144 5.5625C8.08144 5.31712 8.17763 5.08152 8.34935 4.90625C8.52108 4.73098 8.75467 4.63001 9 4.625C9.24533 4.63001 9.47892 4.73098 9.65065 4.90625C9.82237 5.08152 9.91856 5.31712 9.91856 5.5625C9.91856 5.80788 9.82237 6.04348 9.65065 6.21875C9.47892 6.39402 9.24533 6.49499 9 6.5Z" fill="#C39F7B"/>
@@ -94,7 +87,7 @@
                                 {% endfor %}
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </div>
@@ -138,7 +131,7 @@
                             <div class='swiper-slide'>
                                 <div class="expert__slider-item">
                                     <div class="expert__slider-item-img">
-                                        <img src="{{ employee.avatar.url }}" alt="">
+                                        <img src="{{ employee.avatar.url }}" alt="Врач">
                                     </div>
                                     <div class="expert__slider-item-title">{{ employee.name }}</div>
                                     <div class="expert__slider-item-profession">{{ employee.position }}</div>

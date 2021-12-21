@@ -182,20 +182,20 @@ body.openmodal, body.fixed-body {
   overflow-y: hidden;
 }
 
-h1,
-h2 {
+.title,
+.title2 {
   font-family: "Druk Text Wide Cyr", sans-serif;
   font-size: 36px;
   line-height: 130%;
   font-weight: 500;
   text-transform: uppercase;
 }
-h1 span,
-h2 span {
+.title span,
+.title2 span {
   color: #C39F7B;
 }
 
-h2 {
+.title2 {
   font-size: 30px;
 }
 
@@ -206,11 +206,11 @@ h2 {
 }
 
 @media screen and (max-width: 992px) {
-  h1 {
+  .title {
     font-size: 20px;
   }
 
-  h2 {
+  .title2 {
     font-size: 16px;
   }
 
@@ -1033,6 +1033,7 @@ h2 {
 }
 .zone__item {
   position: relative;
+  height: 235px;
 }
 .zone__item:before, .zone__item:after {
   content: '';
@@ -1062,9 +1063,11 @@ h2 {
 }
 .zone__item > a {
   display: block;
+  height: 100%;
 }
 .zone__item img {
   width: 100%;
+  height: 100%;
 }
 .zone__all {
   background: rgba(195, 159, 123, 0.2);
@@ -1490,12 +1493,7 @@ h2 {
 
 .map {
   margin-top: 73px;
-}
-.map .container {
-  width: 100%;
-}
-.map img {
-  width: 100%;
+  height: 620px;
 }
 
 .footer {
@@ -1628,6 +1626,10 @@ h2 {
   .make-order__inner {
     padding: 40px;
     height: unset;
+  }
+
+  .map {
+    height: 420px;
   }
 
   .footer__col:nth-child(1), .footer__col:nth-child(2) {
@@ -2222,6 +2224,10 @@ h2 {
   .expert__slider {
     width: 430px;
   }
+
+  .zone__item {
+    height: 180px;
+  }
 }
 .blog {
   padding: 73px 0;
@@ -2273,7 +2279,7 @@ h2 {
 .blog__bottom {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-top: 140px;
 }
 .blog__more {
@@ -2306,7 +2312,7 @@ h2 {
 .blog-item__text {
   margin-top: 44px;
 }
-.blog-item__text h3 {
+.blog-item__text .title3 {
   font-weight: bold;
   font-size: 24px;
   line-height: 140%;
@@ -2320,6 +2326,7 @@ h2 {
   color: #282626;
   margin-bottom: 25px;
 }
+.blog-item__text h2,
 .blog-item__text p,
 .blog-item__text h5 {
   font-weight: 500;
@@ -2328,6 +2335,7 @@ h2 {
   color: #282626;
   margin-bottom: 30px;
 }
+.blog-item__text h2 a,
 .blog-item__text p a,
 .blog-item__text h5 a {
   text-decoration-line: underline;
@@ -2459,13 +2467,14 @@ h2 {
   .blog-item__text {
     margin-top: 30px;
   }
-  .blog-item__text h3 {
+  .blog-item__text .title3 {
     font-size: 16px;
   }
   .blog-item__text h4 {
     font-size: 14px;
     margin-bottom: 20px;
   }
+  .blog-item__text h2,
   .blog-item__text p {
     font-size: 12px;
     margin-bottom: 20px;
@@ -3754,4 +3763,121 @@ h2 {
   .employee__img {
     width: 100%;
   }
+}
+html[impaired="true"] body,
+html[impaired="true"] .title span,
+html[impaired="true"] .title2 span,
+html[impaired="true"] .header__make-order,
+html[impaired="true"] .about-index__item-num,
+html[impaired="true"] .about-index__link span,
+html[impaired="true"] .service__item-title span,
+html[impaired="true"] .mission,
+html[impaired="true"] .info__video-desc,
+html[impaired="true"] .info__video-desc span,
+html[impaired="true"] .make-order__form-group label,
+html[impaired="true"] .make-order__form-hint a,
+html[impaired="true"] .feedback__left,
+html[impaired="true"] .footer,
+html[impaired="true"] .footer__link,
+html[impaired="true"] .footer__licensy,
+html[impaired="true"] .services__item-link,
+html[impaired="true"] .service-page__item-link,
+html[impaired="true"] .contacts__middle-link,
+html[impaired="true"] .contacts__bottom-desc,
+html[impaired="true"] .feedback-form,
+html[impaired="true"] .feedback-form__group input,
+html[impaired="true"] .feedback-form__group textarea,
+html[impaired="true"] .feedback-form__group input::placeholder,
+html[impaired="true"] .feedback-form__group textarea::placeholder,
+html[impaired="true"] .feedback-form__title,
+html[impaired="true"] .pagination__btn,
+html[impaired="true"] .pagination__item--active {
+  color: #000;
+}
+html[impaired="true"] .contacts__middle-link path,
+html[impaired="true"] .footer__socials path {
+  fill: #000;
+}
+html[impaired="true"] .header,
+html[impaired="true"] .mission__inner,
+html[impaired="true"] .make-order__inner,
+html[impaired="true"] .feedback__left,
+html[impaired="true"] .footer,
+html[impaired="true"] .feedback-form__inner {
+  background: #dcdce0;
+}
+html[impaired="true"] .about-index__img,
+html[impaired="true"] .service__item-icon,
+html[impaired="true"] .mission__bg,
+html[impaired="true"] .info__item-icon,
+html[impaired="true"] .make-order__bg {
+  display: none;
+}
+html[impaired="true"] .main__slider-prev,
+html[impaired="true"] .main__slider-next,
+html[impaired="true"] .service__item-link,
+html[impaired="true"] .info__video-btn,
+html[impaired="true"] .make-order__form-btn,
+html[impaired="true"] .feedback__slider-prev,
+html[impaired="true"] .feedback__slider-next,
+html[impaired="true"] .feedback__left-link i,
+html[impaired="true"] .our-feedback__slider-prev,
+html[impaired="true"] .our-feedback__slider-next {
+  background: #000;
+}
+html[impaired="true"] .main__slider-prev path,
+html[impaired="true"] .main__slider-next path,
+html[impaired="true"] .service__item-link path,
+html[impaired="true"] .info__video-btn path,
+html[impaired="true"] .make-order__form-btn path,
+html[impaired="true"] .feedback__slider-prev path,
+html[impaired="true"] .feedback__slider-next path,
+html[impaired="true"] .feedback__left-link i path,
+html[impaired="true"] .our-feedback__slider-prev path,
+html[impaired="true"] .our-feedback__slider-next path {
+  stroke: #fff;
+}
+html[impaired="true"] .our-feedback__slider-rating path {
+  fill: #000;
+}
+html[impaired="true"] .main__slider-pagination .swiper-pagination-bullet-active,
+html[impaired="true"] .service-page__table table thead,
+html[impaired="true"] .btn-brown {
+  background: #000;
+}
+html[impaired="true"] .header__address svg,
+html[impaired="true"] .header__vision-impared svg {
+  display: none;
+}
+html[impaired="true"] .mission__link span,
+html[impaired="true"] .zone__link span,
+html[impaired="true"] .expert__link span {
+  color: #000;
+}
+html[impaired="true"] .mission__link path,
+html[impaired="true"] .zone__link path,
+html[impaired="true"] .expert__link path {
+  fill: #000;
+}
+html[impaired="true"] .service-page__back span {
+  color: #000;
+}
+html[impaired="true"] .service-page__back path {
+  stroke: #000;
+}
+html[impaired="true"] label {
+  font-size: 16px !important;
+}
+html[impaired="true"] .make-order__form-group input,
+html[impaired="true"] .feedback-form__group input,
+html[impaired="true"] .feedback-form__group textarea {
+  border-color: #000;
+}
+html[impaired="true"] .feedback-form__btn {
+  background: #000;
+  color: #fff;
+}
+html[impaired="true"] .footer__address svg,
+html[impaired="true"] .footer__phone svg {
+  display: none;
 }
