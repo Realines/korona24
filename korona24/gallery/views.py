@@ -23,7 +23,7 @@ def gallery(request: HttpRequest) -> HttpResponse:
     context = {}
 
     return render(request=request,
-                  template_name='main/gallery.html',
+                  template_name='gallery/gallery.html',
                   context=context)
 
 

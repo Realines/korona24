@@ -1,5 +1,12 @@
-{% extends 'layouts/base.html' %} {% load static %} {% block description %}
-<meta name="description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!"> {% endblock %} {% block content %}
+{% extends 'layouts/base.html' %} 
+
+{% load static %} 
+
+
+{% block description %}
+<meta name="description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!"> 
+{% endblock %}
+
 
 {% block content %}
 
@@ -215,6 +222,7 @@
             </div>
             {% endfor %}
         </div>
+        {% endfor %}
     </div>
 </section>
 
@@ -590,7 +598,10 @@
     </div>
 </section>
 
-{% endblock %} {% block scripts %}
+{% endblock %} 
+
+
+{% block scripts %}
 <script>
     $(document).ready(function() {
         $("#application_form").submit(function() {

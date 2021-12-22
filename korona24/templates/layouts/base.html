@@ -1,16 +1,12 @@
 {% load static %}
 
 
-<<<<<<< HEAD
-<!DOCTYPE html> {% if visually_impaired %}
+<!DOCTYPE html> 
+{% if visually_impaired %}
 <html lang="en" impaired="true">
 {% else %}
 <html lang="en">
 {% endif %}
-
-=======
-<!DOCTYPE html>
-<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -22,9 +18,12 @@
     стоматология на киренского
     платная стоматология
     стоматология в октябрьском районе
-    стоматологический клиника
-    ">
-    <meta name="description" content="{% block description %} Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!  {% endblock %}">
+    стоматологический клиника">
+
+    {% block description %}
+    <meta name="description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!">
+    {% endblock %}
+    
     <link rel="stylesheet" href="{%  static 'css/nice-select.css' %}">
     <link rel="stylesheet" href="{%  static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{%  static 'css/swiper-bundle.min.css' %}">
@@ -97,14 +96,9 @@
                                     </svg>
                                 </div>
                                 <div class="header__service-hidden">
-<<<<<<< HEAD
-                                    {% for therapy in service.therapies.all %}
-                                    <a href="" class="header__service-link">{{ therapy.name }}</a> {% endfor %}
-=======
                                     {% for article in service.blog_articles.all %}
                                     <a href="{{ article.get_absolute_url }}" class="header__service-link">{{ article.title }}</a>
                                     {% endfor %}
->>>>>>> vlasov
                                 </div>
                             </div>
                             {% endfor %}
