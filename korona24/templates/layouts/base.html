@@ -23,7 +23,7 @@
     {% block description %}
     <meta name="description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!">
     {% endblock %}
-    
+
     <link rel="stylesheet" href="{%  static 'css/nice-select.css' %}">
     <link rel="stylesheet" href="{%  static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{%  static 'css/swiper-bundle.min.css' %}">
@@ -304,14 +304,15 @@
                     <span>к нашим специалистам</span>
                 </div>
                 <div class="modal__desc">Заполните форму ниже и в ближайшее время с Вами свяжется наш специалист, чтобы уточнить подробности</div>
-                <form action="" class="modal__form">
+                <form id="modal_app_form" class="modal__form">
+                    {% csrf_token %}
                     <div class="modal__form-group">
                         <label>Ваше имя</label>
-                        <input type="text" placeholder="Ввведите имя">
+                        <input name="client_name" type="text" placeholder="Ввведите имя">
                     </div>
                     <div class="modal__form-group">
                         <label>Ваш телефон</label>
-                        <input type="tel" placeholder="Введите телефон">
+                        <input name="phone_number" type="tel" placeholder="Введите телефон">
                     </div>
                     <button class="modal__form-btn btn btn-brown">Записаться на прием</button>
                     <div class="modal__form-hint">
@@ -348,8 +349,31 @@
     <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'js/index.js' %}"></script>
 
+    <script>
+        // Скрипт отправки формы через ajax.
+        // Будет связываться в блоке scripts с нужной формой.
+        let ajax_request_form = function() {
+            $.ajax({
+                url: "{% url 'main:send_app' %}",
+                method: "post",
+                dataType: "html",
+                data: $(this).serialize(),
+                success: function(data) {
+                    alert(data);
+                }
+            });
+            return false;
+        }
 
-    {% block scripts %} {% endblock %}
+        // Связывание формы в модальном окне со скриптом отправки.
+        $(document).ready(function() {
+            $("#modal_app_form").submit(ajax_request_form);
+        });
+    </script>
+
+    {% block scripts %}
+    
+    {% endblock %}
 
 </body>
 

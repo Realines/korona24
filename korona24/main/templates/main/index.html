@@ -604,17 +604,7 @@
 {% block scripts %}
 <script>
     $(document).ready(function() {
-        $("#application_form").submit(function() {
-            $.ajax({
-                url: "{% url 'main:send_app' %}",
-                method: "post",
-                dataType: "html",
-                data: $(this).serialize(),
-                success: function(data) {
-                    alert(data);
-                }
-            });
-        });
+        $("#application_form").submit(ajax_request_form);
     });
 </script>
 {% endblock %}
