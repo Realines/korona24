@@ -2,20 +2,29 @@
 <meta name="description" content="Цены на услуги стоматолога в клинике Корона. Стоимость удаления зубов, лечения зубов, установки брекетов, отбеливания, лечение кариеса, удаление зубного камня, ультразвуковой чистки, протезирования зубов, имплантации. "> {% endblock %} {% block title %} Прайс {% endblock %} {% block content %}
 
 
-<section class='price'>
-    <div class='container'>
-        <div class='price__top'>
-            <h1 class="price__title title">
-                стоимость <span>стоматологических услуг</span> нашей клиники
-            </h1>
-            <div class="price__desc">В данном разделе можно ознакомится с примерными ценами на услуги стоматологии «Корона» в Октябрьском районе Красноярска. Для расчета точной стоимости запишитесь на прием через форму на сайте или по телефону.</div>
-        </div>
-        <div class="price__items">
-            {% for service in services %}
-            <div class="price__item">
-                <div class="price__item-show text-druk ">
-                    <div class="price__item-title">{{ service.name }}</div>
-                    <i>
+{% block title %} Прайс {% endblock %}
+
+{% block description %}
+Цены на услуги стоматолога в клинике Корона. Стоимость удаления зубов, лечения зубов, установки брекетов, отбеливания, лечение кариеса, удаление зубного камня, ультразвуковой чистки, протезирования зубов, имплантации.
+{% endblock %} 
+
+{% block content %}
+
+
+    <section class='price'>
+        <div class='container'>
+            <div class='price__top'>
+                <h2 class="price__title">
+                    стоимость <span>стоматологических услуг</span> нашей клиники
+                </h2>
+                <div class="price__desc">В данном разделе можно ознакомится с примерными ценами на услуги стоматологии «Корона» в Октябрьском районе Красноярска. Для расчета точной стоимости запишитесь на прием через форму на сайте или по телефону.</div>
+            </div>
+            <div class="price__items">
+                {% for service in services %}
+                <div class="price__item">
+                    <div class="price__item-show text-druk ">
+                        <div class="price__item-title">{{ service.name }}</div>
+                        <i>
                             <svg width="23" height="15" viewBox="0 0 23 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M21 2L11.5 12L2 2" stroke="white" stroke-width="3"/>
                             </svg>

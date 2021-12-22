@@ -1,97 +1,58 @@
-{% extends 'layouts/base.html' %} {% load static %} {% block description %}
-<meta name="description" content="Интересные публикации Стоматологии в Красноярске Корона."> {% endblock %} {% block title %} Блог {% endblock %} {% block content %}
+{% extends 'layouts/base.html' %}
+{% load static %}
 
-<section class='blog blog-page'>
-    <div class='container'>
-        <div class='blog__top'>
-            <h1 class="blog__title title2">блог</h1>
-            <div class="pagination">
-                <a href="" class="pagination__btn">« Предыдущая страница</a>
-                <div class="pagination__items">
-                    <a href="" class="pagination__item pagination__item--active">1</a>
-                    <a href="" class="pagination__item">2</a>
-                    <a href="" class="pagination__item">3</a>
+
+{% block title %} Блог {% endblock %}
+
+
+{% block content %}
+
+    <section class='blog blog-page'>
+        <div class='container'>
+            <div class='blog__top'>
+                <h2 class="blog__title">блог</h2>
+                <div class="pagination">
+                    <button id="back_page" onclick="javascript: BackPage('pagination/')" class="pagination__btn">« Предыдущая страница</a>
+                    <div class="pagination__items">
+                        <a id="page_number_1" onclick="javascript: BackPage('pagination/')" class="pagination__item">1</a>
+                        <a id="page_number_2" onclick="" class="pagination__item pagination__item--active">2</a>
+                        <a id="page_number_3" onclick="javascript: NextPage('pagination/')" class="pagination__item">3</a>
+                    </div>
+                    <button id="next_page" onclick="javascript: NextPage('pagination/')" class="pagination__btn">Следующая страница »</a>
                 </div>
-                <a href="" class="pagination__btn">Следующая страница »</a>
-            </div>
-        </div>
-        <div id="blog__items" class="blog__items">
-            <!--Заполняется через ajax-запрос из скрипта-->
-        </div>
-        <!-- <form id="get_articles_form">
+            </div> 
+                <div class="blog__items">
+                    <div id="article_view" class="blog__item">
+                        <a href="" class="blog__item-img">
+                            <img id="img" src="{% static 'img/blog1.jpg' %}" alt="">
+                        </a>
+                        <a href="" class="blog__item-title">Что такое эстетическая стоматология?</a>
+                        <div class="blog__item-desc">Эстетическая стоматология – это одно из наиболее востребованных
+                            направлений в современной зубной медицине
+                        </div>
+                    </div> 
+                </div>
+            </div> 
+            <div class='blog__bottom'>
+                <button class="blog__more">Показать еще на этой странице</button>
                 {% csrf_token %}
-                <input type="hidden" name="page_num" id="page_num">
-            </form> -->
-        <div class='blog__bottom'>
-            <div class="pagination">
-                <a href="" class="pagination__btn">« Предыдущая страница</a>
-                <div class="pagination__items">
-                    <a href="" class="pagination__item pagination__item--active">1</a>
-                    <a href="" class="pagination__item">2</a>
-                    <a href="" class="pagination__item">3</a>
+                <div class="pagination">
+                    <button id="back_page" onclick="javascript: BackPage('pagination/')" class="pagination__btn">« Предыдущая страница</a>
+                    <div class="pagination__items">
+                        <a id="page_number_1" onclick="javascript: BackPage('pagination/')" class="pagination__item">1</a>
+                        <a id="page_number_2" onclick="" class="pagination__item pagination__item--active">2</a>
+                        <a id="page_number_3" onclick="javascript: NextPage('pagination/')" class="pagination__item">3</a>
+                    </div>
+                    <button id="next_page" onclick="javascript: NextPage('pagination/')" class="pagination__btn">Следующая страница »</a>
                 </div>
                 <a href="" class="pagination__btn">Следующая страница »</a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-{% endblock %} {% block scripts %}
-<!-- 
-        <div class="blog__item">
-            <a href="" class="blog__item-img">
-                <img src="{% static 'img/blog1.jpg' %}" alt="">
-            </a>
-            <a href="" class="blog__item-title">Что такое эстетическая стоматология?</a>
-            <div class="blog__item-desc">Эстетическая стоматология – это одно из наиболее востребованных
-                направлений в современной зубной медицине
-            </div>
-        </div> 
-    -->
-<script>
-    $(document).ready(function() {
-        let page_nums = 0;
-
-        $("#get_articles_form").submit(function() {
-            // Меняем счетчик блоков и записываем в форму.
-            page_nums++;
-            $("#page_num").val(page_nums);
-
-            // Отправляем ajax-запроса на сервер для получения списка статей.
-            $.ajax({
-                url: "{% url 'blog:pagination-articles' %}",
-                method: "post",
-                dataType: "html",
-                data: $(this).serialize(),
-                success: function(data) {
-                    // Парсим массив статей.
-                    data = JSON.parse(data);
-
-                    // Генерируем блоки для изображений с самими изображениями.
-                    for (let i = 0; i < 6; i++) {
-                        let div = document.createElement("div");
-                        div.setAttribute("class", "blog__item");
-
-                        let a = document.createElement("a");
-                        a.setAttribute("class", "blog__item-img");
-                        a.href = data.images[i];
-
-                        let img = document.createElement("img");
-                        img.src = data.images[i];
-
-                        a.appendChild(img);
-                        div.appendChild(a);
-
-                        document.getElementById("zone__items").appendChild(div);
-                    }
-                }
-            });
-
-            return false;
-        });
-
-        // Для загрузки первых 6 фото при загрузке страницы.
-        $("#get_images_form").submit();
-    });
-</script>
 {% endblock %}
+{% block scripts %}
+<script src="{% static 'js/pagination.js' %}"></script>
+{% endblock %}
+ 
+>>>>>>> vlasov

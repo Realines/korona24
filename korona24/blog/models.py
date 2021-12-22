@@ -38,6 +38,8 @@ class Article(models.Model):
 
     def get_absolute_url(self) -> str:
         return reverse('blog:article', args=(str(self.pk), ))
-
+    
+    def data_json(self):
+        return { "id":self.pk, "title":self.title,"url": self.get_absolute_url(), "image_url":self.image.url,'description':self.description}
     def __str__(self) -> str:
         return str(self.title)

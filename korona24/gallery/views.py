@@ -54,10 +54,11 @@ def pagination_gallery(request: HttpRequest) -> JsonResponse:
         return JsonResponse(data={'errors': _('Error page number.')},
                             status=403)
 
+    images = []
     # Формирования списка url изображений.
-    url_list = [gallery_image.image.url
-                for gallery_image in paginator.get_page(page_num).object_list]
+    for gallery_image in paginator.get_page(page_num).object_list: 
+        images.append(gallery_image.data_json())
 
-    return JsonResponse(data={'images': url_list},
+    return JsonResponse(data={'images': images},
                         status=200)
 

@@ -5,8 +5,8 @@ from django.http import (
     JsonResponse,
 )
 from django.utils.translation import gettext as _
-
-from services.models import Service
+from .models import *
+from services.models import Service,PreviewService
 from employees.models import Employee
 from comments.models import Comment
 from gallery.models import Gallery
@@ -20,13 +20,15 @@ def index(request: HttpRequest) -> HttpResponse:
     :param request: Объект запроса.
     :return: Объект ответа с главной страницей.
     """
-
+    all_discount = Discount.objects.all()
     all_services = Service.objects.all()
+    preview_services = PreviewService.objects.all()
     gallery_set = Gallery.objects.all()[:6]
     employees_set = Employee.objects.all()
     comments_set = Comment.objects.filter(status=Comment.Status.APPROVED)
 
-    context = {'main_services': all_services.filter(show_on_main=True),
+    context = {'all_discount': all_discount.filter(show_on_main=True),
+               'main_services': preview_services.filter(show_on_main=True)[:4],
                'all_services': all_services,
                'gallery': gallery_set,
                'employees': employees_set,
@@ -79,16 +81,3 @@ def contacts(request: HttpRequest) -> HttpResponse:
                   context=context)
 
 
-def about(request: HttpRequest) -> HttpResponse:
-    """
-    Функция-контроллер страницы "О нас".
-
-    :param request: Объект запроса.
-    :return: Объект ответа со страницей "О нас".
-    """
-
-    context = {}
-
-    return render(request=request,
-                  template_name='main/about.html',
-                  context=context)

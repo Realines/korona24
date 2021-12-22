@@ -37,31 +37,33 @@
                 success: function(data) {
                     // Парсим массив url-адресов изображений.
                     data = JSON.parse(data);
-
+                    console.log(data)
                     // Генерируем блоки для изображений с самими изображениями.
-                    for (let i = 0; i < 6; i++) {
+                    data.images.forEach(element => {
+                        
                         // Структура html-разметки после выполнения скрипта.
                         // <div class="zone__item">
                         //     <a data-fancybox='gallery' href="{% static 'img/zone6.jpg' %}"">
                         //         <img src="{% static 'img/zone6.jpg' %}" alt=''>
                         //     </a>
                         // </div>
-
+                        
                         let div = document.createElement("div");
                         div.setAttribute("class", "zone__item");
 
                         let a = document.createElement("a");
                         a.setAttribute("data-fancybox", "gallery");
-                        a.href = data.images[i];
+                        a.href = element.image_url;
 
                         let img = document.createElement("img");
-                        img.src = data.images[i];
+                        img.src = element.image_url;
+                        img.alt = element.description;
 
                         a.appendChild(img);
                         div.appendChild(a);
 
-                        document.getElementById("zone__items").appendChild(div);
-                    }
+                        document.getElementById("zone__items").appendChild(div); 
+                    });
                 }
             });
 

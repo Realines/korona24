@@ -1,6 +1,16 @@
 from django.contrib import admin
-from . import models
+from . import models  
+from mdeditor.widgets import MDEditorWidget
+from django.db import models as db_models
 
+
+@admin.register(models.ServiceArticle)
+class ServiceArticleAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description')
+    list_display_links = ('title', )
+    formfield_overrides = {
+        db_models.TextField: {'widget': MDEditorWidget}
+    }
 
 class TherapyInline(admin.StackedInline):
     model = models.Therapy
@@ -9,6 +19,7 @@ class TherapyInline(admin.StackedInline):
 class InformationServiceInline(admin.StackedInline):
     model = models.InformationService
 
+admin.site.register(models.PreviewService) 
 
 @admin.register(models.Service)
 class ServiceAdmin(admin.ModelAdmin):
@@ -17,4 +28,4 @@ class ServiceAdmin(admin.ModelAdmin):
     inlines = [
         TherapyInline,
         InformationServiceInline,
-    ]
+    ] 
