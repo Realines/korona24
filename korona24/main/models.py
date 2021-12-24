@@ -28,6 +28,7 @@ class Discount(models.Model):
     def __str__(self) -> str:
         return f'{self.title}#{self.pk}'
 
+
 class Consultation(models.Model):
     client_name = models.CharField(
         max_length=128,
