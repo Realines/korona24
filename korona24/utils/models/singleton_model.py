@@ -24,6 +24,8 @@ class SingletonModel(models.Model):
     @classmethod
     def load(cls):
         """Метод загрузки единственно экземпляра модели"""
+
+        # Если нет ни одной записи, возвращаем новый экземпляр.
         try:
             return cls.objects.get()
         except cls.DoesNotExist:

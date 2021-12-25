@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'common_info.apps.CommonInfoConfig',
     'main.apps.MainConfig',
     'blog.apps.BlogConfig',
     'comments.apps.CommentsConfig',
@@ -73,6 +74,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'visual_version_handler.context_processors.visually_impaired',
                 'services.context_processors.get_all_services',
+                'common_info.context_processors.get_site_settings',
             ],
         },
     },
@@ -172,5 +174,4 @@ MDEDITOR_CONFIGS = {
         'lineNumbers': False,  # lineNumbers
         'language': 'en'  # zh / en / es 
     }
-    
 }
