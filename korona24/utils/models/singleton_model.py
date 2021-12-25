@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib import admin
+from django.db.utils import ProgrammingError
 
 
 class SingletonModel(models.Model):
@@ -30,3 +32,31 @@ class SingletonModel(models.Model):
             return cls.objects.get()
         except cls.DoesNotExist:
             return cls()
+
+
+class SingletonModelAdmin(admin.ModelAdmin):
+    def __init__(self, model, admin_site):
+        """Инициализатор класса"""
+        super().__init__(model, admin_site)
+
+        # Создаем дефолтный экземпляр настроек при
+        # первом запросе к странице с настройками.
+        try:
+            model.load().save()
+        except ProgrammingError:
+            pass
+
+    def has_add_permission(self, request, obj=None):
+        """
+        Метод проверки прав на добавление.
+        По умолчанию запрещаем добавление новых записей.
+        """
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        """
+        Метод проверки прав на удаление.
+        По умолчанию запрещаем удаление записей.
+        """
+        return False
+

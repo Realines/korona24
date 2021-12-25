@@ -62,22 +62,22 @@
             </p>
             <div class="about-index__items">
                 <div class="about-index__item">
-                    <div class="about-index__item-num text-druk">20</div>
+                    <div class="about-index__item-num text-druk">{{ site_settings.years_on_market }}</div>
                     <div class="about-index__item-title">Лет на рынке <br> стоматологии
                     </div>
                 </div>
                 <div class="about-index__item">
-                    <div class="about-index__item-num text-druk">900</div>
+                    <div class="about-index__item-num text-druk">{{ site_settings.count_operations }}</div>
                     <div class="about-index__item-title">Операций под общим <br> наркозом
                     </div>
                 </div>
                 <div class="about-index__item">
-                    <div class="about-index__item-num text-druk">23</div>
+                    <div class="about-index__item-num text-druk">{{ site_settings.count_doctors }}</div>
                     <div class="about-index__item-title">Профессиональных <br> врача
                     </div>
                 </div>
                 <div class="about-index__item">
-                    <div class="about-index__item-num text-druk">1500</div>
+                    <div class="about-index__item-num text-druk">{{ site_settings.count_patients }}</div>
                     <div class="about-index__item-title">Пациентов в год <br> получают новые улыбки</div>
                 </div>
             </div>
@@ -511,6 +511,7 @@
     </div>
 </section>
 
+{% if site_settings.enabled_partners %}
 <section class='dms'>
     <div class='container'>
         <h2 class="dms__title title2">наши партнеры <span>дмс</span></h2>
@@ -597,6 +598,7 @@
         </div>
     </div>
 </section>
+{% endif %}
 
 {% endblock %} 
 

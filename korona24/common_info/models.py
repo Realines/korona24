@@ -38,19 +38,17 @@ class SiteSettings(SingletonModel):
     )
     enabled_partners = models.BooleanField(
         default=False,
-        null=True,
-        blank=True,
         verbose_name=_('Отображать партнеров'),
-        help_text=_('Включат или отключает блок партнеров на сайте.'),
+        help_text=_('Включает или отключает блок партнеров на сайте.'),
     )
 
-    class Meta(SingletonModel.Meta):
+    class Meta:
         """Настройки модели"""
         verbose_name = _('Настройки сайта')
         verbose_name_plural = _('Настройки сайта')
 
     def __str__(self) -> str:
-        return _('Настройки')
+        return str(self.__class__._meta.verbose_name)
 
 
 class SocialNetwork(models.Model):
@@ -61,7 +59,8 @@ class SocialNetwork(models.Model):
     """
 
     icon = models.ImageField(
-        upload_to=''
+        upload_to='sys/social_networks_icons',
+        verbose_name=_('Иконка социальной сети'),
     )
     name = models.TextField(
         verbose_name=_('Название соц. сети'),
