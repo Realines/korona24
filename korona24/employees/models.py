@@ -25,6 +25,9 @@ class Employee(models.Model):
         default='sys/employee_avatars/default.png',
         blank=True,
     )
+    alt_avatar = models.TextField(
+        verbose_name=_('Описание аватара'),
+    )
 
     class Meta:
         verbose_name = _('Работник')

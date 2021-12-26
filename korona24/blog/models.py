@@ -20,6 +20,9 @@ class Article(models.Model):
         help_text=_('Будет отображаться в статье и в '
                     'ее миниатюре в списке статей.'),
     )
+    alt_image = models.TextField(
+        verbose_name=_('Описание изображения'),
+    )
     information_markdown = models.TextField(
         verbose_name=_('Основная информация'),
         help_text=_('Поддерживает markdown.'),

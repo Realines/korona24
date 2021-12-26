@@ -15,6 +15,9 @@ class PreviewService(models.Model):
         default='sys/service_icons/default.png',
         blank=True,
     )
+    alt_icon = models.TextField(
+        verbose_name=_('Описание иконки'),
+    )
     name = models.TextField(
         verbose_name=_('Название услуги'),
     )
@@ -51,6 +54,9 @@ class ServiceArticle(models.Model):
         verbose_name=_('Изображение статьи'),
         help_text=_('Будет отображаться в статье и в '
                     'ее миниатюре в списке статей.'),
+    )
+    alt_image = models.TextField(
+        verbose_name=_('Описание изображения'),
     )
     image_description = models.TextField(
         max_length=400,
