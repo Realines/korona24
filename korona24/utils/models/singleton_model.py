@@ -8,6 +8,8 @@ class SingletonModel(models.Model):
 
     class Meta:
         """Настройки модели"""
+        # Эта модель будет абстрактной, т.е. таблица в БД
+        # создаваться не будет.
         abstract = True
 
     def save(self, *args, **kwargs):
@@ -27,7 +29,7 @@ class SingletonModel(models.Model):
     def load(cls):
         """Метод загрузки единственно экземпляра модели"""
 
-        # Если нет ни одной записи, возвращаем новый экземпляр.
+        # Если нет ни одной записи, возвращаем новый пустой экземпляр.
         try:
             return cls.objects.get()
         except cls.DoesNotExist:
@@ -39,8 +41,7 @@ class SingletonModelAdmin(admin.ModelAdmin):
         """Инициализатор класса"""
         super().__init__(model, admin_site)
 
-        # Создаем дефолтный экземпляр настроек при
-        # первом запросе к странице с настройками.
+        # Создаем дефолтный экземпляр модели при первом запросе.
         try:
             model.load().save()
         except ProgrammingError:

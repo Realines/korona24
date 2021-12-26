@@ -7,6 +7,10 @@ from markdown import markdown
 
 
 class Article(models.Model):
+    url = models.TextField(
+        verbose_name=_('Название страницы статьи'),
+        help_text=_('Будет использоваться в URL страницы.'),
+    )
     title = models.TextField(
         verbose_name=_('Заголовок статьи'),
     )
@@ -40,9 +44,16 @@ class Article(models.Model):
         super(Article, self).save(*args, **kwargs)
 
     def get_absolute_url(self) -> str:
-        return reverse('blog:article', args=(str(self.pk), ))
+        return reverse('blog:article', args=(str(self.url), ))
     
     def data_json(self):
-        return { "id":self.pk, "title":self.title,"url": self.get_absolute_url(), "image_url":self.image.url,'description':self.description}
+        return {
+            'id': self.pk,
+            'title': self.title,
+            'url': self.get_absolute_url(),
+            'image_url': self.image.url,
+            'alt_image': self.alt_image,
+            'description': self.description
+        }
     def __str__(self) -> str:
         return str(self.title)

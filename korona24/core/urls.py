@@ -22,14 +22,17 @@ from django.urls import (
     include,
 )
 
+from services.views import prices
+
 urlpatterns = [
     path('', include('main.urls')),
-    path('blog/', include('blog.urls')),
-    path('comments/', include('comments.urls')),
-    path('services/', include('services.urls')),
-    path('employees/', include('employees.urls')),
-    path('gallery/', include('gallery.urls')),
+    path('eto-interesno/', include('blog.urls')),
+    path('testimonials/', include('comments.urls')),
+    path('uslugi/', include('services.urls')),
+    path('cena/', prices, name='prices'),
+    path('about/vrachi-sk-korona/', include('employees.urls')),
     path('about/', include('pages.urls')),
+    path('foto-i-video/', include('gallery.urls')),
     path('visual-version/', include('visual_version_handler.urls')),
     path('admin/', admin.site.urls),
     url(r'mdeditor/', include('mdeditor.urls'))

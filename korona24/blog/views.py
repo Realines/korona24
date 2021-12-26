@@ -1,8 +1,6 @@
 import math
 import random
 from itertools import chain
-from functools import reduce
-from typing import Optional
 
 from django.shortcuts import (
     render,
@@ -16,11 +14,9 @@ from django.http import (
 from django.core.paginator import Paginator
 from django.utils.translation import gettext as _
 from django.views.decorators.csrf  import csrf_exempt
-from django.core import serializers
-from django.core.serializers.json import DjangoJSONEncoder
-from django.db.models import Q
 import json
 from .models import Article 
+
 
 def articles(request: HttpRequest) -> HttpResponse:
     """
@@ -36,6 +32,7 @@ def articles(request: HttpRequest) -> HttpResponse:
                   template_name='blog/blog.html',
                   context=context)
 
+
 @csrf_exempt
 def pagination_articles(request: HttpRequest) -> JsonResponse:
     """
@@ -43,8 +40,8 @@ def pagination_articles(request: HttpRequest) -> JsonResponse:
     :param request: Объект запроса.
     :return: Возвращает сериализованный в JSON список статей.
     """
+
     data = json.loads(request.body)
-    #page_num = request.POST.get('page_num', None)
     page_num = int(data['page_num']) 
     # Проверка номера запрашиваемого блока с изображениями.
     if page_num is None:
@@ -69,24 +66,24 @@ def pagination_articles(request: HttpRequest) -> JsonResponse:
     # Сериализация списка объектов в JSON-формат.
     articles_list = paginator.get_page(page_num).object_list
     articles_json = []
-    for acticle_item in articles_list:
-        articles_json.append(acticle_item.data_json())
+    for article_item in articles_list:
+        articles_json.append(article_item.data_json())
       
     return JsonResponse(data={'articles': articles_json},
                         status=200)
 
 
-def article(request: HttpRequest, article_id: int) -> HttpResponse:
+def article(request: HttpRequest, article_url: str) -> HttpResponse:
     """
     Функция-контроллер страницы статей.
 
     :param request: Объект запроса.
-    :param article_id: id статьи.
+    :param article_url: url статьи.
     :return: Объект ответа со старницей статей.
     """
 
     # Текущая статья.
-    current_article = get_object_or_404(Article, pk=article_id)
+    current_article = get_object_or_404(Article, url=article_url)
 
     # Генерируем рандомную подборку статей.
     # Получаем список id всех статей.

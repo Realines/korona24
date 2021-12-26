@@ -5,6 +5,10 @@ from django.urls import reverse
 
 
 class Employee(models.Model):
+    url = models.TextField(
+        verbose_name=_('Название страницы сотрудника'),
+        help_text=_('Будет использоваться в URL страницы.'),
+    )
     description = models.TextField(
         verbose_name=_('Описание страницы сотрудника'),
         help_text=_('Необходимо для улучшения индексации страниц '
@@ -34,7 +38,7 @@ class Employee(models.Model):
         verbose_name_plural = _('Работники')
 
     def get_absolute_url(self) -> str:
-        return reverse('employees.views.employee', args=(str(self.pk), ))
+        return reverse('employees:employee', args=(str(self.url), ))
 
     def __str__(self) -> str:
         return str(self.name)

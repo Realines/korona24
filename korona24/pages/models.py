@@ -9,7 +9,8 @@ from main.utility import translify
 class Category(models.Model):
     title = models.TextField(
         verbose_name=_('Заголовок категории'),
-    ) 
+    )
+
     class Meta:
         verbose_name = _('Категории доп страниц')
         verbose_name_plural = _('Категории страниц')

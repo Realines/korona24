@@ -47,10 +47,11 @@ def page(request: HttpRequest, page_title: str) -> HttpResponse:
     Функция-контроллер шаблонной страницы.
 
     :param request: Объект запроса.
+    :param page_title: Адрес шаблонной страницы.
     :return: Объект ответа со старницей статей.
     """
 
-    current_page = get_object_or_404(Page, adress=page_title)
+    current_page = get_object_or_404(Page, address=page_title)
     all_category = Category.objects.all()  
     all_pages = Page.objects.filter(show_on_main=True)
     context = {

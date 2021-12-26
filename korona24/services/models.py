@@ -42,6 +42,10 @@ class PreviewService(models.Model):
 
 
 class ServiceArticle(models.Model):
+    url = models.TextField(
+        verbose_name=_('Название страницы статьи'),
+        help_text=_('Будет использоваться в URL страницы.'),
+    )
     title = models.TextField(
         verbose_name=_('Заголовок статьи'),
     )
@@ -69,6 +73,13 @@ class ServiceArticle(models.Model):
     information_html = models.TextField(
         editable=False,
     )
+    service = models.ForeignKey(
+        to='Service',
+        on_delete=models.CASCADE,
+        related_name='service_articles',
+        related_query_name='service_article',
+        verbose_name=_('Услуга'),
+    )
 
     class Meta:
         verbose_name = _('Статья об услуги')
@@ -79,14 +90,16 @@ class ServiceArticle(models.Model):
         super(ServiceArticle, self).save(*args, **kwargs)
 
     def get_absolute_url(self) -> str:
-        return reverse('services:article', args=(str(self.pk), ))
+        return reverse('services:article',
+                       args=(str(self.service.url), str(self.url), ))
     
     def data_json(self):
         return {
-            "id": self.pk,
-            "title": self.title,
-            "url": self.get_absolute_url(),
-            "image_url": self.image.url,
+            'id': self.pk,
+            'title': self.title,
+            'url': self.get_absolute_url(),
+            'image_url': self.image.url,
+            'alt_image': self.alt_image,
             'description': self.description,
         }
 
@@ -95,6 +108,10 @@ class ServiceArticle(models.Model):
 
 
 class Service(models.Model):
+    url = models.TextField(
+        verbose_name=_('Название страницы услуги'),
+        help_text=_('Будет использоваться в URL страницы.'),
+    )
     preview = models.OneToOneField(
         PreviewService,
         on_delete=CASCADE, 
@@ -107,25 +124,19 @@ class Service(models.Model):
     description = models.TextField(
         verbose_name=_('Описание услуги'),
     )
-    blog_articles = models.ManyToManyField(
-        to=ServiceArticle,
-        verbose_name=_('Статьи об услуги'),
-        related_name='articles',
-        related_query_name='articles',
-    )
     title_price_block = models.TextField(
         verbose_name=_('Заголовок для блока цен'),
     )
     description_price_block = models.TextField(
         verbose_name=_('Описание для блока цен'),
-    ) 
+    )
 
     class Meta:
         verbose_name = _('Услуга')
         verbose_name_plural = _('Услуги')
 
     def get_absolute_url(self) -> str:
-        return reverse('services:service', args=(str(self.pk), ))
+        return reverse('services:service', args=(str(self.url), ))
 
     def __str__(self) -> str:
         return str(self.name)

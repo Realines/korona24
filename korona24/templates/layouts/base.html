@@ -96,7 +96,7 @@
                                     </svg>
                                 </div>
                                 <div class="header__service-hidden">
-                                    {% for article in service.blog_articles.all %}
+                                    {% for article in service.service_articles.all %}
                                     <a href="{{ article.get_absolute_url }}" class="header__service-link">{{ article.title }}</a>
                                     {% endfor %}
                                 </div>
@@ -105,7 +105,7 @@
                         </div>
                     </div>
                     <div class="nav">
-                        <a href="{% url 'services:prices' %}" class="nav__item">Цены</a>
+                        <a href="{% url 'prices' %}" class="nav__item">Цены</a>
                         <a href="{% url 'services:services' %}" class="nav__item">Услуги</a>
                         <a href="{% url 'comments:comments' %}" class="nav__item">Отзывы</a>
                         <a href="{% url 'pages:about' %}" class="nav__item">О нас</a>
@@ -144,7 +144,7 @@
             <div class='footer__top'>
                 <div class="footer__col">
                     <a href="{% url 'services:services' %}" class="footer__item">Услуги</a>
-                    <a href="{% url 'services:prices' %}" class="footer__item">Цены</a>
+                    <a href="{% url 'prices' %}" class="footer__item">Цены</a>
                     <a href="{% url 'comments:comments' %}" class="footer__item">Отзывы</a>
                     <a href="{% url 'pages:about' %}" class="footer__item">О нас</a>
                     <a href="{% url 'blog:articles' %}" class="footer__item">Блог</a>

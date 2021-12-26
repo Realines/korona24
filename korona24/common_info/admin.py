@@ -20,6 +20,11 @@ class PhoneAndAddressInline(admin.StackedInline):
 
 @admin.register(SiteSettings)
 class SiteSettingsAdmin(SingletonModelAdmin):
+    """
+    Класс регистарции настроек сайта.
+    Для успешной миграции и регистрации этой модели в БД
+    должна быть таблица common_info_sitesettings.
+    """
     list_display = (
         'years_on_market',
         'count_operations',

@@ -10,16 +10,16 @@ from django.http import (
 from .models import Employee
 
 
-def employee(request: HttpRequest, employee_id: int) -> HttpResponse:
+def employee(request: HttpRequest, employee_url: str) -> HttpResponse:
     """
     Функция-контроллер страницы сотрудинка.
 
     :param request: Объект запроса.
-    :param employee_id: id сотрудника.
+    :param employee_url: url сотрудника.
     :return: Объект ответа со страницей сотрудника.
     """
 
-    current_employee = get_object_or_404(Employee, pk=employee_id)
+    current_employee = get_object_or_404(Employee, url=employee_url)
     employees_set = Employee.objects.all()
 
     context = {
