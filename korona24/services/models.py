@@ -39,7 +39,6 @@ class PreviewService(models.Model):
 
 
 class ServiceArticle(models.Model):
-
     title = models.TextField(
         verbose_name=_('Заголовок статьи'),
     )
@@ -53,8 +52,10 @@ class ServiceArticle(models.Model):
         help_text=_('Будет отображаться в статье и в '
                     'ее миниатюре в списке статей.'),
     )
-    image_description = models.TextField(max_length=400,verbose_name=_('Описание изображение статьи'))
-
+    image_description = models.TextField(
+        max_length=400,
+        verbose_name=_('Описание изображение статьи'),
+    )
     information_markdown = models.TextField(
         verbose_name=_('Основная информация'),
         help_text=_('Поддерживает markdown.'),
@@ -75,13 +76,25 @@ class ServiceArticle(models.Model):
         return reverse('services:article', args=(str(self.pk), ))
     
     def data_json(self):
-        return { "id":self.pk, "title":self.title,"url": self.get_absolute_url(), "image_url":self.image.url,'description':self.description}
+        return {
+            "id": self.pk,
+            "title": self.title,
+            "url": self.get_absolute_url(),
+            "image_url": self.image.url,
+            'description': self.description,
+        }
+
     def __str__(self) -> str:
         return str(self.title)
 
+
 class Service(models.Model):
-    preview = models.OneToOneField(PreviewService,on_delete=CASCADE, verbose_name=_('Превью для главной'),related_name='service')
-   
+    preview = models.OneToOneField(
+        PreviewService,
+        on_delete=CASCADE, 
+        verbose_name=_('Превью для главной'),
+        related_name='service'
+    )
     name = models.TextField(
         verbose_name=_('Название услуги'),
     )
@@ -112,8 +125,6 @@ class Service(models.Model):
         return str(self.name)
 
 
-
-
 class Therapy(models.Model):
     name = models.TextField(
         verbose_name=_('Название'),
@@ -121,6 +132,11 @@ class Therapy(models.Model):
     price = models.IntegerField(
         verbose_name=_('Цена'),
         validators=[validators.MinValueValidator(0)],
+    )
+    description = models.TextField(
+        verbose_name=_('Описание'),
+        help_text=_('Необходимо для улучшения индексации страниц '
+                    'поисковыми роботами.'),
     )
     service = models.ForeignKey(
         to=Service,

@@ -12,12 +12,15 @@ class ServiceArticleAdmin(admin.ModelAdmin):
         db_models.TextField: {'widget': MDEditorWidget}
     }
 
+
 class TherapyInline(admin.StackedInline):
     model = models.Therapy
+    extra = 0
 
 
 class InformationServiceInline(admin.StackedInline):
     model = models.InformationService
+    extra = 0
 
 admin.site.register(models.PreviewService) 
 

@@ -22,6 +22,7 @@ from django.db.models import Q
 import json
 from .models import Category, Page 
 
+
 def about(request: HttpRequest) -> HttpResponse:
     """
     Функция-контроллер страницы "О нас".
@@ -40,6 +41,7 @@ def about(request: HttpRequest) -> HttpResponse:
                   template_name='pages/about.html',
                   context=context)
 
+
 def page(request: HttpRequest, page_title: str) -> HttpResponse:
     """
     Функция-контроллер шаблонной страницы.
@@ -47,7 +49,7 @@ def page(request: HttpRequest, page_title: str) -> HttpResponse:
     :param request: Объект запроса.
     :return: Объект ответа со старницей статей.
     """
-    print('test')
+
     current_page = get_object_or_404(Page, adress=page_title)
     all_category = Category.objects.all()  
     all_pages = Page.objects.filter(show_on_main=True)

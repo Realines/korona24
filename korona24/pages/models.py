@@ -5,6 +5,7 @@ from django.urls import reverse
 from markdown import markdown
 from main.utility import translify
 
+
 class Category(models.Model):
     title = models.TextField(
         verbose_name=_('Заголовок категории'),
@@ -16,10 +17,15 @@ class Category(models.Model):
     def __str__(self) -> str:
         return str(self.title)
 
-class Page(models.Model):
 
-    category = models.ManyToManyField(Category, verbose_name=_('Превью для главной'),related_name='pages', blank=True)
-    adress = models.TextField(
+class Page(models.Model):
+    category = models.ManyToManyField(
+        Category,
+        verbose_name=_('Превью для главной'),
+        related_name='pages',
+        blank=True,
+    )
+    address = models.TextField(
         verbose_name=_('Адресс страницы транскриптом')
     )
     title = models.TextField(
@@ -36,7 +42,11 @@ class Page(models.Model):
                     'ее миниатюре в списке статей.'),
         blank=True
     )
-    image_description = models.TextField(max_length=400,verbose_name=_('Описание изображение статьи'),blank=True)
+    image_description = models.TextField(
+        max_length=400,
+        verbose_name=_('Описание изображение статьи'),
+        blank=True,
+    )
     information_markdown = models.TextField(
         verbose_name=_('Основная информация'),
         help_text=_('Поддерживает markdown.'),
@@ -48,8 +58,7 @@ class Page(models.Model):
         verbose_name=_('Страница в меню'),
         default=False,
     )
-    
-    show_on_websity = models.BooleanField(
+    show_on_website = models.BooleanField(
         verbose_name=_('Опубликовано?'),
         default=False,
     )
@@ -60,7 +69,7 @@ class Page(models.Model):
 
     def save(self, *args, **kwargs):
         self.information_html = markdown(self.information_markdown)
-        self.adress = translify(self.title)
+        self.address = translify(self.title)
         super(Page, self).save(*args, **kwargs)
 
     def get_absolute_url(self) -> str:

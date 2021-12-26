@@ -1,7 +1,17 @@
-{% extends 'layouts/base.html' %} {% load static %} {% block description %}
-<meta name="description" content="Информация о стоматологии «Корона» в городе Красноярск."> {% endblock %} {% block title %} Контакты {% endblock %} {% block content %}
+{% extends 'layouts/base.html' %} 
+
+{% load static %} 
 
 
+{% block description %}
+<meta name="description" content="Информация о стоматологии «Корона» в городе Красноярск."> 
+{% endblock %} 
+
+
+{% block title %} Контакты {% endblock %} 
+
+
+{% block content %}
 <section class='service-page'>
     <div class='container'>
         <a href="" class="service-page__back">
@@ -32,7 +42,6 @@
                             {% for page in category.pages.all %}
                                 <a href="{{ page.get_absolute_url}}" class="header__service-link">{{page.title}}</a>
                             {% endfor %}
-                           
                         </div>
                     </a> 
                     {% endfor %}

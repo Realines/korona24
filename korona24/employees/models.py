@@ -5,6 +5,11 @@ from django.urls import reverse
 
 
 class Employee(models.Model):
+    description = models.TextField(
+        verbose_name=_('Описание страницы сотрудника'),
+        help_text=_('Необходимо для улучшения индексации страниц '
+                    'поисковыми роботами.')
+    )
     name = models.TextField(
         verbose_name=_('Имя'),
     )
