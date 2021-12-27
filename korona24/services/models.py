@@ -35,7 +35,7 @@ class PreviewService(models.Model):
         verbose_name_plural = _('Предпросмотр услуги')
 
     def get_absolute_url(self) -> str:
-        return reverse('services:service', args=(str(self.service.pk), ))
+        return reverse('services:service', args=(str(self.service.url) ))
 
     def __str__(self) -> str:
         return str(self.name)
@@ -72,7 +72,7 @@ class ServiceArticle(models.Model):
     )
     information_html = models.TextField(
         editable=False,
-    )
+    ) 
     service = models.ForeignKey(
         to='Service',
         on_delete=models.CASCADE,
@@ -146,9 +146,9 @@ class Therapy(models.Model):
     name = models.TextField(
         verbose_name=_('Название'),
     )
-    price = models.IntegerField(
+    price = models.CharField(
         verbose_name=_('Цена'),
-        validators=[validators.MinValueValidator(0)],
+        max_length=10, 
     )
     description = models.TextField(
         verbose_name=_('Описание'),

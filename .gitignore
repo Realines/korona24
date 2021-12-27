@@ -134,3 +134,6 @@ korona24/media/
 .vs/slnx.sqlite
 .vs/VSWorkspaceState.json
 .vs/korona24/v17/.suo
+korona24/db — копия.sqlite3
+.gitignore
+korona24/db3.sqlite3
