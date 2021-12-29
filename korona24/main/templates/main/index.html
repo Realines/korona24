@@ -10,24 +10,23 @@
 
 {% block content %}
 
-    <section class='main'>
-        <img src="{% static 'img/tooth.png' %}" alt="" class="main__bg">
-        <div class='container'>
-            <div class='main__inner'>
-                <div class="main__slider">
-                    <div class='swiper-container'>
-                        <div class='swiper-wrapper'> 
-                            {% for discount in all_discount %}
-                            <div class='swiper-slide'>
-                                <div class="main__slider-item">
-                                    <h1 class="main__slider-title">
-                                        {{ discount.title | safe }}
-                                    </h1>
-                                    <p class="main__slider-desc subtitle"> {{ discount.description | safe}}</p>
-                                </div>
-                            </div> 
-                            {% endfor %}
-                        </div>
+<section class='main'>
+    <img src="{% static 'img/tooth.png' %}" alt="" class="main__bg">
+    <div class='container'>
+        <div class='main__inner'>
+            <div class="main__slider">
+                <div class='swiper-container'>
+                    <div class='swiper-wrapper'> 
+                        {% for discount in all_discount %}
+                        <div class='swiper-slide'>
+                            <div class="main__slider-item">
+                                <h1 class="main__slider-title">
+                                    {{ discount.title | safe }}
+                                </h1>
+                                <p class="main__slider-desc subtitle"> {{ discount.description | safe}}</p>
+                            </div>
+                        </div> 
+                        {% endfor %}
                     </div>
 
                 </div>
@@ -36,14 +35,14 @@
                 <div class="main__slider-nav">
                     <div class='main__slider-prev swiper-button-prev btn-brown'>
                         <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 1L2 8L9 15" stroke="#fff" stroke-width="1.5"/>
-                            </svg>
+                            <path d="M9 1L2 8L9 15" stroke="#fff" stroke-width="1.5"/>
+                        </svg>
                     </div>
                     <div class="swiper-pagination"></div>
                     <div class='main__slider-next swiper-button-next btn-brown'>
                         <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L8 8L1 15" stroke="fff" stroke-width="1.5"/>
-                            </svg>
+                            <path d="M1 1L8 8L1 15" stroke="fff" stroke-width="1.5"/>
+                        </svg>
                     </div>
                 </div>
             </div>
