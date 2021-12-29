@@ -15,6 +15,7 @@ class PreviewService(models.Model):
         default='sys/service_icons/default.png',
         blank=True,
     )
+    
     alt_icon = models.TextField(
         verbose_name=_('Описание иконки'),
     )
@@ -35,7 +36,8 @@ class PreviewService(models.Model):
         verbose_name_plural = _('Предпросмотр услуги')
 
     def get_absolute_url(self) -> str:
-        return reverse('services:service', args=(str(self.service.url) ))
+        #return reverse('services:service', args=(str('/lechenie-zubov/') ))
+        return ''
 
     def __str__(self) -> str:
         return str(self.name)
