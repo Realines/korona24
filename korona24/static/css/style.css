@@ -666,6 +666,11 @@ body.openmodal, body.fixed-body {
   bottom: 0;
   z-index: 2;
 }
+@media screen and (max-width: 1615px) {
+  .main__bg {
+    width: 500px;
+  }
+}
 .main__slider {
   padding: 120px 0;
   position: relative;

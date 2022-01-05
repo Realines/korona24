@@ -1,8 +1,7 @@
 {% load static %}
 
 
-<!DOCTYPE html> 
-{% if visually_impaired %}
+<!DOCTYPE html> {% if visually_impaired %}
 <html lang="en" impaired="true">
 {% else %}
 <html lang="en">
@@ -18,17 +17,15 @@
     стоматология на киренского
     платная стоматология
     стоматология в октябрьском районе
-    стоматологический клиника">
-
-    {% block description %}
-    <meta name="description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!">
-    {% endblock %}
+    стоматологический клиника"> {% block description %}
+    <meta name="description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!"> {% endblock %}
 
     <link rel="stylesheet" href="{%  static 'css/nice-select.css' %}">
     <link rel="stylesheet" href="{%  static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{%  static 'css/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{%  static 'css/jquery.fancybox.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'favicon.png' %}" />
 
 </head>
 
@@ -97,8 +94,7 @@
                                 </div>
                                 <div class="header__service-hidden">
                                     {% for article in service.service_articles.all %}
-                                    <a href="{{ article.get_absolute_url }}" class="header__service-link">{{ article.title }}</a>
-                                    {% endfor %}
+                                    <a href="{{ article.get_absolute_url }}" class="header__service-link">{{ article.title }}</a> {% endfor %}
                                 </div>
                             </div>
                             {% endfor %}
@@ -109,7 +105,7 @@
                         <a href="{% url 'services:services' %}" class="nav__item">Услуги</a>
                         <a href="{% url 'comments:comments' %}" class="nav__item">Отзывы</a>
                         <a href="{% url 'pages:about' %}" class="nav__item">О нас</a>
-                        <a href="{% url 'blog:articles' %}" class="nav__item">Блог</a>  
+                        <a href="{% url 'blog:articles' %}" class="nav__item">Блог</a>
                         <a href="{% url 'gallery:gallery' %}" class="nav__item">Галерея</a>
                         <a href="{% url 'main:contacts' %}" class="nav__item">Контакты</a>
                     </div>
@@ -202,9 +198,7 @@
                     {% endfor %}
                     <div class="footer__socials">
                         <!--Рендеринг всех досупных социальных сетей-->
-                        {% for social_network in site_settings.social_networks.all %}
-
-                        {% endfor %}
+                        {% for social_network in site_settings.social_networks.all %} {% endfor %}
                         <a href="" class="footer__socials-item">
                             <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M24.2137 4.86475C24.3781 4.31206 24.2137 3.90527 23.4229 3.90527H20.806C20.1395 3.90527 19.833 4.25458 19.6686 4.64367C19.6686 4.64367 18.3357 7.87583 16.4519 9.97165C15.8432 10.5774 15.5633 10.772 15.2301 10.772C15.0657 10.772 14.8125 10.5774 14.8125 10.0247V4.86475C14.8125 4.20152 14.6259 3.90527 14.075 3.90527H9.96082C9.54318 3.90527 9.29438 4.21478 9.29438 4.50218C9.29438 5.13005 10.2363 5.27596 10.334 7.04458V10.8825C10.334 11.7226 10.183 11.8773 9.84974 11.8773C8.96116 11.8773 6.8019 8.63192 5.52234 4.91781C5.26465 4.1971 5.0114 3.90527 4.34052 3.90527H1.72364C0.977231 3.90527 0.826172 4.25458 0.826172 4.64367C0.826172 5.33344 1.71476 8.76015 4.96253 13.2878C7.12623 16.3785 10.1741 18.0543 12.9465 18.0543C14.6126 18.0543 14.8169 17.6829 14.8169 17.0417C14.8169 14.0881 14.6659 13.8096 15.5011 13.8096C15.8877 13.8096 16.5541 14.0041 18.1091 15.4942C19.8863 17.2628 20.1795 18.0543 21.1747 18.0543H23.7916C24.538 18.0543 24.9157 17.6829 24.698 16.9489C24.2004 15.4058 20.8371 12.2311 20.686 12.0188C20.2995 11.5236 20.4106 11.3025 20.686 10.8604C20.6905 10.856 23.8849 6.38135 24.2137 4.86475Z" fill="#C39F7B"/>
@@ -362,9 +356,7 @@
         });
     </script>
 
-    {% block scripts %}
-    
-    {% endblock %}
+    {% block scripts %} {% endblock %}
 
 </body>
 
