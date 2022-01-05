@@ -191,6 +191,7 @@
     </div>
 </section>
 
+
 <section class='zone'>
     <div class='container'>
         <div class='zone__top'>
@@ -204,24 +205,15 @@
                 </svg>
             </a>
         </div>
-    </div>
-    <div class="zone__items">
-        {% for image in gallery %}
-        <div class="zone__item">
-            <a data-fancybox='gallery' href="{{ image.image.url }}">
-                <img src="{{ image.image.url }}" alt=''>
-            </a>
-        </div>
-        <div class="zone__items">
+        <div class="zone__items"> 
             {% for image in gallery %}
             <div class="zone__item">
                 <a data-fancybox='gallery' href="{{ image.image.url }}">
                     <img src="{{ image.image.url }}" alt='{{ image.description }}'>
                 </a>
             </div>
-            {% endfor %}
+            {% endfor %} 
         </div>
-        {% endfor %}
     </div>
 </section>
 
