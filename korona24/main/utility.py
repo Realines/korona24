@@ -21,11 +21,9 @@ def compress(image):
     im = im.convert('RGB')
     filename = image.name.replace('png','jpg')
     # create a BytesIO object
-    im_io = BytesIO() 
+    im_io = BytesIO()  
     # save image to BytesIO object
     im.save(im_io, 'JPEG', quality=70)  
     # create a django-friendly Files object
-    new_image = File(im_io, filename)
-    print(filename)
-    print(new_image )
+    new_image = File(im_io, filename) 
     return new_image

@@ -14,7 +14,11 @@ class Category(models.Model):
     class Meta:
         verbose_name = _('Категории доп страниц')
         verbose_name_plural = _('Категории страниц')
-
+        
+    def get_absolute_url(self) -> str:
+        firstPage = self.pages.all()[0]
+        print(firstPage)
+        return reverse('pages:page', args=(str(firstPage.address), ))
     def __str__(self) -> str:
         return str(self.title)
 
@@ -70,7 +74,8 @@ class Page(models.Model):
 
     def save(self, *args, **kwargs):
         self.information_html = markdown(self.information_markdown)
-        self.address = translify(self.title)
+        if(self.address is None):
+            self.address = translify(self.title)
         super(Page, self).save(*args, **kwargs)
 
     def get_absolute_url(self) -> str:

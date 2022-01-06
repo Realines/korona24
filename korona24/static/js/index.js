@@ -187,7 +187,7 @@ function dmsSlider() {
     });
 }
 
-$(document).ready(function() {
+$(document).ready(function() { 
     mainSlider()
     expertSlider()
     feedbackSlider()

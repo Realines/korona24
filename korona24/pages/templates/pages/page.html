@@ -1,7 +1,8 @@
 {% extends 'layouts/base.html' %} 
 {% load static %} 
 {% block title %} {{current_page.title}} {% endblock %} 
-{% block description %} {{current_page.description}} {% endblock %} 
+{% block description %} 
+<meta name="description" content="{{current_page.description}} "> {% endblock %} 
 {% block content %}
 
 
@@ -46,11 +47,11 @@
                     <h3 class="service-page__title">{{current_page.title}}</h3>
                     <div class="about__inner">
                         <div class="about__text about__img">
-                            <p>{{ current_page.information_html|safe }}</p>
+                            <p>{{ current_page.information_html | safe }}</p>
                         </div>
                         {% if current_page.image %}
                         <div class="about__img">
-                            <img src="{{current_page.image}}" alt="{{current_page.image_description}}">
+                            <img src="/media/{{current_page.image}}" alt="{{current_page.image_description}}">
                         </div>
                         {% endif %}
                     </div>

@@ -47,10 +47,9 @@ class Employee(models.Model):
     def get_absolute_url(self) -> str:
         return reverse('employees:employee', args=(str(self.url), ))
 
-    def save(self, *args, **kwargs): 
-            print(self.avatar)
+    def save(self, *args, **kwargs):  
             new_image = utility.compress(self.avatar)
-
+             
             self.avatar_small = new_image
             super().save(*args, **kwargs)
 

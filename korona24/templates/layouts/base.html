@@ -143,10 +143,7 @@
                     <a href="{% url 'prices' %}" class="footer__item">Цены</a>
                     <a href="{% url 'comments:comments' %}" class="footer__item">Отзывы</a>
                     <a href="{% url 'pages:about' %}" class="footer__item">О нас</a>
-                    <a href="{% url 'blog:articles' %}" class="footer__item">Блог</a>
-                    <a href="" class="footer__item">Акции</a>
-                    <a href="" class="footer__item">Вопросы врачу</a>
-                    <a href="" class="footer__item">Вакансии</a>
+                    <a href="{% url 'blog:articles' %}" class="footer__item">Блог</a>  
                     <a href="{% url 'main:contacts' %}" class="footer__item">Контакты</a>
                 </div>
                 <div class="footer__col">
@@ -260,8 +257,14 @@
                     </div>
                 </div>
                 <div class="footer__col">
-                    <a href="" class="footer__licensy">
-                        Лицензия № ЛО-24-01-003729 <br>Свидетельство о внесении в ЕГРЮЛ
+                    <a href="/about/reglament-vyizova-dlya-malomobilnyix-grupp" class="footer__licensy">
+                        Лицензия № ЛО-24-01-003729 
+                    </a>
+                    <a href="/about/egrul" class="footer__licensy">
+                        Свидетельство о внесении в ЕГРЮЛ
+                    </a>
+                    <a href="/about/politika-obrabotki-i-zashiti-dannih" class="footer__licensy">
+                        Политика обработки и защиты персональных данных
                     </a>
                 </div>
             </div>
@@ -301,7 +304,7 @@
                     </div>
                     <button class="modal__form-btn btn btn-brown">Записаться на прием</button>
                     <div class="modal__form-hint">
-                        Нажимая кнопку “Записаться на прием” вы подстверждаете свое <a href="">согласие на обработку персональных данных</a>
+                        Нажимая кнопку “Записаться на прием” вы подстверждаете свое <a href="/about/soglasie_na_obrabotku_dannyih">согласие на обработку персональных данных</a>
                     </div>
                 </form>
             </div>
@@ -321,7 +324,7 @@
                 </div>
                 <div class="modal__desc">Мы свяжемся с Вами в течение суток</div>
                 <div class="modal__icon">
-                    <img src="img/modal-icon.png" alt="Зуб">
+                    <img src="{% static 'img/modal-icon.png' %}" alt="Зуб">
                 </div>
             </div>
         </div>

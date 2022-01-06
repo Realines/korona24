@@ -242,14 +242,14 @@
                     <div class='swiper-container'>
                         <div class='swiper-wrapper'>
                             {% for employee in employees %}
-                            <div class='swiper-slide'>
+                            <div class='swiper-slide'> <a href="{{ employee.get_absolute_url }}">
                                 <div class="expert__slider-item">
-                                    <div class="expert__slider-item-img">
-                                        <img src="{{ employee.avatar.url }}" alt="Врач">
+                                    <div class="expert__slider-item-img">  
+                                        <img src="{{ employee.avatar_small.url }}" alt="{{ employee.position }}: {{ employee.name }}"> 
                                     </div>
                                     <div class="expert__slider-item-title">{{ employee.name }}</div>
                                     <div class="expert__slider-item-profession">{{ employee.position }}</div>
-                                </div>
+                                </div> </a>
                             </div>
                             {% endfor %}
                         </div>

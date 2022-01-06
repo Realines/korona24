@@ -30,7 +30,7 @@ def about(request: HttpRequest) -> HttpResponse:
     :param request: Объект запроса.
     :return: Объект ответа со страницей "О нас".
     """
-    all_category = Category.objects.all()  
+    all_category = Category.objects.all()
     all_pages = Page.objects.filter(show_on_main=True)
     context = { 
         'all_category': all_category,

@@ -3,7 +3,7 @@ let current_page = 1
 let components_view = [] 
 
 $(document).ready(function() {
-    UpdatePage('pagination/',1)
+    UpdatePage('/pagination/',1)
 });
 
 function UpdateNumberPageView() { 
