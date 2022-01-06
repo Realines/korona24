@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core import validators
 from django.urls import reverse
-
+from main import utility
 
 class Employee(models.Model):
     url = models.TextField(
@@ -29,6 +29,13 @@ class Employee(models.Model):
         default='sys/employee_avatars/default.png',
         blank=True,
     )
+    avatar_small = models.ImageField(
+        upload_to='sys/employee_avatars/',
+        verbose_name=_('Маленькая Аватар сотрудника'),
+        default='sys/employee_avatars/default.png',
+        help_text=_('Автоматически добавляется при добавление основого, вы можете изменить его'),
+        blank=True, 
+    )
     alt_avatar = models.TextField(
         verbose_name=_('Описание аватара'),
     )
@@ -39,6 +46,13 @@ class Employee(models.Model):
 
     def get_absolute_url(self) -> str:
         return reverse('employees:employee', args=(str(self.url), ))
+
+    def save(self, *args, **kwargs): 
+            print(self.avatar)
+            new_image = utility.compress(self.avatar)
+
+            self.avatar_small = new_image
+            super().save(*args, **kwargs)
 
     def __str__(self) -> str:
         return str(self.name)

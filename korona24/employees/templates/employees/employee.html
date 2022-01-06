@@ -3,8 +3,10 @@
 {% load static %} 
 
 
-{% block title %} Контакты {% endblock %} 
-
+{% block title %} Сотрудник: {{ current_employee.name }} {% endblock %} 
+{% block description %}
+<meta name="description" content="{{ current_employee.description }}"> 
+{% endblock %} 
 
 {% block content %}
 
@@ -136,14 +138,15 @@
                     <div class='swiper-container'>
                         <div class='swiper-wrapper'>
                             {% for employee in employees %}
-                            <div class='swiper-slide'>
+                            <div class='swiper-slide'> 
                                 <div class="expert__slider-item">
-                                    <div class="expert__slider-item-img">
-                                        <img src="{{ employee.avatar.url }}" alt="Врач">
+                                    <div class="expert__slider-item-img"> 
+                                        <a href="{{ employee.get_absolute_url }}">
+                                        <img src="{{ employee.avatar.url }}" alt="{{ employee.position }}: {{ employee.name }}"> </a>
                                     </div>
                                     <div class="expert__slider-item-title">{{ employee.name }}</div>
                                     <div class="expert__slider-item-profession">{{ employee.position }}</div>
-                                </div>
+                                </div> 
                             </div>
                             {% endfor %}
                         </div>
@@ -156,3 +159,4 @@
 
 
 {% endblock %}
+
