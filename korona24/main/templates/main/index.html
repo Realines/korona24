@@ -1,14 +1,5 @@
-{% extends 'layouts/base.html' %} 
-
-{% load static %} 
-
-
-{% block description %}
-<meta name="description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!"> 
-{% endblock %}
-
-
-{% block content %}
+{% extends 'layouts/base.html' %} {% load static %} {% block description %}
+<meta name="description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!"> {% endblock %} {% block content %}
 
 <section class='main'>
     <img src="{% static 'img/tooth.png' %}" alt="" class="main__bg">
@@ -16,16 +7,16 @@
         <div class='main__inner'>
             <div class="main__slider">
                 <div class='swiper-container'>
-                    <div class='swiper-wrapper'> 
+                    <div class='swiper-wrapper'>
                         {% for discount in all_discount %}
                         <div class='swiper-slide'>
                             <div class="main__slider-item">
-                                <h1 class="main__slider-title">
+                                <h1 class="main__slider-title title">
                                     {{ discount.title | safe }}
                                 </h1>
                                 <p class="main__slider-desc subtitle"> {{ discount.description | safe}}</p>
                             </div>
-                        </div> 
+                        </div>
                         {% endfor %}
                     </div>
 
@@ -90,31 +81,31 @@
     </div>
 </section>
 
-    <section class='service'>
-        <div class='container'>
-            <p class="service__title">Наши услуги</p>
-            <div class='service__items'> 
-                {% for preview in main_services %}
-                <div class="service__item">
-                    <p class="service__item-title text-druk">
-                        {{ preview.name | safe }}
-                    </p>
-                    <ul class="service__item-list">
-                        {{ preview.description | safe }}
-                    </ul>
-                    <a href="{{ preview.get_absolute_url }}" class="service__item-link btn-brown">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<section class='service'>
+    <div class='container'>
+        <p class="service__title">Наши услуги</p>
+        <div class='service__items'>
+            {% for preview in main_services %}
+            <div class="service__item">
+                <p class="service__item-title text-druk">
+                    {{ preview.name | safe }}
+                </p>
+                <ul class="service__item-list">
+                    {{ preview.description | safe }}
+                </ul>
+                <a href="{{ preview.get_absolute_url }}" class="service__item-link btn-brown">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.869 5.68958L15.8084 6.75022L20.3083 11.2501H0.75V12.7501H20.3081L15.8084 17.2498L16.869 18.3105L23.1796 12L16.869 5.68958Z" fill="white"/>
                         </svg>
-                    </a>
-                    <div class="service__item-icon">
-                        <img src="{{ preview.icon.url }}" alt="{{ preview.name }}">
-                    </div>
+                </a>
+                <div class="service__item-icon">
+                    <img src="{{ preview.icon.url }}" alt="{{ preview.name }}">
                 </div>
-                {% endfor %} 
             </div>
+            {% endfor %}
         </div>
-    </section>
+    </div>
+</section>
 
 <section class='mission'>
     <div class='container'>
@@ -147,7 +138,7 @@
             </div>
             <div class="info__video">
                 <img src="{% static 'img/info.jpg' %}" alt="Лечение зуба">
-                <a href="https://youtu.be/IAKgLb3LQtQ" target="_blank"  class="info__video-btn btn btn-brown">
+                <a href="https://youtu.be/IAKgLb3LQtQ" target="_blank" class="info__video-btn btn btn-brown">
                     <svg width="25" height="30" viewBox="0 0 25 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.600098 0.600098L24.6001 15.0001L0.600098 29.4001V0.600098Z" fill="white"/>
                     </svg>
@@ -589,12 +580,7 @@
         </div>
     </div>
 </section>
-{% endif %}
-
-{% endblock %} 
-
-
-{% block scripts %}
+{% endif %} {% endblock %} {% block scripts %}
 <script>
     $(document).ready(function() {
         $("#application_form").submit(ajax_request_form);

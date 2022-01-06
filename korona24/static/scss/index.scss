@@ -5,6 +5,9 @@
         right: 0;
         bottom: 0;
         z-index: 2;
+        @media screen and (max-width: 1615px) {
+            width: 500px;
+        }
     }
     &__slider {
         padding: 120px 0;
