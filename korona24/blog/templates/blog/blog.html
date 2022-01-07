@@ -2,15 +2,16 @@
 {% load static %}
 
 
-{% block title %} Блог {% endblock %}
-
+{% block title %} Блог {% endblock %} 
+{% block description %} 
+<meta name="description" content="Интересные публикации Стоматологии в Красноярске Корона."> {% endblock %} 
 
 {% block content %}
 
     <section class='blog blog-page'>
         <div class='container'>
             <div class='blog__top'>
-                <h2 class="blog__title">блог</h2>
+                <h2 class="blog__title title2">БЛОГ</h2>
                 <div class="pagination">
                     <button id="back_page" onclick="javascript: BackPage('pagination/')" class="pagination__btn">« Предыдущая страница</a>
                     <div class="pagination__items">
@@ -33,9 +34,7 @@
                     </div> 
                 </div>
             </div> 
-            <div class='blog__bottom'>
-                <button class="blog__more">Показать еще на этой странице</button>
-                {% csrf_token %}
+            <div class='blog__bottom'>  
                 <div class="pagination">
                     <button id="back_page" onclick="javascript: BackPage('pagination/')" class="pagination__btn">« Предыдущая страница</a>
                     <div class="pagination__items">
@@ -44,8 +43,7 @@
                         <a id="page_number_3" onclick="javascript: NextPage('pagination/')" class="pagination__item">3</a>
                     </div>
                     <button id="next_page" onclick="javascript: NextPage('pagination/')" class="pagination__btn">Следующая страница »</a>
-                </div>
-                <a href="" class="pagination__btn">Следующая страница »</a>
+                </div> 
             </div>
         </div>
     </section>

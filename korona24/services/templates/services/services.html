@@ -19,7 +19,7 @@
             {% for service in all_services %}
             <div class="services__item">
                 <div class="services__item-icon">
-                    <img src="{{ service.icon.url }}" alt="">
+                    <img src="{{ service.icon.url }}" alt="{{ service.alt_image }}">
                 </div>
                 <div class="services__item-title">{{ service.name }}</div>
                 <a href="{{ service.get_absolute_url }}" class="services__item-link">Подробнее</a>

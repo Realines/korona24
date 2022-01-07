@@ -4,13 +4,15 @@
 
 
 {% block title %} Статья {% endblock %} 
+{% block description %} 
+<meta name="description" content="{{ current_article.description }} "> {% endblock %} 
 
 
 {% block content %}
 <section class='blog-item'>
     <div class='container'>
         <div class="blog-item__inner">
-            <a href="" class="back-link blog-item__back">
+            <a onclick="javascript:history.back();" class="back-link blog-item__back">
                 <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9 1L2 8L9 15" stroke="#C39F7B" stroke-width="1.5"/>
                     </svg>
@@ -20,8 +22,8 @@
                 <h1 class="title3">{{ current_article.title }}</h1>
                 <p>{{ current_article.description }}</p>
 
-                <img src="{{ current_article.image.url }}" alt="">
-                <div>{{ current_article.information_html|safe }}</div>
+                <img src="{{ current_article.image.url }}" alt="{{ current_article.alt_image }}">
+                <div>{{ current_article.information_html | safe }}</div>
             </div>
             <div class="blog-item__socials">
                 <span>Поделиться:</span>
@@ -87,7 +89,7 @@
             {% for article in articles_set %}
             <div class="blog__item">
                 <a href="{{ article.get_absolute_url }}" class="blog__item-img">
-                    <img src="{{ article.image.url }}" alt="">
+                    <img src="{{ article.image.url }}" alt="{{ article.alt_image }}">
                 </a>
                 <a href="{{ article.get_absolute_url }}" class="blog__item-title">{{ article.title }}</a>
                 <div class="blog__item-desc">{{ article.description }}</div>

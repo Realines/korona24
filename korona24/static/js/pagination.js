@@ -3,7 +3,7 @@ let current_page = 1
 let components_view = [] 
 
 $(document).ready(function() {
-    UpdatePage('/pagination/',1)
+    UpdatePage('pagination/',1)
 });
 
 function UpdateNumberPageView() { 
@@ -28,7 +28,7 @@ function UpdatePage(url,new_page){
     AjaxJsonRequest(url,data,function (response) { // получение данных новой страницы
           console.log(response)
           UpdateComponents(response.articles)
-    });
+    },method='GET');
     UpdateNumberPageView()
 }
 function UpdateComponents(components)
@@ -72,7 +72,7 @@ function AjaxJsonRequest(url, data, callbackSucces,method = "POST") {
        method: method,
        contentType: 'application/json; charset=utf-8',
        dataType: 'json',
-       data: JSON.stringify(data), //формат данных 
+       data: data, //формат данных 
        async: true,
        success: callbackSucces,
        error: function (response) { // данные не отправлены

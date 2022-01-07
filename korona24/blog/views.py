@@ -34,44 +34,42 @@ def articles(request: HttpRequest) -> HttpResponse:
 
 
 @csrf_exempt
-def pagination_articles(request: HttpRequest) -> JsonResponse:
+def pagination_articles(request):
     """
     Функция-контроллер для пагинации по статьям блога.
     :param request: Объект запроса.
     :return: Возвращает сериализованный в JSON список статей.
     """
+    page_num = int(request.GET['page_num'])
+    if request.method == 'GET':  
+        # Проверка номера запрашиваемого блока с изображениями.
+        if page_num is None:
+            return JsonResponse(data={'errors': _('Error page number.')},
+                                status=403)
 
-    data = json.loads(request.body)
-    page_num = int(data['page_num']) 
-    # Проверка номера запрашиваемого блока с изображениями.
-    if page_num is None:
-        return JsonResponse(data={'errors': _('Error page number.')},
-                            status=403)
+        if page_num:
+            page_num = int(page_num)
+        else:
+            page_num = 1
 
-    if page_num:
-        page_num = int(page_num)
-    else:
-        page_num = 1
+        # Разбивка изображений на блоки в пагинаторе.
+        article_set = Article.objects.all()
+        block_articles = 6
+        paginator = Paginator(article_set, block_articles)
 
-    # Разбивка изображений на блоки в пагинаторе.
-    article_set = Article.objects.all()
-    block_articles = 6
-    paginator = Paginator(article_set, block_articles)
+        # Проверка, что номер запрашиваемого блока входит в длину пагинатора.
+        if page_num < 1 or page_num > int(math.ceil(len(article_set) / block_articles)):
+            return JsonResponse(data={'errors': _('Error page number.')},
+                                status=403)
 
-    # Проверка, что номер запрашиваемого блока входит в длину пагинатора.
-    if page_num < 1 or page_num > int(math.ceil(len(article_set) / block_articles)):
-        return JsonResponse(data={'errors': _('Error page number.')},
-                            status=403)
-
-    # Сериализация списка объектов в JSON-формат.
-    articles_list = paginator.get_page(page_num).object_list
-    articles_json = []
-    for article_item in articles_list:
-        articles_json.append(article_item.data_json())
-      
-    return JsonResponse(data={'articles': articles_json},
-                        status=200)
-
+        # Сериализация списка объектов в JSON-формат.
+        articles_list = paginator.get_page(page_num).object_list
+        articles_json = []
+        for article_item in articles_list:
+            articles_json.append(article_item.data_json())
+        
+        return JsonResponse(data={'articles': articles_json},
+                    status=200) 
 
 def article(request: HttpRequest, article_url: str) -> HttpResponse:
     """
