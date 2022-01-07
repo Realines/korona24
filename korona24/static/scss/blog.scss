@@ -116,28 +116,6 @@
             display: block;
             margin-bottom: 40px;
         }
-        ul {
-            margin-bottom: 30px;
-            li {
-                font-weight: 500;
-                font-size: 15px;
-                line-height: 150%;
-                color: #282626;
-                position: relative;
-                padding-left: 15px;
-                &:before {
-                    content: '';
-                    position: absolute;
-                    z-index: 1;
-                    width: 4px;
-                    height: 4px;
-                    border-radius: 50%;
-                    background-color: $black;
-                    left: 0;
-                    top: 10px;
-                }
-            }
-        }
     }
     &__socials {
         margin-top: 40px;
@@ -170,6 +148,60 @@
             &:not(:last-child) {
                 margin-right: 20px;
             }
+        }
+    }
+}
+
+li {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 150%;
+    color: #282626;
+    position: relative;
+    padding-left: 15px;
+}
+
+ul {
+    margin-bottom: 30px;
+    li {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 150%;
+        color: #282626;
+        position: relative;
+        padding-left: 15px;
+        &:before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: $black;
+            left: 0;
+            top: 10px;
+        }
+    }
+}
+
+ol {
+    counter-reset: num;
+    margin-bottom: 15px;
+    li {
+        &:before {
+            content: counter(num) ".";
+            counter-increment: num;
+            position: absolute;
+            min-width: 20px;
+            height: 23px;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 150%;
+            color: #282626;
+            left: 0;
+            top: 0;
+            display: flex;
+            align-items: center;
         }
     }
 }
@@ -252,15 +284,6 @@
                 font-size: 12px;
                 margin-bottom: 10px;
             }
-            ul {
-                margin-bottom: 10px;
-                li {
-                    font-size: 12px;
-                    &::before {
-                        top: 5px;
-                    }
-                }
-            }
         }
         &__socials {
             margin-top: 60px;
@@ -284,6 +307,24 @@
     .blog-page {
         .container {
             padding-bottom: 0;
+        }
+    }
+    ul {
+        margin-bottom: 10px;
+        li {
+            font-size: 12px;
+            &::before {
+                top: 5px;
+            }
+        }
+    }
+    li {
+        font-size: 12px;
+    }
+    ol {
+        li:before {
+            font-size: 12px;
+            height: 18px;
         }
     }
 }
