@@ -17,10 +17,7 @@ class TherapyInline(admin.StackedInline):
     model = models.Therapy
     extra = 0
 
-
-class InformationServiceInline(admin.StackedInline):
-    model = models.InformationService
-    extra = 0
+ 
 
 admin.site.register(models.PreviewService) 
 
@@ -29,6 +26,8 @@ class ServiceAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')
     list_display_links = ('name', )
     inlines = [
-        TherapyInline,
-        InformationServiceInline,
+        TherapyInline, 
     ] 
+    formfield_overrides = {
+        db_models.TextField: {'widget': MDEditorWidget}
+    }

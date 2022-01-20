@@ -2324,6 +2324,7 @@ body.openmodal, body.fixed-body {
   color: #282626;
   margin-bottom: 25px;
 }
+.blog-item__text h2,
 .blog-item__text h4 {
   font-weight: bold;
   font-size: 19px;
@@ -2331,7 +2332,6 @@ body.openmodal, body.fixed-body {
   color: #282626;
   margin-bottom: 25px;
 }
-.blog-item__text h2,
 .blog-item__text p,
 .blog-item__text h5 {
   font-weight: 500;

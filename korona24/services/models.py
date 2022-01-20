@@ -1,9 +1,10 @@
+
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.utils.translation import gettext_lazy as _
 from django.core import validators
 from django.urls import reverse
-
+from mdeditor.fields import MDTextField
 from markdown import markdown
 from blog.models import Article
 
@@ -51,7 +52,10 @@ class ServiceArticle(models.Model):
     title = models.TextField(
         verbose_name=_('Заголовок статьи'),
     )
-    description = models.TextField(
+    description_seo = models.TextField(
+        verbose_name=_('Описание для SEO'),
+    )
+    description = MDTextField(
         verbose_name=_('Описание'),
         help_text=_('Первый абзац статьи'),
     )
@@ -63,12 +67,8 @@ class ServiceArticle(models.Model):
     )
     alt_image = models.TextField(
         verbose_name=_('Описание изображения'),
-    )
-    image_description = models.TextField(
-        max_length=400,
-        verbose_name=_('Описание изображение статьи'),
-    )
-    information_markdown = models.TextField(
+    ) 
+    information_markdown = MDTextField(
         verbose_name=_('Основная информация'),
         help_text=_('Поддерживает markdown.'),
     )
@@ -82,19 +82,20 @@ class ServiceArticle(models.Model):
         related_query_name='service_article',
         verbose_name=_('Услуга'),
     )
-
+    
     class Meta:
         verbose_name = _('Статья об услуги')
         verbose_name_plural = _('Статьи об услуги')
 
     def save(self, *args, **kwargs):
         self.information_html = markdown(self.information_markdown)
+        self.description = markdown(self.description)
         super(ServiceArticle, self).save(*args, **kwargs)
 
     def get_absolute_url(self) -> str:
         return reverse('services:article',
                        args=(str(self.service.url), str(self.url), ))
-    
+     
     def data_json(self):
         return {
             'id': self.pk,
@@ -120,23 +121,41 @@ class Service(models.Model):
         verbose_name=_('Превью для главной'),
         related_name='service'
     )
-    name = models.TextField(
+    name = MDTextField(
         verbose_name=_('Название услуги'),
     )
-    description = models.TextField(
-        verbose_name=_('Описание услуги'),
+    description = MDTextField(
+        verbose_name=_('Описание услуги для SEO'),
+    )
+    text = MDTextField(
+        verbose_name=_('Текст услуги'),
     )
     title_price_block = models.TextField(
         verbose_name=_('Заголовок для блока цен'),
     )
-    description_price_block = models.TextField(
+    description_price_block = MDTextField(
         verbose_name=_('Описание для блока цен'),
     )
 
+    information_markdown = MDTextField(
+        verbose_name=_('Дополнительная информация об услуге'), 
+    )
+    information_html = models.TextField(
+        editable=False,
+    )
+    def save(self, *args, **kwargs):
+        self.information_markdown = markdown(self.information_markdown)
+        self.text = markdown(self.text)
+        self. description_price_block = markdown(self. description_price_block)
+        super(Service, self).save(*args, **kwargs)
     class Meta:
         verbose_name = _('Услуга')
         verbose_name_plural = _('Услуги')
-
+    def get_title_small(self):
+        title_small = self.name.replace('В КРАСНОЯРСКЕ','')
+        title_small = title_small.replace('в Красноярске','')
+        title_small = title_small.replace('ПОЛОСТИ РТА','')
+        return title_small.upper()
     def get_absolute_url(self) -> str:
         return reverse('services:service', args=(str(self.url), ))
 
@@ -151,49 +170,17 @@ class Therapy(models.Model):
     price = models.CharField(
         verbose_name=_('Цена'),
         max_length=10, 
-    )
-    description = models.TextField(
-        verbose_name=_('Описание'),
-        help_text=_('Необходимо для улучшения индексации страниц '
-                    'поисковыми роботами.'),
-    )
+    ) 
     service = models.ForeignKey(
         to=Service,
         on_delete=models.CASCADE,
         related_name='therapies',
         related_query_name='therapy',
     )
-
     class Meta:
         verbose_name = _('Лечение')
         verbose_name_plural = _('Виды лечения')
 
     def __str__(self) -> str:
         return str(self.name)
-
-
-class InformationService(models.Model):
-    information_markdown = models.TextField(
-        verbose_name=_('Дополнительная информация об услуге'),
-        help_text=_('Поддерживает markdown.'),
-    )
-    information_html = models.TextField(
-        editable=False,
-    )
-    service = models.OneToOneField(
-        to=Service,
-        on_delete=models.CASCADE,
-        related_name='information',
-        related_query_name='information',
-    )
-
-    class Meta:
-        verbose_name = _('Дополнительная информация')
-        verbose_name_plural = _('Дополнительная информация')
-
-    def save(self, *args, **kwargs):
-        self.information_html = markdown(self.information_markdown)
-        super(InformationService, self).save(*args, **kwargs)
-
-    def __str__(self) -> str:
-        return f'Информация услуги {self.pk}'
+ 

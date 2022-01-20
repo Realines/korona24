@@ -57,7 +57,7 @@ function AddNewComponentView(element)
     msgCompanent.find(".blog__item-img").attr('href', element.url);
     msgCompanent.find(".blog__item-title").attr('href', element.url); 
     msgCompanent.find(".blog__item-title").text(element.title); 
-    msgCompanent.find(".blog__item-desc").text(element.description); 
+    msgCompanent.find(".blog__item-desc").text(element.description);  
     components_view.push(msgCompanent)
 }
 function RemoveOldComponentsView() {

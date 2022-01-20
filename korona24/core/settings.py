@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=m^c-w0%mk_i-5j8x3bh@miq(gvr^$*377m&ma-^9rz5-1gm6h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 X_FRAME_OPTIONS = 'SAMEORIGIN' 
 # Application definition
@@ -145,6 +145,14 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# почты для получения писем
+# почта отправителя по умолчанию, та что верифицирована
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'                                                                           
+EMAIL_HOST ='mail.hosting.reg.ru'                                   
+EMAIL_PORT = 25                                                          
+EMAIL_HOST_USER = 'info@adrenaline-krsk.ru'                              
+EMAIL_HOST_PASSWORD = '!Adrenalin2022' #This is not your gmail password.
+EMAIL_USE_TLS = True
 
 MDEDITOR_CONFIGS = {
     'default':{

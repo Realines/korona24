@@ -292,7 +292,7 @@
                     <span>к нашим специалистам</span>
                 </div>
                 <div class="modal__desc">Заполните форму ниже и в ближайшее время с Вами свяжется наш специалист, чтобы уточнить подробности</div>
-                <form id="modal_app_form" class="modal__form">
+                <form id="modal_app_form" onsubmit="javascript:popapSend('modal1','modal_app_form','{% url 'main:send_app' %}',modal_succes_id='modal2',hide=6500); return false;" class="modal__form">
                     {% csrf_token %}
                     <div class="modal__form-group">
                         <label>Ваше имя</label>
@@ -335,28 +335,10 @@
     <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
     <script src="{% static 'js/swiper.js' %}"></script>
     <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'js/ajax.js' %}"></script>
     <script src="{% static 'js/index.js' %}"></script>
 
-    <script>
-        // Скрипт отправки формы через ajax.
-        // Будет связываться в блоке scripts с нужной формой.
-        let ajax_request_form = function() {
-            $.ajax({
-                url: "{% url 'main:send_app' %}",
-                method: "post",
-                dataType: "html",
-                data: $(this).serialize(),
-                success: function(data) {
-                    alert(data);
-                }
-            });
-            return false;
-        }
-
-        // Связывание формы в модальном окне со скриптом отправки.
-        $(document).ready(function() {
-            $("#modal_app_form").submit(ajax_request_form);
-        });
+    <script> 
     </script>
 
     {% block scripts %} {% endblock %}

@@ -8,8 +8,7 @@ from django.http import (
     Http404,
 )
 
-from .models import Service, ServiceArticle
-
+from .models import Service, ServiceArticle,PreviewService
 
 def services(request: HttpRequest) -> HttpResponse:
     """
@@ -18,8 +17,9 @@ def services(request: HttpRequest) -> HttpResponse:
     :param request: Объект запроса.
     :return: Объект ответа со страницей услуг.
     """
+    preview_services = PreviewService.objects.all()
 
-    context = {}
+    context = {'preview_services':preview_services}
 
     return render(request=request,
                   template_name='services/services.html',

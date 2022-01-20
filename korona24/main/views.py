@@ -11,7 +11,8 @@ from employees.models import Employee
 from comments.models import Comment
 from gallery.models import Gallery
 from .forms import ConsultationForm
-
+from .utility import application_send_mail
+from datetime import datetime 
 
 def index(request: HttpRequest) -> HttpResponse:
     """
@@ -60,7 +61,9 @@ def consultation_handler(request: HttpRequest) -> JsonResponse:
                                   'msg': _('Form submission error')},
                             status=403,
                             json_dumps_params={'ensure_ascii': False})
+                              
 
+    application_send_mail(f"Клиент: {form.cleaned_data['client_name']} Номер: {form.cleaned_data['phone_number']} Дата заявки: {datetime.now()}",'vlasovspk@yandex.ru')
     return JsonResponse(data={'msg': _('OK')},
                         status=201,
                         json_dumps_params={'ensure_ascii': False})
