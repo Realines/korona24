@@ -1,6 +1,13 @@
 .header {
+    padding-top: 64px;
     &-top {
         border-bottom: 1px solid #E1E1E1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        z-index: 20;
         &__inner {
             padding: 13px 0;
             @extend %flex-between;
@@ -279,6 +286,7 @@
         width: 100%;
         margin-top: 40px;
         border-bottom: none;
+        position: relative;
         &__inner {
             padding: 0;
             flex-wrap: wrap;

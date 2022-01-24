@@ -325,8 +325,17 @@ body.openmodal, body.fixed-body {
     font-size: 12px;
   }
 }
-.header-top { 
+.header {
+  padding-top: 64px;
+}
+.header-top {
   border-bottom: 1px solid #E1E1E1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 20;
 }
 .header-top__inner {
   padding: 13px 0;
@@ -585,6 +594,7 @@ body.openmodal, body.fixed-body {
     width: 100%;
     margin-top: 40px;
     border-bottom: none;
+    position: relative;
   }
   .header-top__inner {
     padding: 0;
@@ -2324,7 +2334,6 @@ body.openmodal, body.fixed-body {
   color: #282626;
   margin-bottom: 25px;
 }
-.blog-item__text h2,
 .blog-item__text h4 {
   font-weight: bold;
   font-size: 19px;
@@ -2332,6 +2341,7 @@ body.openmodal, body.fixed-body {
   color: #282626;
   margin-bottom: 25px;
 }
+.blog-item__text h2,
 .blog-item__text p,
 .blog-item__text h5 {
   font-weight: 500;
