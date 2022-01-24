@@ -217,8 +217,15 @@ $(document).ready(function() {
     $(".header__service-btn").click(function() {
         $(this).toggleClass("header__service-btn--active")
     })
+    let current_price = $(".price__item-show").first()
+    console.log(current_price)
+    current_price.addClass("price__item-show--active")
+    $(".price__item-hidden").slideUp()
+    current_price.siblings(".price__item-hidden").slideDown()
+    
 
     $(".price__item-show").click(function() {
+         
         if ($(this).hasClass("price__item-show--active")) {
             $(this).removeClass("price__item-show--active")
             $(this).siblings(".price__item-hidden").slideUp()

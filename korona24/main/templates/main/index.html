@@ -88,7 +88,7 @@
             {% for preview in main_services %}
             <div class="service__item">
                 <p class="service__item-title text-druk">
-                    {{ preview.name | safe }}
+                    {{ preview.get_title_span | safe }}
                 </p>
                 <ul class="service__item-list">
                     {{ preview.description | safe }}
@@ -186,7 +186,7 @@
 <section class='zone'>
     <div class='container'>
         <div class='zone__top'>
-            <h2 class="zone__title">
+            <h2 class="title2">
                 зона максимального <br> <span>комфорта</span>
             </h2>
             <a href="http://vr.korona24.ru/" class="zone__link">
@@ -259,39 +259,8 @@
         </div>
     </div>
 </section>
-
-<section class='make-order'>
-    <div class='container'>
-        <div class='make-order__inner'>
-
-            <h2 class="make-order__title title2">
-                Запишитесь на <br> консультацию <span>к нашим <br> специалистам</span>
-            </h2>
-            <div class="make-order__desc">Заполните форму ниже и в ближайшее время с Вами <br> свяжется наш специалист, чтобы уточнить подробности</div>
-        <form id="application_form" onsubmit="javascript:popapSend('modal1','application_form','{% url 'main:send_app' %}',modal_succes_id='modal2',hide=6500); return false;" class="make-order__form">
-                {% csrf_token %}
-                <div class="make-order__form-group">
-                    <label for="">Ваше имя</label>
-                    <input name="client_name" type="text" placeholder="Ввведите имя">
-                </div>
-                <div class="make-order__form-group">
-                    <label for="">Ваш телефон</label>
-                    <input name="phone_number" type="tel" placeholder="Введите телефон">
-                </div>
-                <div class="make-order__form-group">
-                    <button class="make-order__form-btn btn-brown">Отправить запрос</button>
-                </div>
-                <div class="make-order__form-group">
-                    <div class="make-order__form-hint">
-                        Нажимая кнопку “Отправит запрос” вы подстверждаете свое <a href="">согласие на обработку персональных данных</a>
-                    </div>
-                </div>
-            </form>
-            <img src="{% static 'img/girl2.png' %}" alt="Улыбающаяся девушка" class="make-order__bg">
-        </div>
-    </div>
-</section>
-
+ 
+{% include 'main/application.html' %} 
 <section class='feedback'>
     <div class='container'>
         <div class="feedback__top">

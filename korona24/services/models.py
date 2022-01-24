@@ -1,4 +1,5 @@
 
+from re import T
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.utils.translation import gettext_lazy as _
@@ -31,7 +32,16 @@ class PreviewService(models.Model):
         verbose_name=_('Показать на главной'),
         default=False,
     )
-
+    def get_title_span(self):
+        title_words = self.name.split('\n')
+        #print(title_words)
+        for i in range(len(title_words)):
+            if(i > 0):
+                title_words[i] = f" <span>{title_words[i]}</span>"
+       
+        title_small = '\n'.join(title_words) 
+        #print(title_small.split(' '))
+        return title_small 
     class Meta:
         verbose_name = _('Предпросмотр услуги на главной (4 блока)')
         verbose_name_plural = _('Предпросмотр услуги')
@@ -152,10 +162,10 @@ class Service(models.Model):
         verbose_name = _('Услуга')
         verbose_name_plural = _('Услуги')
     def get_title_small(self):
-        title_small = self.name.replace('В КРАСНОЯРСКЕ','')
-        title_small = title_small.replace('в Красноярске','')
-        title_small = title_small.replace('ПОЛОСТИ РТА','')
-        return title_small.upper()
+        title_small = self.name.replace('В КРАСНОЯРСКЕ','').lower()
+        title_small = title_small.replace('в красноярске','')
+        title_small = title_small.replace('полости рта','')
+        return title_small.capitalize()
     def get_absolute_url(self) -> str:
         return reverse('services:service', args=(str(self.url), ))
 

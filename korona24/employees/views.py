@@ -20,7 +20,7 @@ def employee(request: HttpRequest, employee_url: str) -> HttpResponse:
     """
 
     current_employee = get_object_or_404(Employee, url=employee_url)
-    employees_set = Employee.objects.all()
+    employees_set = Employee.objects.exclude(id =  current_employee.id)
 
     context = {
         'current_employee': current_employee,

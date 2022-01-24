@@ -325,7 +325,7 @@ body.openmodal, body.fixed-body {
     font-size: 12px;
   }
 }
-.header-top {
+.header-top { 
   border-bottom: 1px solid #E1E1E1;
 }
 .header-top__inner {

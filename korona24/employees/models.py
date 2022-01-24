@@ -48,8 +48,11 @@ class Employee(models.Model):
         return reverse('employees:employee', args=(str(self.url), ))
 
     def save(self, *args, **kwargs):  
+            print(self.avatar_small)
+            if(self.avatar_small is not None): 
+                super().save(*args, **kwargs)
+                return
             new_image = utility.compress(self.avatar)
-             
             self.avatar_small = new_image
             super().save(*args, **kwargs)
 
