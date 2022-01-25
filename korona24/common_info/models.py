@@ -51,46 +51,13 @@ class SiteSettings(SingletonModel):
         return str(self.__class__._meta.verbose_name)
 
 
-class SocialNetwork(models.Model):
-    """
-    Модель социальной сети для общих настроек сайта.
-    Используется со связью многие к одному (многие соц.
-    сети к одной настройке сайта).
-    """
-
-    icon = models.ImageField(
-        upload_to='sys/social_networks_icons',
-        verbose_name=_('Иконка социальной сети'),
-    )
-    name = models.TextField(
-        verbose_name=_('Название соц. сети'),
-    )
-    url = models.URLField(
-        verbose_name=_('Ссылка на соц. сеть'),
-    )
-    site_settings = models.ForeignKey(
-        to=SiteSettings,
-        on_delete=models.CASCADE,
-        related_name='social_networks',
-        related_query_name='social_network',
-    )
-
-    class Meta:
-        """Настройки модели"""
-        verbose_name = _('Социальная сеть')
-        verbose_name_plural = _('Социальные сети')
-
-    def __str__(self) -> str:
-        return str(self.name)
-
-
 class PhoneAndAddress(models.Model):
     """Модель для хранения телефонов и адресов"""
 
     address = models.TextField(
         verbose_name=_('Адрес'),
     )
-    phone_number = models.TextField(  # TODO: Реализовать валидацию номера телефона.
+    phone_number = models.TextField( 
         verbose_name=_('Номер телефона'),
     )
     site_settings = models.ForeignKey(

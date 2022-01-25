@@ -23,6 +23,10 @@ class Comment(models.Model):
         default='comments/default.png',
         blank=True,
     )
+    title = models.CharField(
+        max_length=30,
+        verbose_name=_('Заголовок комментария клиента'),
+    )
     text = models.TextField(
         verbose_name=_('Комментарий клиента'),
     )
@@ -43,10 +47,14 @@ class Comment(models.Model):
         choices=Status.choices,
         default=Status.ON_MODERATION,
     )
-
+    def get_estimate_to_list(self):
+        fackes_list = []
+        for i in range(self.estimate):
+            fackes_list.append('1')
+        return fackes_list
     class Meta:
-        verbose_name = _('Комментарий')
-        verbose_name_plural = _('Комментарии')
+        verbose_name = _('Отзывы')
+        verbose_name_plural = _('Отзывы')
         ordering = ['-date_added']
         get_latest_by = 'date_added'
 

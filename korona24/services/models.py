@@ -101,7 +101,11 @@ class ServiceArticle(models.Model):
         self.information_html = markdown(self.information_markdown)
         self.description = markdown(self.description)
         super(ServiceArticle, self).save(*args, **kwargs)
-
+    def get_title_small(self):
+        title_small = self.title.replace('В КРАСНОЯРСКЕ','').lower()
+        title_small = title_small.replace('в красноярске','')
+        title_small = title_small.replace('полости рта','')
+        return title_small.capitalize()
     def get_absolute_url(self) -> str:
         return reverse('services:article',
                        args=(str(self.service.url), str(self.url), ))

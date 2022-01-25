@@ -23,14 +23,20 @@ def index(request: HttpRequest) -> HttpResponse:
     """
     all_discount = Discount.objects.all()
     all_services = Service.objects.all()
+    footer_services =  Service.objects.all()[:5]
+    footer_services_2 = []
+    for service in all_services:
+        if(service not in footer_services): 
+            footer_services_2.append(service) 
     preview_services = PreviewService.objects.all()
     gallery_set = Gallery.objects.all()[:6]
     employees_set = Employee.objects.all()
-    comments_set = Comment.objects.filter(status=Comment.Status.APPROVED)
-
+    comments_set = Comment.objects.filter(status=Comment.Status.APPROVED) 
     context = {'all_discount': all_discount.filter(show_on_main=True),
                'main_services': preview_services.filter(show_on_main=True)[:4],
                'all_services': all_services,
+               'footer_services': footer_services,
+               'footer_services_2': footer_services_2,
                'gallery': gallery_set,
                'employees': employees_set,
                'comments': comments_set}

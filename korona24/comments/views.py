@@ -7,7 +7,7 @@ from django.http import (
 from django.utils.translation import gettext as _
 
 from .forms import CommentForm
-
+from .models import Comment
 
 def comments(request: HttpRequest) -> HttpResponse:
     """
@@ -17,7 +17,8 @@ def comments(request: HttpRequest) -> HttpResponse:
     :return: Объект ответа со страницей отзывов.
     """
 
-    context = {}
+    comments_set = Comment.objects.filter(status=Comment.Status.APPROVED) 
+    context = {'comments':comments_set}
 
     return render(request=request,
                   template_name='comments/comments.html',

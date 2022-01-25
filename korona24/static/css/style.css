@@ -1600,10 +1600,11 @@ body.openmodal, body.fixed-body {
   color: #C39F7B;
 }
 .footer__socials {
-  display: flex;
+  display: flex; 
   align-items: center;
-  justify-content: space-between;
-  margin-top: 128px;
+  justify-content: flex-start;
+  margin-top: 64px;
+  gap: 10px;
 }
 .footer__socials a:hover path {
   fill: #E4C29F;
@@ -1628,7 +1629,8 @@ body.openmodal, body.fixed-body {
   color: #C39F7B;
 }
 .footer__bottom {
-  margin-top: 95px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   display: flex;
   justify-content: center;
 }
@@ -2163,12 +2165,14 @@ body.openmodal, body.fixed-body {
   .footer__phone {
     margin-top: 12px;
   }
-  .footer__socials {
-    margin-top: 0;
+  .footer__socials { 
     justify-content: flex-start;
-  }
+    margin-right: 34px;
+   
+  }   
   .footer__socials-item:not(:last-child) {
     margin-right: 34px;
+    padding-right: 10px;
   }
   .footer__center {
     margin-top: 80px;

@@ -1,16 +1,11 @@
 from django.contrib import admin
 
 from .models import (
-    SiteSettings,
-    SocialNetwork,
+    SiteSettings, 
     PhoneAndAddress,
 )
 from utils.models.singleton_model import SingletonModelAdmin
-
-
-class SocialNetworkInline(admin.StackedInline):
-    model = SocialNetwork
-    extra = 0
+ 
 
 
 class PhoneAndAddressInline(admin.StackedInline):
@@ -37,7 +32,6 @@ class SiteSettingsAdmin(SingletonModelAdmin):
         'count_doctors',
         'count_patients',
     )
-    inlines = (
-        SocialNetworkInline,
+    inlines = ( 
         PhoneAndAddressInline,
     )
