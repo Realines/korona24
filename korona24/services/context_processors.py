@@ -17,5 +17,11 @@ def get_all_services(request: HttpRequest) -> Dict[str, Any]:
     """
 
     all_services = Service.objects.all()
-
-    return {'all_services': all_services}
+    footer_services =  Service.objects.all()[:5]
+    footer_services_2 = []
+    for service in all_services:
+        if(service not in footer_services): 
+            footer_services_2.append(service) 
+    return {'all_services': all_services,
+            'footer_services': footer_services,
+            'footer_services_2': footer_services_2,}

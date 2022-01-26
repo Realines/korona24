@@ -62,12 +62,18 @@ class ServiceArticle(models.Model):
     title = models.TextField(
         verbose_name=_('Заголовок статьи'),
     )
-    description_seo = models.TextField(
-        verbose_name=_('Описание для SEO'),
-    )
     description = MDTextField(
         verbose_name=_('Описание'),
         help_text=_('Первый абзац статьи'),
+    )
+
+    title_seo = models.TextField(
+        verbose_name=_('Заголовок статьи для SEO'),
+        null=True,
+        blank=True
+    )
+    description_seo = models.TextField(
+        verbose_name=_('Описание для SEO'),
     )
     image = models.ImageField(
         upload_to='sys/article_images/',
@@ -100,6 +106,8 @@ class ServiceArticle(models.Model):
     def save(self, *args, **kwargs):
         self.information_html = markdown(self.information_markdown)
         self.description = markdown(self.description)
+        if(len(self.title_seo) == 0):
+            self.title_seo = self.title
         super(ServiceArticle, self).save(*args, **kwargs)
     def get_title_small(self):
         title_small = self.title.replace('В КРАСНОЯРСКЕ','').lower()
@@ -138,6 +146,11 @@ class Service(models.Model):
     name = MDTextField(
         verbose_name=_('Название услуги'),
     )
+    name_seo = models.TextField(
+        verbose_name=_('Заголовок статьи для SEO'),
+        null=True,
+        blank=True
+    )
     description = MDTextField(
         verbose_name=_('Описание услуги для SEO'),
     )
@@ -161,6 +174,8 @@ class Service(models.Model):
         self.information_markdown = markdown(self.information_markdown)
         self.text = markdown(self.text)
         self. description_price_block = markdown(self. description_price_block)
+        if(len(self.name) == 0):
+            self.name_seo = self.name
         super(Service, self).save(*args, **kwargs)
     class Meta:
         verbose_name = _('Услуга')

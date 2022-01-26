@@ -2,9 +2,9 @@
 {% load static %}
 
 
-{% block title %} {{ current_article.title }}{% endblock %}
+{% block title %} {{ current_article.title_seo }}{% endblock %}
 {% block description %}
-<meta name="description" content="{{ current_article.description }}"> {% endblock %}  
+<meta name="description" content="{{ current_article.description_seo }}"> {% endblock %}  
 
 {% block content %}
 
@@ -20,7 +20,7 @@
                 <div class='blog-item__text'>
                     <h1 class="title3">{{ current_article.title }}</h1>
                     <p>{{ current_article.description  |safe }}</p> 
-                    <img  src="{{ current_article.image.url }}" alt="{{ current_article.alt_image }}">
+                    <img style="width: 50%;" src="{{ current_article.image.url }}" alt="{{ current_article.alt_image }}">
                     <div>{{ current_article.information_html|safe }}</div>
                 </div> 
             </div>

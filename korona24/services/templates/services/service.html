@@ -2,7 +2,7 @@
 
 {% load static %} 
 
-{% block title %} Услуги{% endblock %}
+{% block title %} {{ current_service.name_seo }}{% endblock %}
 {% block description %}
 <meta name="description" content="{{ current_service.description }}"> {% endblock %} {% block content %}
 

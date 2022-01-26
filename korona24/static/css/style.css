@@ -892,8 +892,7 @@ body.openmodal, body.fixed-body {
 }
 .mission__inner {
   padding: 60px 70px;
-  background-color: #C39F7B;
-  background: #CDB094;
+  background-color: #C39F7B; 
   position: relative;
 }
 .mission__title {
