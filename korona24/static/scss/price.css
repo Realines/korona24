@@ -1,0 +1,87 @@
+.price {
+  padding: 73px 0; }
+  .price__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .price__desc {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 150%;
+    color: #282626;
+    width: 370px;
+    flex-shrink: 0;
+    margin-left: 115px; }
+  .price__items {
+    margin-top: 74px; }
+  .price__item {
+    margin-top: 1px; }
+    .price__item-show {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 70px;
+      height: 70px;
+      background: #C39F7B;
+      cursor: pointer; }
+      .price__item-show:hover {
+        background: #A58668;
+        transition: all .3s; }
+      .price__item-show i {
+        transition: all .2s; }
+    .price__item-show--active i {
+      transform: rotate(180deg); }
+    .price__item-title {
+      font-size: 21px;
+      line-height: 140%;
+      text-transform: uppercase;
+      color: #FFFFFF; }
+    .price__item-hidden {
+      font-weight: 500;
+      font-size: 15px;
+      color: #282626;
+      background: #F7F7F7;
+      display: none; }
+      .price__item-hidden-item {
+        padding: 20px 90px 20px 70px;
+        min-height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 500;
+        font-size: 15px;
+        color: #282626; }
+        .price__item-hidden-item:not(:last-child) {
+          border-bottom: 1px solid #DBDBDB; }
+        .price__item-hidden-item strong {
+          font-weight: bold;
+          white-space: nowrap;
+          margin-left: 40px; }
+
+@media screen and (max-width: 1200px) {
+  .price {
+    padding: 40px 0; }
+    .price__top {
+      display: block; }
+    .price__desc {
+      margin-left: 0;
+      margin-top: 30px;
+      width: 100%; } }
+@media screen and (max-width: 992px) {
+  .price__desc {
+    font-size: 12px; }
+  .price__items {
+    margin-top: 40px; }
+  .price__item-show {
+    padding: 0 20px;
+    height: 42px; }
+    .price__item-show svg {
+      width: 12px; }
+  .price__item-title {
+    font-size: 9px; }
+  .price__item-hidden-item {
+    padding: 12px 20px;
+    min-height: 53px;
+    font-size: 10px; } }
+
+/*# sourceMappingURL=price.css.map */

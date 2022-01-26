@@ -892,7 +892,8 @@ body.openmodal, body.fixed-body {
 }
 .mission__inner {
   padding: 60px 70px;
-  background-color: #C39F7B; 
+  background-color: #C39F7B;
+  background: #CDB094;
   position: relative;
 }
 .mission__title {
@@ -1599,11 +1600,10 @@ body.openmodal, body.fixed-body {
   color: #C39F7B;
 }
 .footer__socials {
-  display: flex; 
+  display: flex;
   align-items: center;
-  justify-content: flex-start;
-  margin-top: 64px;
-  gap: 10px;
+  justify-content: space-between;
+  margin-top: 128px;
 }
 .footer__socials a:hover path {
   fill: #E4C29F;
@@ -1628,8 +1628,7 @@ body.openmodal, body.fixed-body {
   color: #C39F7B;
 }
 .footer__bottom {
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin-top: 95px;
   display: flex;
   justify-content: center;
 }
@@ -2164,14 +2163,12 @@ body.openmodal, body.fixed-body {
   .footer__phone {
     margin-top: 12px;
   }
-  .footer__socials { 
+  .footer__socials {
+    margin-top: 0;
     justify-content: flex-start;
-    margin-right: 34px;
-   
-  }   
+  }
   .footer__socials-item:not(:last-child) {
     margin-right: 34px;
-    padding-right: 10px;
   }
   .footer__center {
     margin-top: 80px;
@@ -2359,10 +2356,15 @@ body.openmodal, body.fixed-body {
   text-decoration-line: underline;
   color: #C39F7B;
 }
+.blog-item__text h2 {
+  font-weight: 700;
+  font-size: 18px;
+}
 .blog-item__text h5 {
   margin-bottom: 15px;
 }
-.blog-item__text img {
+.blog-item__text img,
+.blog-item__text iframe {
   width: 100%;
   display: block;
   margin-bottom: 40px;
@@ -3939,3 +3941,5 @@ html[impaired="true"] .footer__address svg,
 html[impaired="true"] .footer__phone svg {
   display: none;
 }
+
+/*# sourceMappingURL=style.css.map */
