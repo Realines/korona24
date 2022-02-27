@@ -20,9 +20,28 @@ from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db.models import Q
 import json
-from .models import Category, Page 
+from .models import Category, Page  
+from employees.models import Employee
 
+def employees(request: HttpRequest) -> HttpResponse:
+    """
+    Функция-контроллер страницы "Списка сотрудников".
 
+    :param request: Объект запроса.
+    :return: Объект ответа со страницей "О нас".
+    """
+    all_category = Category.objects.all()
+    employees_set = Employee.objects.all()
+    all_pages = Page.objects.filter(show_on_main=True)
+    context = { 
+        'all_category': all_category,
+        'all_pages': all_pages,
+        'employees': employees_set
+    } 
+
+    return render(request=request,
+                  template_name='pages/employes.html',
+                  context=context)
 def about(request: HttpRequest) -> HttpResponse:
     """
     Функция-контроллер страницы "О нас".

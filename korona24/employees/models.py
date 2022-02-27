@@ -3,6 +3,8 @@ from django.utils.translation import gettext_lazy as _
 from django.core import validators
 from django.urls import reverse
 from main import utility
+from image_cropping import ImageRatioField
+from image_cropping.utils import get_backend 
 
 class Employee(models.Model):
     url = models.TextField(
@@ -34,10 +36,12 @@ class Employee(models.Model):
         verbose_name=_('Маленькая Аватар сотрудника'),
         default='sys/employee_avatars/default.png',
         help_text=_('Автоматически добавляется при добавление основого, вы можете изменить его'),
-        blank=True, 
+        blank=True,  
+        editable=False
     )
+    cropping = ImageRatioField('avatar', '270x360',verbose_name=_('Маленькая Аватар сотрудника'))
     alt_avatar = models.TextField(
-        verbose_name=_('Описание аватара'),
+        verbose_name=_('Описание аватара')
     )
 
     class Meta:
@@ -48,12 +52,11 @@ class Employee(models.Model):
         return reverse('employees:employee', args=(str(self.url), ))
 
     def save(self, *args, **kwargs):  
-            print(self.avatar_small)
-            if(self.avatar_small is not None): 
-                super().save(*args, **kwargs)
-                return
-            new_image = utility.compress(self.avatar)
+            print(self.avatar_small) 
+            print(self.cropping)  
+            new_image = utility.cropping(self.avatar,self.cropping,quality=70)  
             self.avatar_small = new_image
+            
             super().save(*args, **kwargs)
 
     def __str__(self) -> str:

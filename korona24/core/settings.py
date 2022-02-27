@@ -10,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
+from pathlib import Path 
+from easy_thumbnails.conf import Settings as thumbnail_settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'global_setting.apps.GlobalSettingConfig',
+    'django_img_mobile_vv',
+    'global_setting.apps.GlobalSettingConfig', 
     'main.apps.MainConfig',
     'blog.apps.BlogConfig',
     'comments.apps.CommentsConfig',
@@ -47,6 +49,8 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'visual_version_handler.apps.VisualVersionHandlerConfig',
     'mdeditor',
+    'easy_thumbnails',
+    'image_cropping',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +60,8 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware', 
+    'django_img_mobile_vv.middleware.UserAgentMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -72,7 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'visual_version_handler.context_processors.visually_impaired',
+                'visual_version_handler.context_processors.visually_impaired', 
                 'services.context_processors.get_all_services',
                 'global_setting.context_processors.get_site_settings',
             ],
@@ -135,7 +140,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
-
+# tag static_img - оптимизация фото для мобильной версии сайта
+STATIC_IMG_PREFIX = '-min'
 # Media files.
 MEDIA_URL = '/media/'
 
@@ -183,3 +189,6 @@ MDEDITOR_CONFIGS = {
         'language': 'en'  # zh / en / es 
     }
 }
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS

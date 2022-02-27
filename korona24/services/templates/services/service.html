@@ -2,9 +2,20 @@
 
 {% load static %} 
 
-{% block title %} {{ current_service.name_seo }}{% endblock %}
+{% block title %}{{ current_service.name_seo }}{% endblock %}
 {% block description %}
-<meta name="description" content="{{ current_service.description }}"> {% endblock %} {% block content %}
+<meta name="description" content="{{ current_service.description }}"> 
+<meta property="og:site_name" content="Статьи СК «Корона»">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:type" content="WebSite">
+<meta property="og:title" content="{{ current_service.name_seo }}">
+<meta property="og:description" content="{{ current_service.description }}">
+<meta property="og:image" content="1">
+<meta property="og:image:width" content="968">
+<meta property="og:image:height" content="504">
+<meta property="og:url" content="https://korona24.ru/">
+{% endblock %} 
+{% block content %}
 
 
 
@@ -17,16 +28,16 @@
             <span>Назад</span>
         </a>
         <div class='service-page__inner'>
-            <div class="service-page__sidebar">
-                <h3 class="service-page__title">Категории</h3>
+            <div id="category" class="service-page__sidebar">
+                <h3  class="service-page__title">Категории</h3>
                 <div class="service-page__sidebar-items">
                     {% for service in all_services %}
                     <a href="{{ service.get_absolute_url }}" class="service-page__sidebar-item">
                         <span>{{ service.get_title_small }}</span>
                         <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
-                            </svg>
-                    </a>
+                            </svg>  
+                    </a> 
                     {% endfor %}
                 </div> 
             </div>

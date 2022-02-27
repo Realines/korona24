@@ -8,3 +8,4 @@ from .models import SiteSetting
 
 def get_site_settings(request: HttpRequest) -> Dict[str, Any]:
     return {'site_settings': SiteSetting.objects.first()}
+

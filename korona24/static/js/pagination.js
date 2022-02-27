@@ -6,10 +6,26 @@ $(document).ready(function() {
     UpdatePage('pagination/',1)
 });
 
-function UpdateNumberPageView() { 
-    $("a[id=page_number_1]").text(current_page-1)
-    $("a[id=page_number_2]").text(current_page)
-    $("a[id=page_number_3]").text(current_page+1) 
+function UpdateNumberPageView(page_max) { 
+    console.log(1111111111)
+    console.log(page_max)
+    if(page_max <= 2)
+    { 
+        
+        $("a[id=page_number_1]").hide() 
+        $("a[id=page_number_2]").hide() 
+        $("a[id=page_number_3]").hide()  
+    }
+    else
+    {
+        
+        $("a[id=page_number_1]").show()
+        $("a[id=page_number_2]").show()
+        $("a[id=page_number_3]").show()
+        $("a[id=page_number_1]").text(current_page-1)
+        $("a[id=page_number_2]").text(current_page)
+        $("a[id=page_number_3]").text(current_page+1) 
+    }
 }
 
 function BackPage(url) {
@@ -28,8 +44,8 @@ function UpdatePage(url,new_page){
     AjaxJsonRequest(url,data,function (response) { // получение данных новой страницы
           console.log(response)
           UpdateComponents(response.articles)
+          UpdateNumberPageView(response.page_max)
     },method='GET');
-    UpdateNumberPageView()
 }
 function UpdateComponents(components)
 { 

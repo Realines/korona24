@@ -8,6 +8,7 @@ from django.utils.translation import gettext as _
 
 from .forms import CommentForm
 from .models import Comment
+from main.utility import application_send_mail
 
 def comments(request: HttpRequest) -> HttpResponse:
     """
@@ -46,7 +47,8 @@ def comments_handler(request: HttpRequest) -> JsonResponse:
                                   'msg': _('Form submission error')},
                             status=403,
                             json_dumps_params={'ensure_ascii': False})
-
+    
+    application_send_mail(f"Клиент: {form.cleaned_data['client_name']} Номер: {form.cleaned_data['phone_number']} Отзыв: {form.cleaned_data['text']}",'missis.korona@mail.ru', subject=f"Новый отзыв! Клиент: {form.cleaned_data['client_name']}")
     return JsonResponse(data={'msg': _('OK')},
                         status=201,
                         json_dumps_params={'ensure_ascii': False})

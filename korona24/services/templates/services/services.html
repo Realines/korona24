@@ -5,6 +5,15 @@
 
 {% block description %}
 <meta name="description" content="Профессиональные услуги врачей-стоматологов в Красноярске в клинике Корона."> 
+<meta property="og:site_name" content="Услуги СК «Корона»">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:type" content="WebSite">
+<meta property="og:title" content="Профессиональные услуги врачей-стоматологов в Красноярске Корона.">
+<meta property="og:description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!">
+<meta property="og:image" content="1">
+<meta property="og:image:width" content="968">
+<meta property="og:image:height" content="504">
+<meta property="og:url" content="https://korona24.ru/">
 {% endblock %} 
 
 
@@ -17,13 +26,13 @@
         <h1 class="services__title title">Услуги</h1>
         <div class='services__items'>
             {% for preview_service in preview_services %}
-            <div class="services__item">
+            <div class="services__item" onclick="location.href='{{ preview_service.service.get_absolute_url }}';">
                 <div class="services__item-icon">
                     <img src="{{ preview_service.icon.url }}" alt="{{ preview_service.alt_image }}">
                 </div>
                 <div class="services__item-title">{{ preview_service.name }}</div>
                 <a href="{{ preview_service.service.get_absolute_url }}" class="services__item-link">Подробнее</a>
-            </div>
+            </div>  
             {% endfor %}
         </div>
     </div>

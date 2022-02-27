@@ -48,8 +48,9 @@ function GetAjaxData(url,data, callbackSucces) {
      }); 
 } 
 
-function popapSend(modal_id,form_id,url,modal_succes_id=null,hide=6500){
-    console.log('test')
+function popapSend(modal_id,form_id,url,modal_succes_id=null,hide=6500){ 
+    
+    if(!isValidPhone) return;
     sendAjaxForm(form_id,url,function(response){$("#" + form_id).reset()})  
     $("#" + modal_id).modal("hide")
     if(modal_succes_id != null){   

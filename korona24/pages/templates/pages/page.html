@@ -2,7 +2,17 @@
 {% load static %} 
 {% block title %} {{current_page.title}} {% endblock %} 
 {% block description %} 
-<meta name="description" content="{{current_page.description}} "> {% endblock %} 
+<meta name="description" content="{{current_page.description}} "> 
+<meta property="og:site_name" content="СК «Корона»">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:type" content="WebSite">
+<meta property="og:title" content="{{current_page.title}}">
+<meta property="og:description" content="{{current_page.description}}">
+<meta property="og:image" content="1">
+<meta property="og:image:width" content="968">
+<meta property="og:image:height" content="504">
+<meta property="og:url" content="https://korona24.ru/">
+{% endblock %} 
 {% block content %}
 
 
@@ -15,7 +25,7 @@
             <span>Назад</span>
         </a>
         <div class='service-page__inner'>
-            <div class="service-page__sidebar">
+            <div id="category" class="service-page__sidebar">
                 <h3 class="service-page__title">Категории</h3>
                 <div class="service-page__sidebar-items">
                     {% for page in all_pages %}
@@ -60,6 +70,6 @@
         </div>
     </div>
 </section>
-
+{% include 'main/application.html' %} 
 
 {% endblock %}

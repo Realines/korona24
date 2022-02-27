@@ -44,7 +44,33 @@ def service(request: HttpRequest, service_url: str) -> HttpResponse:
                   template_name='services/service.html',
                   context=context)
 
+def service_parrent_article(request: HttpRequest, service_url: str
+                    ,parrent_url: str
+                    ,article_url: str) -> HttpResponse:
+    """
+    Функция-контроллер страницы статьи об услуги.
 
+    :param request: Объект запроса.
+    :param service_url: url услуги.
+    :param article_url: url статьи услуги.
+    :return: Объект ответа со страницей услуги.
+    """
+
+    # Ищем статью с указанным url услуги и url самой статьи.
+    current_article = ServiceArticle.objects.filter(service__url=service_url,
+                                                    url=article_url).first()
+    # Если такой статьи не нашлось - возвращаем 404.
+    if current_article is None:
+        raise Http404
+
+    context = {
+        'current_article': current_article,
+    }
+
+    return render(request=request,
+                  template_name='services/service_article.html',
+                  context=context)
+ 
 def service_article(request: HttpRequest, service_url: str,
                     article_url: str) -> HttpResponse:
     """
@@ -70,7 +96,7 @@ def service_article(request: HttpRequest, service_url: str,
     return render(request=request,
                   template_name='services/service_article.html',
                   context=context)
-
+ 
 
 def prices(request: HttpRequest) -> HttpResponse:
     """

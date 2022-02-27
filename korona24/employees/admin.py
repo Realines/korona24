@@ -1,5 +1,6 @@
 from django.contrib import admin
 from . import models
+from image_cropping import ImageCroppingMixin
 
 
 class EducationInline(admin.StackedInline):
@@ -16,9 +17,9 @@ class EmployeeInfoInline(admin.StackedInline):
     model = models.EmployeeInfo
     extra = 0
 
-
+ 
 @admin.register(models.Employee)
-class EmployeeAdmin(admin.ModelAdmin):
+class EmployeeAdmin(ImageCroppingMixin,admin.ModelAdmin):
     list_display = ('name', 'position')
     list_display_links = ('name', )
     inlines = [

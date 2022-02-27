@@ -3,9 +3,19 @@
 {% load static %} 
 
 
-{% block title %} Статья {% endblock %} 
+{% block title %} {{ current_article.title }} {% endblock %} 
 {% block description %} 
-<meta name="description" content="{{ current_article.description }} "> {% endblock %} 
+<meta name="description" content="{{ current_article.description }} "> 
+<meta property="og:site_name" content="Статьи СК «Корона»">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:type" content="WebSite">
+<meta property="og:title" content="Интересные публикации Стоматологии в Красноярске Корона.">
+<meta property="og:description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!">
+<meta property="og:image" content="1">
+<meta property="og:image:width" content="968">
+<meta property="og:image:height" content="504">
+<meta property="og:url" content="https://korona24.ru/">
+{% endblock %} 
 
 
 {% block content %}

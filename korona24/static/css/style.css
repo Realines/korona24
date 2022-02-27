@@ -28,6 +28,43 @@
   align-items: center;
 }
 
+/* Скролл кнопки до шапки */
+.body_scroll_head {
+  background: rgba(215, 215, 215, 0.22);
+  backdrop-filter: blur(14px);
+  width: 68px;
+  height: 68px;
+  position: fixed;
+  bottom: 2%;
+  right: 1%;
+  border-radius: 90px;
+  z-index: 8;
+} 
+/* Скролл кнопки до шапки - иконка */
+.icon_scroll_head { 
+  position: absolute;
+  width: 35.56px;
+  height: 35.56px;  
+  left: calc(50% - 35.56px/2 - 0px);
+  top: calc(50% - 35.56px/2 + 0px);
+  
+}  
+
+@media screen and (max-width: 480px) {
+  
+  .body_scroll_head { 
+    width: 54px;
+    height: 54px; 
+  }
+  .icon_scroll_head { 
+    position: absolute;
+    width: 25.56px;
+    height: 25.56px;  
+    left: calc(50% - 25.56px/2 - 0px);
+    top: calc(50% - 25.56px/2 + 0px);
+    
+  }  
+}
 * {
   margin: 0;
   padding: 0;
@@ -118,7 +155,7 @@ a {
 }
 a:hover {
   text-decoration: none !important;
-  color: inherit;
+  color: #C39F7B;
 }
 a:focus {
   text-decoration: none !important;
@@ -283,6 +320,7 @@ body.openmodal, body.fixed-body {
   background-position: right 22px center;
   transition: all .0s;
   padding-right: 60px;
+ 
 }
 
 .back-link {
@@ -456,6 +494,7 @@ body.openmodal, body.fixed-body {
   content: '';
   position: absolute;
   z-index: 1;
+  color: #cfcfcf;
 }
 .header__service-link {
   font-weight: 500;
@@ -563,7 +602,7 @@ body.openmodal, body.fixed-body {
     background: #A58668;
   }
   .header__service-menu {
-    display: block;
+    display: none;
     position: static;
     padding: 0;
     background-color: transparent;
@@ -892,8 +931,7 @@ body.openmodal, body.fixed-body {
 }
 .mission__inner {
   padding: 60px 70px;
-  background-color: #C39F7B;
-  background: #CDB094;
+  background-color: #C39F7B; 
   position: relative;
 }
 .mission__title {
@@ -1602,8 +1640,9 @@ body.openmodal, body.fixed-body {
 .footer__socials {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin-top: 128px;
+  gap: 20px;
 }
 .footer__socials a:hover path {
   fill: #E4C29F;
@@ -1628,7 +1667,7 @@ body.openmodal, body.fixed-body {
   color: #C39F7B;
 }
 .footer__bottom {
-  margin-top: 95px;
+  margin-top: 60px;
   display: flex;
   justify-content: center;
 }
@@ -2228,7 +2267,6 @@ body.openmodal, body.fixed-body {
     height: 100%;
     width: auto;
     position: absolute;
-    left: 50%;
     transform: translateX(-50%);
   }
   .info__item {
@@ -2241,7 +2279,7 @@ body.openmodal, body.fixed-body {
   }
 
   .zone__item {
-    height: 180px;
+    height: 235px;
   }
 }
 .blog {

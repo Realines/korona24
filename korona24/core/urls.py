@@ -17,9 +17,11 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import url 
 from django.contrib import admin
-from django.urls import path,re_path, include
-
+from django.shortcuts import redirect
+from django.urls import path,re_path, include  
 from services.views import prices
+from django.views.generic.base import RedirectView
+favicon_view = RedirectView.as_view(url='/static/favicon.png', permanent=True)
 
 urlpatterns = [
     path('', include('main.urls')),
@@ -32,6 +34,8 @@ urlpatterns = [
     path('foto-i-video/', include('gallery.urls')),
     path('visual-version/', include('visual_version_handler.urls')),
     path('admin/', admin.site.urls),
-    url(r'mdeditor/', include('mdeditor.urls'))
+    url(r'mdeditor/', include('mdeditor.urls')),
+    re_path(r'^favicon\.ico$', favicon_view),
+   
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

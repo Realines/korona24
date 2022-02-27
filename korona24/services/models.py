@@ -91,6 +91,13 @@ class ServiceArticle(models.Model):
     information_html = models.TextField(
         editable=False,
     ) 
+    parrent = models.ForeignKey(
+        to='ServiceArticle',
+        on_delete=models.CASCADE,
+        verbose_name=_('Главная статья (Не обязательно)'),
+        null=True,
+        blank=True
+    )
     service = models.ForeignKey(
         to='Service',
         on_delete=models.CASCADE,
@@ -115,9 +122,13 @@ class ServiceArticle(models.Model):
         title_small = title_small.replace('полости рта','')
         return title_small.capitalize()
     def get_absolute_url(self) -> str:
-        return reverse('services:article',
-                       args=(str(self.service.url), str(self.url), ))
-     
+        if(self.parrent is None):
+            return reverse('services:article',
+                        args=(str(self.service.url), str(self.url), )) 
+        else: 
+            return reverse('services:parrent',
+                        args=(str(self.service.url), str(self.parrent.url), str(self.url)))
+        
     def data_json(self):
         return {
             'id': self.pk,
@@ -185,6 +196,8 @@ class Service(models.Model):
         title_small = title_small.replace('в красноярске','')
         title_small = title_small.replace('полости рта','')
         return title_small.capitalize()
+    def get_articles_for_menu(self) -> str:
+        return self.service_articles.all()[:1]
     def get_absolute_url(self) -> str:
         return reverse('services:service', args=(str(self.url), ))
 

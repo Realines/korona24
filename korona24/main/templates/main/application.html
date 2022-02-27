@@ -1,5 +1,7 @@
 {% load static %}
- <section class='make-order'>
+
+{% load static_mobile %}
+ <section id="application" class='make-order'>
     <div class='container'>
         <div class='make-order__inner'>
 
@@ -11,22 +13,24 @@
                 {% csrf_token %}
                 <div class="make-order__form-group">
                     <label for="">Ваше имя</label>
-                    <input name="client_name" type="text" placeholder="Ввведите имя">
+                    <input name="client_name" type="text" placeholder="Введите имя">
                 </div>
                 <div class="make-order__form-group">
                     <label for="">Ваш телефон</label>
                     <input name="phone_number" type="tel" placeholder="Введите телефон">
+                    <div id="valid-phone" class="make-order__form-hint" style="color: red;"></div>
                 </div>
                 <div class="make-order__form-group">
                     <button class="make-order__form-btn btn-brown">Отправить запрос</button>
                 </div>
                 <div class="make-order__form-group">
                     <div class="make-order__form-hint">
-                        Нажимая кнопку “Отправит запрос” вы подстверждаете свое <a href="">согласие на обработку персональных данных</a>
+                        Нажимая кнопку “Отправит запрос” вы подстверждаете свое <a href="/about/soglasie_na_obrabotku_dannyih">согласие на обработку персональных данных</a>
                     </div>
+                    
                 </div>
             </form>
-            <img src="{% static 'img/girl2.png' %}" alt="Улыбающаяся девушка" class="make-order__bg">
+            <img src="{% static_img 'img/girl2.png' %}" alt="Улыбающаяся девушка" class="make-order__bg">
         </div>
     </div>
 </section>

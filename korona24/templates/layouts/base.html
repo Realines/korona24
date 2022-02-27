@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load static_mobile %}
 
 <!DOCTYPE html> {% if visually_impaired %}
 <html lang="en" impaired="true">
@@ -10,7 +10,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <title>{% block title %}Главная{% endblock %}</title>
     <meta name="keywords" content="частная стоматология Красноярск
     стоматология на киренского красноярск
@@ -19,7 +20,7 @@
     стоматология в октябрьском районе
     стоматологический клиника"> {% block description %}
     <meta name="description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!"> {% endblock %}
-
+    {{code_in_html | safe}}
     <link rel="stylesheet" href="{%  static 'css/nice-select.css' %}">
     <link rel="stylesheet" href="{%  static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{%  static 'css/swiper-bundle.min.css' %}">
@@ -29,26 +30,30 @@
 
 </head>
 
-<body>
-    <header class="header">
+<body> 
+    <header id="header" class="header"> 
         <section class='header-top'>
             <div class='container'>
                 <div class='header-top__inner  '>
                     <a href="{% url 'main:index' %}" class="header__logo">
                         <img src="{% static 'img/logo.png' %}" alt="СК Корона">
                     </a>
-                    <div class="header__address">
+                    <a href="#map" class="header__address">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 0C5.8363 0 2.46094 3.37535 2.46094 7.53907C2.46094 8.93152 2.73349 10.3697 3.51562 11.4063L10 20L16.4844 11.4063C17.1948 10.4648 17.5391 8.80032 17.5391 7.53907C17.5391 3.37535 14.1637 0 10 0ZM10 4.36645C11.7519 4.36645 13.1726 5.78713 13.1726 7.53905C13.1726 9.291 11.7519 10.7117 10 10.7117C8.24807 10.7117 6.8274 9.291 6.8274 7.53907C6.8274 5.78713 8.24807 4.36645 10 4.36645Z" fill="#C39F7B"/>
                         </svg>
                         <span>Белорусская 7, Киренского 71</span>
-                    </div>
+                    </a>
                     <a href="{% url 'visual_version_handler:set_version' visually_impaired|yesno:'0,1' %}">
                         <button class="header__vision-impared">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9.28139 12C9.28139 12.6962 9.55795 13.3639 10.0502 13.8562C10.5425 14.3484 11.2102 14.625 11.9064 14.625C12.6026 14.625 13.2703 14.3484 13.7625 13.8562C14.2548 13.3639 14.5314 12.6962 14.5314 12C14.5314 11.3038 14.2548 10.6361 13.7625 10.1438C13.2703 9.65156 12.6026 9.375 11.9064 9.375C11.2102 9.375 10.5425 9.65156 10.0502 10.1438C9.55795 10.6361 9.28139 11.3038 9.28139 12ZM22.0829 11.3953C19.8611 6.71484 16.5025 4.35938 12.0001 4.35938C7.49545 4.35938 4.1392 6.71484 1.91732 11.3977C1.8282 11.5864 1.78198 11.7925 1.78198 12.0012C1.78198 12.2099 1.8282 12.416 1.91732 12.6047C4.1392 17.2852 7.49779 19.6406 12.0001 19.6406C16.5048 19.6406 19.8611 17.2852 22.0829 12.6023C22.2634 12.2227 22.2634 11.782 22.0829 11.3953ZM11.9064 16.125C9.62826 16.125 7.78139 14.2781 7.78139 12C7.78139 9.72188 9.62826 7.875 11.9064 7.875C14.1845 7.875 16.0314 9.72188 16.0314 12C16.0314 14.2781 14.1845 16.125 11.9064 16.125Z" fill="#C39F7B"/>
                             </svg>
+                            {% if visually_impaired %}
+                            <span>Стандартная версия</span>
+                            {% else %}
                             <span>Версия для слабовидящих</span>
+                            {% endif %}
                         </button>
                     </a>
                     <button class="header__make-order btn" data-toggle="modal" data-target="#modal1">Записаться на прием</button>
@@ -94,7 +99,7 @@
                                 </div>
                                 <div class="header__service-hidden">
                                     {% for article in service.service_articles.all %}
-                                    <a href="{{ article.get_absolute_url }}" class="header__service-link">{{ article.title }}</a> 
+                                    <a href="{{ article.get_absolute_url }}" class="header__service-link">{{ article.get_title_small }}</a> 
                                     {% endfor %}
                                 </div>
                             </div>
@@ -119,7 +124,7 @@
         <div class='container'>
             <div class='header-mob__inner'>
                 <a href="{% url 'main:index' %}" class="header-mob__logo">
-                    <img src="{% static 'img/logo.png' %}" alt="СК Корона">
+                    <img src="{% static 'img/logo.svg' %}" alt="СК Корона">
                 </a>
                 <button class="header__burger">
                     <span></span>
@@ -132,7 +137,7 @@
 
     {% block content %}{% endblock %}
 
-    <section class='map'>
+    <section id='map' class='map'>
         <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aad968702fc0c4c82b36712cf0bd9a8d025adc12c0ebddc61cd89ae40f2811dd4&amp;width=100%&amp;height=100%&amp;lang=ru_RU&amp;scroll=true"></script>
     </section>
 
@@ -151,7 +156,7 @@
                     {% for service in footer_services %} 
                     <div class="footer__group">
                         <a href="{{ service.get_absolute_url }}" class="footer__item">{{ service.get_title_small }}</a>
-                        {% for article in service.service_articles.all %}
+                        {% for article in service.get_articles_for_menu %}
                         <a href="{{ article.get_absolute_url }}" class="footer__link">{{ article.get_title_small }}</a> 
                         {% endfor %}
                     </div>
@@ -161,7 +166,7 @@
                     {% for service in footer_services_2 %} 
                     <div class="footer__group">
                         <a href="{{ service.get_absolute_url }}" class="footer__item">{{ service.get_title_small }}</a>
-                        {% for article in service.service_articles.all %}
+                        {% for article in service.get_articles_for_menu %}
                         <a href="{{ article.get_absolute_url }}" class="footer__link">{{ article.get_title_small }}</a> 
                         {% endfor %}
                     </div>
@@ -223,7 +228,7 @@
                     </div>
                 </div>
                 <div class="footer__col">
-                    <a href="/about/reglament-vyizova-dlya-malomobilnyix-grupp" class="footer__licensy">
+                    <a href="/about/liczenziya" class="footer__licensy">
                         Лицензия № ЛО-24-01-003729 
                     </a>
                     <a href="/about/egrul" class="footer__licensy">
@@ -238,18 +243,21 @@
                 
                 </div>
             </div>
-           
             <div class="footer__bottom"> 
                 <a href="https://prodoctorov.ru/krasnoyarsk/lpu/27705-korona/" rel="nofollow" target="_blank">
                     <img src="{% static 'img/prodoctorov.png' %}" title="ПроДокторов - Стоматологическая клиника «Корона», Красноярск" alt="ПроДокторов - Стоматологическая клиника «Корона», Красноярск">
                 </a>
             </div>
-            <p style="text-align: center;">Имеются противопоказания. Необходима консультация специалиста.
-                Обращаем Ваше внимание на то, что данный интернет-ресурс носит исключительно информационный характер и не является публичной офертой, определяемой положениями ч. 2 ст. 437 Гражданского кодекса Российской Федерации. Для получения подробной информации о наименовании, стоимости и сроках оказания услуг обращайтесь по контактным телефонам или непосредственно в отделение клиники. Конкретный перечень услуг и порядок их предоставления определяется в договоре оказания услуг, оформляемым между клиникой и пациентом.
-                </p>
-        </div>
+            <p class="footer__item" style="text-align: center; line-height: 150%; ">Имеются противопоказания. Необходима консультация специалиста.
+                    Обращаем Ваше внимание на то, что данный интернет-ресурс носит исключительно информационный характер и не является публичной офертой, определяемой положениями ч. 2 ст. 437 Гражданского кодекса Российской Федерации. Для получения подробной информации о наименовании, стоимости и сроках оказания услуг обращайтесь по контактным телефонам или непосредственно в отделение клиники. Конкретный перечень услуг и порядок их предоставления определяется в договоре оказания услуг, оформляемым между клиникой и пациентом.
+            </p>
+        </div>  
     </footer>
-
+    <a href="#header" class="body_scroll_head">
+        <svg class="icon_scroll_head" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.42981 10.5652L10.0013 12.1367L16.6683 5.46963L16.6683 34.4475L18.8908 34.4475L18.8908 5.46984L25.5577 12.1367L27.1292 10.5652L17.7795 1.21543L8.42981 10.5652Z" fill="#C39F7B"/>
+        </svg> 
+    </a>
     <!-- Пример вызова модалки
     <button data-toggle="modal" data-target="#modal1">Modal 1</button> -->
 
@@ -275,6 +283,8 @@
                     <div class="modal__form-group">
                         <label>Ваш телефон</label>
                         <input name="phone_number" type="tel" placeholder="Введите телефон">
+                        <div id="valid-phone" class="make-order__form-hint" style="color: red;"></div>
+
                     </div>
                     <button class="modal__form-btn btn btn-brown">Записаться на прием</button>
                     <div class="modal__form-hint">
@@ -307,10 +317,11 @@
     <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
-    <script src="{% static 'js/swiper.js' %}"></script>
+    <script src="{% static 'js/swiper.min.js' %}"></script>
     <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'js/ajax.js' %}"></script>
     <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/scrollSwape.js' %}"></script>
 
     <script> 
     </script>

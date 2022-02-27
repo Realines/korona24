@@ -68,7 +68,7 @@ def pagination_articles(request):
         for article_item in articles_list:
             articles_json.append(article_item.data_json())
         
-        return JsonResponse(data={'articles': articles_json},
+        return JsonResponse(data={'articles': articles_json,'page_max': int(math.ceil(len(article_set) / block_articles))},
                     status=200) 
 
 def article(request: HttpRequest, article_url: str) -> HttpResponse:

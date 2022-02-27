@@ -1,0 +1,70 @@
+{% extends 'layouts/base.html' %} 
+
+{% load static %} 
+
+
+{% block description %}
+<meta name="description" content="Взрослые и детские стоматологи, хирурги в октябрьском районе Красноярска. Опытным врачи которые вылечат вас быстро и безболезненно."> 
+<meta property="og:site_name" content="Врачи стоматологи в Красноярске – СК Корона">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:type" content="WebSite">
+<meta property="og:title" content="Врачи стоматологи в Красноярске – СК Корона">
+<meta property="og:description" content="Взрослые и детские стоматологи, хирурги в октябрьском районе Красноярска. Опытным врачи которые вылечат вас быстро и безболезненно.">
+<meta property="og:image" content="1">
+<meta property="og:image:width" content="968">
+<meta property="og:image:height" content="504">
+<meta property="og:url" content="https://korona24.ru/">
+{% endblock %} 
+
+
+{% block title %} Врачи стоматологи в Красноярске – СК Корона {% endblock %} 
+
+
+{% block content %} 
+<section class='expert' >
+    <div class='container'>
+        <div class='expert__inner'>
+            <div class="expert__left">
+                <h2 class="expert__title title2"><span>Лучшие</span> специалисты <br> красноярска
+                </h2>
+                <div class="expert__desc">За годы существования нашей клиники наши специалисты помогли более 20 000 пациентам обрести здоровую и красивую улыбку, решили более 5 000 сложных клинических случаев с использованием передовых технологий.</div>
+                <div class="expert__bottom">
+                    <div class="expert__slider-nav">
+                        <div class='expert__slider-prev swiper-button-prev btn-brown'>
+                            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 1L2 8L9 15" stroke="#fff" stroke-width="1.5"/>
+                                </svg>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class='expert__slider-next swiper-button-next btn-brown'>
+                            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1L8 8L1 15" stroke="fff" stroke-width="1.5"/>
+                                </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="expert__right" >
+                <div class="expert__slider"style="position: inherit;">
+                    <div class='swiper-container'>
+                        <div class='swiper-wrapper'>
+                            {% for employee in employees %}
+                            <div class='swiper-slide'> <a href="{{ employee.get_absolute_url }}">
+                                <div class="expert__slider-item">
+                                    <div class="expert__slider-item-img">  
+                                        <img src="{{ employee.avatar_small.url }}" alt="{{ employee.position }}: {{ employee.name }}"> 
+                                    </div>
+                                    <div class="expert__slider-item-title">{{ employee.name }}</div>
+                                    <div class="expert__slider-item-profession">{{ employee.position }}</div>
+                                </div> </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'main/application.html' %} 
+{% endblock %}

@@ -1,8 +1,20 @@
 {% extends 'layouts/base.html' %} {% load static %} {% block description %}
-<meta name="description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!"> {% endblock %} {% block content %}
+
+{% load static_mobile %}
+<meta name="description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!"> 
+<meta property="og:site_name" content="СК «Корона»">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:type" content="WebSite">
+<meta property="og:title" content="Стоматология в Красноярске Корона лечение кариеса, отбеливание зубов, стоматолог запись цены=">
+<meta property="og:description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!">
+<meta property="og:image" content="1">
+<meta property="og:image:width" content="968">
+<meta property="og:image:height" content="504">
+<meta property="og:url" content="https://korona24.ru/">
+{% endblock %} {% block content %}
 
 <section class='main'>
-    <img src="{% static 'img/tooth.png' %}" alt="Зуб" class="main__bg">
+    <img src="{% static_img 'img/tooth.png' %}" alt="Зуб" class="main__bg">
     <div class='container'>
         <div class='main__inner'>
             <div class="main__slider">
@@ -42,7 +54,7 @@
 </section>
 
 <section class='about-index'>
-    <img src="{% static 'img/girl.jpg' %}" alt="Девушка" class="about-index__img">
+    <img src="{% static_img 'img/girl.jpg' %}" alt="Девушка" class="about-index__img">
     <div class='container'>
         <div class='about-index__inner'>
             <p class="about-index__title">
@@ -71,7 +83,7 @@
                     <div class="about-index__item-title">Пациентов в год <br> получают новые улыбки</div>
                 </div>
             </div>
-            <a href="" class="about-index__link">
+            <a href="{% url 'pages:about' %}" class="about-index__link">
                 <span>Подробнее о нас</span>
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M21.0863 7.112L19.7605 8.4378L25.3853 14.0626H0.9375V15.9377H25.3852L19.7605 21.5623L21.0863 22.8881L28.9745 15.0001L21.0863 7.112Z" fill="#C39F7B"/>
@@ -110,17 +122,17 @@
 <section class='mission'>
     <div class='container'>
         <div class='mission__inner'>
-            <img src="{% static 'img/tooth2.png' %}" alt="Зуб" class="mission__bg">
+            <img src="{% static_img 'img/tooth2.png' %}" alt="Зуб" class="mission__bg">
             <div class="mission__title">
                 <span class="mission__title-sub">Миссия клиники</span> <strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp; </strong> Оказание высокопрофессиональной стоматологической помощи в атмосфере комфорта, уюта и непринужденного общения.
             </div>
-            <button href="" class="mission__link" data-toggle="modal" data-target="#modal1">
+            <a class="mission__link" data-toggle="modal" data-target="#modal1">
                 <span>Записаться на консультацию</span>
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M21.0863 7.11206L19.7605 8.43786L25.3853 14.0627H0.9375V15.9377H25.3852L19.7605 21.5624L21.0863 22.8882L28.9745 15.0001L21.0863 7.11206Z" fill="white"/>
                 </svg>
-            </button>
+            </a>
         </div>
     </div>
 </section>
@@ -136,9 +148,11 @@
                         мы расширяемся во втором филиале и открываем детскую стоматологию. На сегодняшний день мы предоставляем
                         все услуги, в штате у нас 23 сотрудника.</span>
             </div>
-            <div class="info__video">
-                <img src="{% static 'img/info.jpg' %}" alt="Лечение зуба">
-                <a href="https://youtu.be/IAKgLb3LQtQ" target="_blank" class="info__video-btn btn btn-brown">
+            <div class="info__video" onclick="onclickVideoMain()">
+                <img id="video_image" src="{% static_img 'img/info.jpg' %}" alt="Лечение зуба">
+                <iframe id="video" width="100%" height="395px"src="https://www.youtube.com/embed/IAKgLb3LQtQ?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <a id="video_play" onclick="onclickVideoMain()" target="_blank" class="info__video-btn btn btn-brown">
                     <svg width="25" height="30" viewBox="0 0 25 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.600098 0.600098L24.6001 15.0001L0.600098 29.4001V0.600098Z" fill="white"/>
                     </svg>
@@ -151,28 +165,28 @@
             <div class="info__items">
                 <div class="info__item">
                     <div class="info__item-icon">
-                        <img src="{% static 'img/info1.svg' %}" alt="Восклицательный знак">
+                        <img src="{% static_img 'img/info1.svg' %}" alt="Восклицательный знак">
                     </div>
                     <p class="info__item-title">Еще не поздно</p>
                     <p class="info__item-desc">Наши специалисты способны разобраться даже с самой старой и сложной проблемой, на которую вы давно не находили времени.</p>
                 </div>
                 <div class="info__item">
                     <div class="info__item-icon">
-                        <img src="{% static 'img/info2.svg' %}" alt="Часы">
+                        <img src="{% static_img 'img/info2.svg' %}" alt="Часы">
                     </div>
                     <p class="info__item-title">Быстро</p>
                     <p class="info__item-desc">Передовые технологии позволяют за час провести практически любую операцию, лечение, восстановление.</p>
                 </div>
                 <div class="info__item">
                     <div class="info__item-icon">
-                        <img src="{% static 'img/info3.png' %}" alt="Сердце">
+                        <img src="{% static_img 'img/info3.png' %}" alt="Сердце">
                     </div>
                     <p class="info__item-title">Без боли</p>
                     <p class="info__item-desc">Передовые технологии позволяют за час провести практически любую операцию, лечение, восстановление.</p>
                 </div>
                 <div class="info__item">
                     <div class="info__item-icon">
-                        <img src="{% static 'img/info4.svg' %}" alt="Доступно">
+                        <img src="{% static_img 'img/info4.svg' %}" alt="Доступно">
                     </div>
                     <p class="info__item-title">Доступно</p>
                     <p class="info__item-desc">Даже премиум-услуги, такие как имплантация и протезирование винирами, доступны благодаря гибкой системе акций и скидок.</p>
@@ -215,7 +229,7 @@
                 <h2 class="expert__title title2"><span>Лучшие</span> специалисты <br> красноярска
                 </h2>
                 <div class="expert__desc">За годы существования нашей клиники наши специалисты помогли более 20 000 пациентам обрести здоровую и красивую улыбку, решили более 5 000 сложных клинических случаев с использованием передовых технологий.</div>
-                <a href="" class="expert__link">
+                <a href="/about/" class="expert__link">
                     <span>Больше о врачах</span>
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21.0863 7.11182L19.7605 8.43762L25.3853 14.0624H0.9375V15.9375H25.3852L19.7605 21.5622L21.0863 22.8879L28.9745 14.9999L21.0863 7.11182Z" fill="#C39F7B"/>

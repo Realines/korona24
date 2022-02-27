@@ -6,6 +6,15 @@
 {% block title %} {{ current_employee.name }} {% endblock %} 
 {% block description %}
 <meta name="description" content="{{ current_employee.description }}"> 
+<meta property="og:site_name" content="{{ current_employee.name }} СК «Корона»">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:type" content="WebSite">
+<meta property="og:title" content="{{ current_employee.name }}">
+<meta property="og:description" content="{{ current_employee.description }}">
+<meta property="og:image" content="1">
+<meta property="og:image:width" content="968">
+<meta property="og:image:height" content="504">
+<meta property="og:url" content="https://korona24.ru/">
 {% endblock %} 
 
 {% block content %}

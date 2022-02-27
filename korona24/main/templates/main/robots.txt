@@ -1,0 +1,19 @@
+﻿User-agent: *
+Disallow: /admin/
+Disallow: /static/
+Disallow: /media/
+Disallow: /connectors/
+Disallow: /index.php
+Disallow: *?
+Disallow: /cart
+
+
+Allow: /*.js
+Allow: /*.css
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.png
+
+Host: https://korona24.ru 
+Sitemap: https://korona24.ru/sitemap.xml

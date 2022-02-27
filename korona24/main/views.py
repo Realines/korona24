@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import (
     HttpResponse,
     HttpRequest,
-    JsonResponse,
+    JsonResponse, 
 )
 from django.utils.translation import gettext as _
 from .models import *
@@ -40,6 +40,11 @@ def index(request: HttpRequest) -> HttpResponse:
                   template_name='main/index.html',
                   context=context)
 
+def robots(request):
+    return render( request=request,template_name='main/robots.txt', content_type="text/plain")
+
+def sitemap(request):
+    return render( request=request,template_name='main/sitemap.xml', content_type="text/xml")
 
 def consultation_handler(request: HttpRequest) -> JsonResponse:
     """
@@ -64,7 +69,7 @@ def consultation_handler(request: HttpRequest) -> JsonResponse:
                             json_dumps_params={'ensure_ascii': False})
                               
 
-    application_send_mail(f"Клиент: {form.cleaned_data['client_name']} Номер: {form.cleaned_data['phone_number']} Дата заявки: {datetime.now()}",'vlasovspk@yandex.ru')
+    application_send_mail(f"Клиент: {form.cleaned_data['client_name']} Номер: {form.cleaned_data['phone_number']} Дата заявки: {datetime.now()}",'missis.korona@mail.ru')
     return JsonResponse(data={'msg': _('OK')},
                         status=201,
                         json_dumps_params={'ensure_ascii': False})

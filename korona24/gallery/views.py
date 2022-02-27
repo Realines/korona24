@@ -59,6 +59,6 @@ def pagination_gallery(request: HttpRequest) -> JsonResponse:
     for gallery_image in paginator.get_page(page_num).object_list: 
         images.append(gallery_image.data_json())
 
-    return JsonResponse(data={'images': images},
+    return JsonResponse(data={'images': images, 'page_max': int(math.ceil(len(gallery_set) / 6))},
                         status=200)
 

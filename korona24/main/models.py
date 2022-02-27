@@ -33,6 +33,8 @@ class Consultation(models.Model):
     client_name = models.CharField(
         max_length=128,
         verbose_name=_('Имя клиента'),
+        null=True,
+        blank=True
     )
     phone_number = models.CharField(  # TODO: Найти хороший способ валидации номеров.
         max_length=16,

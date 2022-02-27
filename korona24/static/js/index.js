@@ -1,6 +1,10 @@
 function mainSlider() {
     var swiper = new Swiper('.main .swiper-container', {
         // slidesPerView: 1,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
         spaceBetween: 0,
         effect: "fade",
         speed: 1000,
@@ -186,6 +190,20 @@ function dmsSlider() {
         }
     });
 }
+var video = $('#video') 
+video.hide()
+
+
+function onclickVideoMain(){
+    
+    var image = $('#video_image')
+    var videoplay = $('#video_play')
+    var video = $('#video') 
+    image.hide()
+    videoplay.hide()
+    video.show() 
+    video.attr("src",video.attr("src") + "&autoplay=1");
+}
 
 $(document).ready(function() { 
     mainSlider()
@@ -194,25 +212,79 @@ $(document).ready(function() {
     dmsSlider()
     ourFeedbackSlider()
 
-    $("input").change(function() {
+    
+
+    var category = $("#category")
+    if(category){
+       var list_items = category.find('a')
+       var patch = document.location.pathname
+       for (let i = 0; i < list_items.length; i++) {
+           const element = list_items[i];
+           if(patch.indexOf(list_items[i].getAttribute('href')) != -1)
+           {
+                console.log(list_items[i].getAttribute('href'))
+                list_items[i].style.color = '#C39F7B'
+           }     
+
+
+       } 
+    } 
+    $("input[name='client_name']").keyup(function () {
         let inputValue = $(this).val()
-        if (inputValue) {
+        if (inputValue)
+        { 
             $(this).addClass("input-filled")
-        } else {
-            $(this).removeClass("input-filled")
         }
-    })
-
-    $("input").keydown(function() {
+        else{ 
+                $(this).removeClass("input-filled") 
+        }
+    });
+    $("input[name='phone_number']").keyup(function () {
         let inputValue = $(this).val()
-        if (inputValue) {
-            $(this).addClass("input-filled")
-        } else {
-            $(this).removeClass("input-filled")
+        console.log(inputValue)
+        console.log(inputValue.length)
+        $(this).val($(this).val().replace(/[A-Za-zА-Яа-яЁё]/, ''))
+        phoneValidation = inputValue
+        if (inputValue.length > 5) { 
+            if (inputValue.length < 13) {
+                isValidPhone = true;
+                $("[id=valid-phone]").text('')
+                $(this).addClass("input-filled")
+                $("[id=valid-phone]").addClass( "valid" );
+                $("[id=valid-phone]").removeClass( "novalid" );
+                console.log('Valide number')
+            }
+            else {
+                isValidPhone = false
+                $("[id=valid-phone]").addClass( "novalid" );
+                $("[id=valid-phone]").removeClass( "valid" ); 
+                $(this).removeClass("input-filled") 
+                    $("[id=valid-phone]").text('Ваш номер телефона слишком большой.')
+                }
         }
+        else {
+            isValidPhone = false
+            if (inputValue.length == 0)
+                $("[id=valid-phone]").text('')
+            else {
+                $("[id=valid-phone]").addClass( "novalid" );
+                $("[id=valid-phone]").removeClass( "valid" ); 
+                $(this).removeClass("input-filled") 
+                $("[id=valid-phone]").text('Ваш номер телефона слишком маленький.')
+            }
+            
+        }
+    }) 
 
-    })
+    $('a[href^="#"').on('click', function() {
 
+        let href = $(this).attr('href');
+    
+        $('html, body').animate({
+            scrollTop: $(href).offset().top
+        },2000);
+        return false;
+    });
 
     $(".header__service-btn").click(function() {
         $(this).toggleClass("header__service-btn--active")
