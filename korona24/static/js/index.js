@@ -211,8 +211,7 @@ $(document).ready(function() {
     feedbackSlider()
     dmsSlider()
     ourFeedbackSlider()
-
-    
+ 
 
     var category = $("#category")
     if(category){

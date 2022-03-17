@@ -2267,6 +2267,7 @@ body.openmodal, body.fixed-body {
     height: 100%;
     width: auto;
     position: absolute;
+    left: 50%;
     transform: translateX(-50%);
   }
   .info__item {
