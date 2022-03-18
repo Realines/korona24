@@ -51,7 +51,11 @@ function GetAjaxData(url,data, callbackSucces) {
 function popapSend(modal_id,form_id,url,modal_succes_id=null,hide=6500){ 
     
     if(!isValidPhone) return;
-    sendAjaxForm(form_id,url,function(response){$("#" + form_id).reset()})  
+    sendAjaxForm(form_id,url,function(response)
+    {
+        $("#" + form_id).reset()
+        yaCounter56116396.reachGoal('lead') 
+    })  
     $("#" + modal_id).modal("hide")
     if(modal_succes_id != null){   
         console.log('send')

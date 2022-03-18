@@ -21,6 +21,7 @@ from django.shortcuts import redirect
 from django.urls import path,re_path, include  
 from services.views import prices
 from django.views.generic.base import RedirectView
+from main.views import page_not_found_view
 favicon_view = RedirectView.as_view(url='/static/favicon.png', permanent=True)
 
 urlpatterns = [
@@ -38,4 +39,5 @@ urlpatterns = [
     re_path(r'^favicon\.ico$', favicon_view),
    
 ]
+handler404 = page_not_found_view
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -20,7 +20,9 @@
     стоматология в октябрьском районе
     стоматологический клиника"> {% block description %}
     <meta name="description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!"> {% endblock %}
-    {{code_in_html | safe}}
+    <!--Scripts-->
+    {{site_settings.code_in_html | safe}} 
+    <!--END Scripts-->
     <link rel="stylesheet" href="{%  static 'css/nice-select.css' %}">
     <link rel="stylesheet" href="{%  static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{%  static 'css/swiper-bundle.min.css' %}">
@@ -56,7 +58,7 @@
                             {% endif %}
                         </button>
                     </a>
-                    <button class="header__make-order btn" data-toggle="modal" data-target="#modal1">Записаться на прием</button>
+                    <button onclick="yaCounter56116396.reachGoal('clicklead')" class="header__make-order btn" data-toggle="modal" data-target="#modal1">Записаться на прием</button>
                     <a href="tel:+73912232339" class="header__phone">+7 (391) 223-23-39</a>
                 </div>
             </div>
@@ -274,7 +276,7 @@
                     <span>к нашим специалистам</span>
                 </div>
                 <div class="modal__desc">Заполните форму ниже и в ближайшее время с Вами свяжется наш специалист, чтобы уточнить подробности</div>
-                <form id="modal_app_form" onsubmit="javascript:popapSend('modal1','modal_app_form','{% url 'main:send_app' %}',modal_succes_id='modal2',hide=6500); return false;" class="modal__form">
+                <form id="modal_app_form" onclick="yaCounter56116396.reachGoal('clicklead')" onsubmit="javascript:popapSend('modal1','modal_app_form','{% url 'main:send_app' %}',modal_succes_id='modal2',hide=6500); return false;" class="modal__form">
                     {% csrf_token %}
                     <div class="modal__form-group">
                         <label>Ваше имя</label>
@@ -319,6 +321,7 @@
     <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
     <script src="{% static 'js/swiper.min.js' %}"></script>
     <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'js/jquery.maskedinput.min.js' %}"></script>
     <script src="{% static 'js/ajax.js' %}"></script>
     <script src="{% static 'js/index.js' %}"></script>
     <script src="{% static 'js/scrollSwape.js' %}"></script>

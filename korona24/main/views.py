@@ -46,6 +46,10 @@ def robots(request):
 def sitemap(request):
     return render( request=request,template_name='main/sitemap.xml', content_type="text/xml")
 
+def page_not_found_view(request, exception):  
+    return render(request=request,
+                  template_name='main/notfound.html',
+                  )
 def consultation_handler(request: HttpRequest) -> JsonResponse:
     """
     Функция-контроллер для обработки форму консультации через AJAX.

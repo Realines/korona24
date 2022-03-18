@@ -212,6 +212,7 @@ $(document).ready(function() {
     dmsSlider()
     ourFeedbackSlider()
  
+    $("[name='phone_number']").mask("+7 (999) 999-99-99");   
 
     var category = $("#category")
     if(category){
@@ -245,13 +246,25 @@ $(document).ready(function() {
         $(this).val($(this).val().replace(/[A-Za-zА-Яа-яЁё]/, ''))
         phoneValidation = inputValue
         if (inputValue.length > 5) { 
-            if (inputValue.length < 13) {
-                isValidPhone = true;
-                $("[id=valid-phone]").text('')
-                $(this).addClass("input-filled")
-                $("[id=valid-phone]").addClass( "valid" );
-                $("[id=valid-phone]").removeClass( "novalid" );
-                console.log('Valide number')
+            if (inputValue.length <= 18) {
+                if(inputValue.indexOf('_') ==  -1)
+                {
+                    isValidPhone = true;
+                    $("[id=valid-phone]").text('')
+                    $(this).addClass("input-filled")
+                    $("[id=valid-phone]").addClass( "valid" );
+                    $("[id=valid-phone]").removeClass( "novalid" );
+                    console.log('Valide number')
+
+                }
+                else{
+                    isValidPhone = false
+                    $("[id=valid-phone]").addClass( "novalid" );
+                    $("[id=valid-phone]").removeClass( "valid" ); 
+                    $(this).removeClass("input-filled") 
+                        $("[id=valid-phone]").text('Укажите все цифры номера.')
+                     
+                }
             }
             else {
                 isValidPhone = false
