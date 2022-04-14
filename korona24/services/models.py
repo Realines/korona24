@@ -1,3 +1,6 @@
+import os
+
+from django.conf import settings
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.utils.translation import gettext_lazy as _
@@ -21,10 +24,15 @@ class PreviewService(models.Model):
     name = models.TextField(
         verbose_name=_('Название услуги'),
     )
+    name_html = models.TextField(
+        editable=False,
+    )
     description = models.TextField(
         verbose_name=_('Описание услуги'),
     )
-      
+    description_html = models.TextField(
+        editable=False,
+    )
     show_on_main = models.BooleanField(
         verbose_name=_('Показать на главной'),
         default=False,
@@ -33,6 +41,17 @@ class PreviewService(models.Model):
     class Meta:
         verbose_name = _('Предпросмотр услуги на главной (4 блока)')
         verbose_name_plural = _('Предпросмотр услуги')
+
+    def save(self, *args, **kwargs):
+        self.name_html = markdown(self.name)
+        self.description_html = markdown(self.description)
+        super(PreviewService, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        """Удаление изображения при удалении записи из таблицы"""
+
+        os.remove(settings.BASE_DIR / self.icon)
+        return super(PreviewService, self).delete(*args, **kwargs)
 
     def get_absolute_url(self) -> str:
         return reverse('services:service', args=(str(self.service.pk), ))
@@ -63,8 +82,10 @@ class ServiceArticle(models.Model):
         verbose_name=_('Описание изображения'),
     )
     image_description = models.TextField(
-        max_length=400,
         verbose_name=_('Описание изображение статьи'),
+    )
+    image_description_html = models.TextField(
+        editable=False,
     )
     information_markdown = models.TextField(
         verbose_name=_('Основная информация'),
@@ -86,8 +107,17 @@ class ServiceArticle(models.Model):
         verbose_name_plural = _('Статьи об услуги')
 
     def save(self, *args, **kwargs):
+        """Конвертация markdown в html при сохранении"""
+
         self.information_html = markdown(self.information_markdown)
+        self.image_description_html = markdown(self.image_description)
         super(ServiceArticle, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        """Удаление изображения при удалении записи из таблицы"""
+
+        print(settings.BASE_DIR / self.image)
+        return super(ServiceArticle, self).delete(*args, **kwargs)
 
     def get_absolute_url(self) -> str:
         return reverse('services:article',

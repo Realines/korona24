@@ -1,3 +1,6 @@
+import os
+
+from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core import validators
@@ -42,6 +45,10 @@ class Article(models.Model):
     def save(self, *args, **kwargs):
         self.information_html = markdown(self.information_markdown)
         super(Article, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        os.remove(settings.BASE_DIR / self.image)
+        return super(Article, self).delete(*args, **kwargs)
 
     def get_absolute_url(self) -> str:
         return reverse('blog:article', args=(str(self.url), ))

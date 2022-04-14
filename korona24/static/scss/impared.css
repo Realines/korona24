@@ -1,0 +1,102 @@
+html[impaired="true"] body,
+html[impaired="true"] .title span,
+html[impaired="true"] .title2 span,
+html[impaired="true"] .header__make-order,
+html[impaired="true"] .about-index__item-num,
+html[impaired="true"] .about-index__link span,
+html[impaired="true"] .service__item-title span,
+html[impaired="true"] .mission,
+html[impaired="true"] .info__video-desc,
+html[impaired="true"] .info__video-desc span,
+html[impaired="true"] .make-order__form-group label,
+html[impaired="true"] .make-order__form-hint a,
+html[impaired="true"] .feedback__left,
+html[impaired="true"] .footer,
+html[impaired="true"] .footer__link,
+html[impaired="true"] .footer__licensy,
+html[impaired="true"] .services__item-link,
+html[impaired="true"] .service-page__item-link,
+html[impaired="true"] .contacts__middle-link,
+html[impaired="true"] .contacts__bottom-desc,
+html[impaired="true"] .feedback-form,
+html[impaired="true"] .feedback-form__group input,
+html[impaired="true"] .feedback-form__group textarea,
+html[impaired="true"] .feedback-form__group input::placeholder,
+html[impaired="true"] .feedback-form__group textarea::placeholder,
+html[impaired="true"] .feedback-form__title,
+html[impaired="true"] .pagination__btn,
+html[impaired="true"] .pagination__item--active {
+  color: #000; }
+html[impaired="true"] .contacts__middle-link path,
+html[impaired="true"] .footer__socials path {
+  fill: #000; }
+html[impaired="true"] .header,
+html[impaired="true"] .mission__inner,
+html[impaired="true"] .make-order__inner,
+html[impaired="true"] .feedback__left,
+html[impaired="true"] .footer,
+html[impaired="true"] .feedback-form__inner {
+  background: #dcdce0; }
+html[impaired="true"] .about-index__img,
+html[impaired="true"] .service__item-icon,
+html[impaired="true"] .mission__bg,
+html[impaired="true"] .info__item-icon,
+html[impaired="true"] .make-order__bg {
+  display: none; }
+html[impaired="true"] .main__slider-prev,
+html[impaired="true"] .main__slider-next,
+html[impaired="true"] .service__item-link,
+html[impaired="true"] .info__video-btn,
+html[impaired="true"] .make-order__form-btn,
+html[impaired="true"] .feedback__slider-prev,
+html[impaired="true"] .feedback__slider-next,
+html[impaired="true"] .feedback__left-link i,
+html[impaired="true"] .our-feedback__slider-prev,
+html[impaired="true"] .our-feedback__slider-next {
+  background: #000; }
+  html[impaired="true"] .main__slider-prev path,
+  html[impaired="true"] .main__slider-next path,
+  html[impaired="true"] .service__item-link path,
+  html[impaired="true"] .info__video-btn path,
+  html[impaired="true"] .make-order__form-btn path,
+  html[impaired="true"] .feedback__slider-prev path,
+  html[impaired="true"] .feedback__slider-next path,
+  html[impaired="true"] .feedback__left-link i path,
+  html[impaired="true"] .our-feedback__slider-prev path,
+  html[impaired="true"] .our-feedback__slider-next path {
+    stroke: #fff; }
+html[impaired="true"] .our-feedback__slider-rating path {
+  fill: #000; }
+html[impaired="true"] .main__slider-pagination .swiper-pagination-bullet-active,
+html[impaired="true"] .service-page__table table thead,
+html[impaired="true"] .btn-brown {
+  background: #000; }
+html[impaired="true"] .header__address svg,
+html[impaired="true"] .header__vision-impared svg {
+  display: none; }
+html[impaired="true"] .mission__link span,
+html[impaired="true"] .zone__link span,
+html[impaired="true"] .expert__link span {
+  color: #000; }
+html[impaired="true"] .mission__link path,
+html[impaired="true"] .zone__link path,
+html[impaired="true"] .expert__link path {
+  fill: #000; }
+html[impaired="true"] .service-page__back span {
+  color: #000; }
+html[impaired="true"] .service-page__back path {
+  stroke: #000; }
+html[impaired="true"] label {
+  font-size: 16px !important; }
+html[impaired="true"] .make-order__form-group input,
+html[impaired="true"] .feedback-form__group input,
+html[impaired="true"] .feedback-form__group textarea {
+  border-color: #000; }
+html[impaired="true"] .feedback-form__btn {
+  background: #000;
+  color: #fff; }
+html[impaired="true"] .footer__address svg,
+html[impaired="true"] .footer__phone svg {
+  display: none; }
+
+/*# sourceMappingURL=impared.css.map */

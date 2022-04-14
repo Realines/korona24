@@ -30,10 +30,8 @@ def about(request: HttpRequest) -> HttpResponse:
     :param request: Объект запроса.
     :return: Объект ответа со страницей "О нас".
     """
-    all_category = Category.objects.all()  
     all_pages = Page.objects.filter(show_on_main=True)
-    context = { 
-        'all_category': all_category,
+    context = {
         'all_pages': all_pages
     } 
 
@@ -52,11 +50,9 @@ def page(request: HttpRequest, page_title: str) -> HttpResponse:
     """
 
     current_page = get_object_or_404(Page, address=page_title)
-    all_category = Category.objects.all()  
     all_pages = Page.objects.filter(show_on_main=True)
     context = {
         'current_page': current_page,
-        'all_category': all_category,
         'all_pages': all_pages
     }
 

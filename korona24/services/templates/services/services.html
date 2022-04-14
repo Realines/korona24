@@ -16,13 +16,13 @@
     <div class='container'>
         <h1 class="services__title title">Услуги</h1>
         <div class='services__items'>
-            {% for service in all_services %}
+            {% for preview_service in preview_services %}
             <div class="services__item">
                 <div class="services__item-icon">
-                    <img src="{{ service.icon.url }}" alt="">
+                    <img src="{{ preview_service.icon.url }}" alt="{{ preview_service.alt_image }}">
                 </div>
-                <div class="services__item-title">{{ service.name }}</div>
-                <a href="{{ service.get_absolute_url }}" class="services__item-link">Подробнее</a>
+                <div class="services__item-title">{{ preview_service.name_html | safe }}</div>
+                <a href="{{ preview_service.service.get_absolute_url }}" class="services__item-link">Подробнее</a>
             </div>
             {% endfor %}
         </div>

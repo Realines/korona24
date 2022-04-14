@@ -26,7 +26,10 @@ def articles(request: HttpRequest) -> HttpResponse:
     :return: Объект ответа со старницей статей.
     """
 
-    context = {}
+    articles_set = Article.objects.all()
+    context = {
+        'articles': articles_set,
+    }
 
     return render(request=request,
                   template_name='blog/blog.html',

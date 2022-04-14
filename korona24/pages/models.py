@@ -20,11 +20,13 @@ class Category(models.Model):
 
 
 class Page(models.Model):
-    category = models.ManyToManyField(
+    category = models.OneToOneField(
         Category,
-        verbose_name=_('Превью для главной'),
-        related_name='pages',
+        on_delete=models.CASCADE,
+        related_name='page',
         blank=True,
+        null=True,
+        verbose_name=_('Превью для главной'),
     )
     address = models.TextField(
         verbose_name=_('Адресс страницы транскриптом')

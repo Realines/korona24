@@ -28,7 +28,7 @@ function UpdatePage(url,new_page){
     AjaxJsonRequest(url,data,function (response) { // получение данных новой страницы
           console.log(response)
           UpdateComponents(response.articles)
-    });
+    },method='GET');
     UpdateNumberPageView()
 }
 function UpdateComponents(components)
@@ -57,7 +57,7 @@ function AddNewComponentView(element)
     msgCompanent.find(".blog__item-img").attr('href', element.url);
     msgCompanent.find(".blog__item-title").attr('href', element.url); 
     msgCompanent.find(".blog__item-title").text(element.title); 
-    msgCompanent.find(".blog__item-desc").text(element.description); 
+    msgCompanent.find(".blog__item-desc").text(element.description);  
     components_view.push(msgCompanent)
 }
 function RemoveOldComponentsView() {
@@ -72,7 +72,7 @@ function AjaxJsonRequest(url, data, callbackSucces,method = "POST") {
        method: method,
        contentType: 'application/json; charset=utf-8',
        dataType: 'json',
-       data: JSON.stringify(data), //формат данных 
+       data: data, //формат данных 
        async: true,
        success: callbackSucces,
        error: function (response) { // данные не отправлены

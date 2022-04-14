@@ -1,6 +1,6 @@
 /*
 Error: Undefined variable: "$black".
-        on line 25 of D:\work\freelance\korona-git\korona24\korona24\static\scss\feedback.scss
+        on line 25 of D:\work\freelance-old\korona-git\korona24\korona24\static\scss\feedback.scss
 
 20:                     left: 50%;
 21:                     top: 47%;
@@ -15,7 +15,7 @@ Error: Undefined variable: "$black".
 30:                     color: $black;
 
 Backtrace:
-D:\work\freelance\korona-git\korona24\korona24\static\scss\feedback.scss:25
+D:\work\freelance-old\korona-git\korona24\korona24\static\scss\feedback.scss:25
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/variable.rb:49:in `_perform'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/node.rb:50:in `perform'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:402:in `visit_prop'
@@ -106,4 +106,4 @@ C:/Program Files (x86)/Koala/bin/sass:22:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$black\".\A         on line 25 of D:\work\freelance\korona-git\korona24\korona24\static\scss\feedback.scss\A \A 20:                     left: 50%;\A 21:                     top: 47%;\A 22:                     transform: translate(-50%, -50%);\A 23:                     font-weight: 600;\A 24:                     font-size: 15px;\A 25:                     color: $black;\A 26:                 }\A 27:                 & span {\A 28:                     font-weight: 600;\A 29:                     font-size: 15px;\A 30:                     color: $black;"; }
+  content: "Error: Undefined variable: \"$black\".\A         on line 25 of D:\work\freelance-old\korona-git\korona24\korona24\static\scss\feedback.scss\A \A 20:                     left: 50%;\A 21:                     top: 47%;\A 22:                     transform: translate(-50%, -50%);\A 23:                     font-weight: 600;\A 24:                     font-size: 15px;\A 25:                     color: $black;\A 26:                 }\A 27:                 & span {\A 28:                     font-weight: 600;\A 29:                     font-size: 15px;\A 30:                     color: $black;"; }

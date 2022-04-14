@@ -1,21 +1,21 @@
 /*
 Error: Undefined variable: "$brown".
-        on line 35 of D:\work\freelance\korona-git\korona24\korona24\static\scss\header.scss
+        on line 42 of D:\work\freelance-old\korona-git\korona24\korona24\static\scss\header.scss
 
-30:         }
-31:     }
-32:     &__make-order {
-33:         font-weight: bold;
-34:         font-size: 14px;
-35:         color: $brown;
-36:     }
-37:     &__phone {
-38:         font-weight: bold;
-39:         font-size: 14px;
-40:         &:hover {
+37:         }
+38:     }
+39:     &__make-order {
+40:         font-weight: bold;
+41:         font-size: 14px;
+42:         color: $brown;
+43:     }
+44:     &__phone {
+45:         font-weight: bold;
+46:         font-size: 14px;
+47:         &:hover {
 
 Backtrace:
-D:\work\freelance\korona-git\korona24\korona24\static\scss\header.scss:35
+D:\work\freelance-old\korona-git\korona24\korona24\static\scss\header.scss:42
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/variable.rb:49:in `_perform'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/node.rb:50:in `perform'
 C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:402:in `visit_prop'
@@ -73,4 +73,4 @@ C:/Program Files (x86)/Koala/bin/sass:22:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$brown\".\A         on line 35 of D:\work\freelance\korona-git\korona24\korona24\static\scss\header.scss\A \A 30:         }\A 31:     }\A 32:     &__make-order {\A 33:         font-weight: bold;\A 34:         font-size: 14px;\A 35:         color: $brown;\A 36:     }\A 37:     &__phone {\A 38:         font-weight: bold;\A 39:         font-size: 14px;\A 40:         &:hover {"; }
+  content: "Error: Undefined variable: \"$brown\".\A         on line 42 of D:\work\freelance-old\korona-git\korona24\korona24\static\scss\header.scss\A \A 37:         }\A 38:     }\A 39:     &__make-order {\A 40:         font-weight: bold;\A 41:         font-size: 14px;\A 42:         color: $brown;\A 43:     }\A 44:     &__phone {\A 45:         font-weight: bold;\A 46:         font-size: 14px;\A 47:         &:hover {"; }
