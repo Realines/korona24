@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'visual_version_handler.apps.VisualVersionHandlerConfig',
     'mdeditor',
+    'django_gravatar',
 ]
 
 MIDDLEWARE = [

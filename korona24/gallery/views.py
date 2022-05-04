@@ -47,18 +47,21 @@ def pagination_gallery(request: HttpRequest) -> JsonResponse:
 
     # Разбивка изображений на блоки в пагинаторе.
     gallery_set = Gallery.objects.all()
-    paginator = Paginator(gallery_set, 6)
+    block_image = 6
+    paginator = Paginator(gallery_set, block_image)
 
     # Проверка, что номер запрашиваемого блока входит в длину пагинатора.
-    if page_num < 1 or page_num > int(math.ceil(len(gallery_set) / 6)):
+    if page_num < 1 or page_num > int(math.ceil(len(gallery_set) / block_image)):
         return JsonResponse(data={'errors': _('Error page number.')},
                             status=403)
 
-    images = []
     # Формирования списка url изображений.
+    images = []
     for gallery_image in paginator.get_page(page_num).object_list: 
         images.append(gallery_image.data_json())
 
-    return JsonResponse(data={'images': images},
-                        status=200)
-
+    return JsonResponse(
+        data={'images': images,
+              'max_pages': paginator.num_pages},
+        status=200
+    )

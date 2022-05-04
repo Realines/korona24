@@ -1,4 +1,7 @@
-{% extends 'layouts/base.html' %} {% load static %} {% block description %}
+{% extends 'layouts/base.html' %} 
+{% load static %} 
+
+{% block description %}
 <meta name="description" content="Атмосферные фото и видео из стоматологической клиники Корона."> {% endblock %} {% block title %} Галерея {% endblock %} {% block content %}
 <section class='zone'>
     <div class='container'>
@@ -12,15 +15,18 @@
         </div>
         <form id="get_images_form">
             {% csrf_token %}
-            <input type="submit" value="Показать еще" class="zone__all btn">
+            <input id="show_more" type="submit" value="Показать еще" class="zone__all btn">
             <input type="hidden" name="page_num" id="page_num">
         </form>
     </div>
 </section>
-{% endblock %} {% block scripts %}
+{% endblock %} 
+
+{% block scripts %}
 <script>
     $(document).ready(function() {
         let page_nums = 0;
+        let max_pages = -1;
 
         $("#get_images_form").submit(function() {
             // Меняем счетчик блоков и записываем в форму.
@@ -37,6 +43,15 @@
                 success: function(data) {
                     // Парсим массив url-адресов изображений.
                     data = JSON.parse(data);
+                    max_pages = data.max_pages;
+
+                    if (page_nums == max_pages) {
+                        $('#show_more').hide();
+                    }
+                    else {
+                        $('#show_more').show();
+                    }
+
                     console.log(data)
                     // Генерируем блоки для изображений с самими изображениями.
                     data.images.forEach(element => {

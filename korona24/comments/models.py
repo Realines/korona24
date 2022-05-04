@@ -23,6 +23,10 @@ class Comment(models.Model):
         default='comments/default.png',
         blank=True,
     )
+    title = models.CharField(
+        max_length=64,
+        verbose_name=_('Заголовок'),
+    )
     text = models.TextField(
         verbose_name=_('Комментарий клиента'),
     )
@@ -49,6 +53,9 @@ class Comment(models.Model):
         verbose_name_plural = _('Комментарии')
         ordering = ['-date_added']
         get_latest_by = 'date_added'
+
+    def get_estimate_to_list(self):
+        return range(int(self.estimate))
 
     def __str__(self) -> str:
         return f'{self.client_name}#{self.pk}'

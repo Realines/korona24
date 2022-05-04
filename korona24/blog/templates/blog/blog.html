@@ -15,32 +15,18 @@
                 <div class="pagination">
                     <button id="back_page" onclick="javascript: BackPage('pagination/')" class="pagination__btn">« Предыдущая страница</a>
                     <div class="pagination__items">
-                        <a id="page_number_1" onclick="javascript: BackPage('pagination/')" class="pagination__item">1</a>
-                        <a id="page_number_2" onclick="" class="pagination__item pagination__item--active">2</a>
-                        <a id="page_number_3" onclick="javascript: NextPage('pagination/')" class="pagination__item">3</a>
                     </div>
                     <button id="next_page" onclick="javascript: NextPage('pagination/')" class="pagination__btn">Следующая страница »</a>
                 </div>
             </div> 
             <div class="blog__items">
-                {% for article in articles %}
-                <div id="article_view" class="blog__item">
-                    <a href="{{ article.get_absolute_url }}" class="blog__item-img">
-                        <img id="img" src="{{ article.image.url }}" alt="{{ article.image.alt_image }}">
-                    </a>
-                    <a href="" class="blog__item-title">{{ article.title }}</a>
-                    <div class="blog__item-desc">{{ article.description }}</div>
-                </div>
-                {% endfor %}
+                
             </div>
             </div> 
             <div class='blog__bottom'>  
                 <div class="pagination">
                     <button id="back_page" onclick="javascript: BackPage('pagination/')" class="pagination__btn">« Предыдущая страница</a>
                     <div class="pagination__items">
-                        <a id="page_number_1" onclick="javascript: BackPage('pagination/')" class="pagination__item">1</a>
-                        <a id="page_number_2" onclick="" class="pagination__item pagination__item--active">2</a>
-                        <a id="page_number_3" onclick="javascript: NextPage('pagination/')" class="pagination__item">3</a>
                     </div>
                     <button id="next_page" onclick="javascript: NextPage('pagination/')" class="pagination__btn">Следующая страница »</a>
                 </div> 

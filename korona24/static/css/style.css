@@ -2656,6 +2656,7 @@ ol li:before {
 .our-feedback__slider-item-right {
   width: 670px;
   flex-shrink: 0;
+  background-color: white;
 }
 .our-feedback__slider-item-left {
   margin-right: 30px;

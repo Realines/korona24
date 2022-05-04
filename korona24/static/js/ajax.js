@@ -73,7 +73,7 @@ function sendAjaxForm(form_id, url,callbackSucces = null) {
         success: function (response) { //данные отправлены успешно 
             if (response.status == 200) {
                 if(callbackSucces)
-                callbackSucces(response)
+                    callbackSucces(response)
             }
         },
         error: function (response) { // данные не отправлены
