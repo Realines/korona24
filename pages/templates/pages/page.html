@@ -1,0 +1,51 @@
+{% extends 'layouts/base.html' %} 
+{% load static %} 
+{% block title %} {{current_page.title}} {% endblock %} 
+{% block description %} 
+<meta name="description" content="{{current_page.description}} "> {% endblock %} 
+{% block content %}
+
+
+<section class='service-page'>
+    <div class='container'>
+        <a onclick="javascript:history.back();" class="service-page__back">
+            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 1L2 8L9 15" stroke="#C39F7B" stroke-width="1.5"/>
+            </svg>
+            <span>Назад</span>
+        </a>
+        <div class='service-page__inner'>
+            <div class="service-page__sidebar">
+                <h3 class="service-page__title">Категории</h3>
+                <div class="service-page__sidebar-items">
+                    {% for page in all_pages %}
+                    <a href="{{ page.get_absolute_url}}" class="service-page__sidebar-item">
+                        <span>{{page.category.title}}</span>
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
+                        </svg>
+                    </a> 
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="service-page__content">
+                <div class="about">
+                    <h3 class="service-page__title">{{current_page.title}}</h3>
+                    <div class="about__inner">
+                        <div class="about__text about__img">
+                            <p>{{ current_page.information_html | safe }}</p>
+                        </div>
+                        {% if current_page.image %}
+                        <div class="about__img">
+                            <img src="/media/{{current_page.image}}" alt="{{current_page.image_description}}">
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

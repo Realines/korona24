@@ -1,0 +1,94 @@
+{% extends 'layouts/base.html' %} 
+
+{% load static %} 
+
+
+{% block title %} Статья {% endblock %} 
+{% block description %} 
+<meta name="description" content="{{ current_article.description }} "> {% endblock %} 
+
+
+{% block content %}
+<section class='blog-item'>
+    <div class='container'>
+        <div class="blog-item__inner">
+            <a onclick="javascript:history.back();" class="back-link blog-item__back">
+                <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 1L2 8L9 15" stroke="#C39F7B" stroke-width="1.5"/>
+                    </svg>
+                <span>Назад</span>
+            </a>
+            <div class='blog-item__text'>
+                <h1 class="title3">{{ current_article.title }}</h1>
+                <p>{{ current_article.description |safe}}</p>
+
+                <img src="{{ current_article.image.url }}" alt="{{ current_article.alt_image }}">
+                <div>{{ current_article.information_html | safe }}</div>
+            </div>
+            <div class="blog-item__socials">
+                <span>Поделиться:</span>
+                <div class="blog-item__socials-wrap"> 
+                    <a onclick="javascript: share('https://vk.com/share.php?url=')" class="blog-item__socials-item">
+                        <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M11.546 16.514H12.466C12.466 16.514 12.742 16.468 12.88 16.33C13.018 16.192 13.018 15.916 13.018 15.916C13.018 15.916 13.018 14.72 13.57 14.536C14.122 14.352 14.858 15.732 15.594 16.238C16.146 16.652 16.56 16.56 16.56 16.56L18.584 16.514C18.584 16.514 19.642 16.468 19.136 15.594C19.09 15.548 18.86 14.996 17.618 13.846C16.33 12.65 16.514 12.88 18.032 10.81C18.952 9.56797 19.32 8.83197 19.228 8.46397C19.136 8.14197 18.446 8.23397 18.446 8.23397H16.146C16.146 8.23397 15.962 8.18797 15.87 8.27997C15.732 8.37197 15.686 8.50997 15.686 8.50997C15.686 8.50997 15.318 9.47597 14.858 10.304C13.846 12.006 13.432 12.098 13.294 12.006C12.926 11.776 13.018 10.994 13.018 10.488C13.018 8.83197 13.294 8.14197 12.512 7.95797C12.282 7.91197 12.098 7.86597 11.454 7.86597C10.626 7.86597 9.93601 7.86597 9.56801 8.04997C9.29201 8.18797 9.10801 8.46397 9.24601 8.46397C9.38401 8.46397 9.75201 8.55597 9.93601 8.78597C10.12 9.19997 10.12 9.88997 10.12 9.88997C10.12 9.88997 10.258 11.868 9.79801 12.098C9.47601 12.282 9.06201 11.914 8.14201 10.35C7.68201 9.56797 7.31401 8.64797 7.31401 8.64797C7.31401 8.64797 7.26801 8.46397 7.13001 8.37197C6.99201 8.27997 6.76201 8.23397 6.76201 8.23397H4.60001C4.60001 8.23397 4.27801 8.23397 4.14001 8.37197C4.04801 8.50997 4.14001 8.73997 4.14001 8.73997C4.14001 8.73997 5.84201 12.696 7.77401 14.72C9.56801 16.652 11.546 16.514 11.546 16.514Z"
+                                      fill="#F6F6F6"/>
+                            </svg>
+                    </a>
+                    <a  onclick="javascript: share('https://www.facebook.com/sharer/sharer.php?u=')" class="blog-item__socials-item">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.1642 17.4974V10.6674H13.4683L13.8108 7.99323H11.1642V6.2899C11.1642 5.51823 11.3792 4.9899 12.4867 4.9899H13.89V2.60573C13.2072 2.53256 12.5209 2.49722 11.8342 2.4999C9.79749 2.4999 8.39915 3.74323 8.39915 6.02573V7.98823H6.10999V10.6624H8.40415V17.4974H11.1642Z"
+                                      fill="#F6F6F6"/>
+                            </svg>
+                    </a>
+                    <a  onclick="javascript: share('https://connect.ok.ru/offer?url=')" class="blog-item__socials-item">
+                        <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_179:665)">
+                                    <path d="M4.5005 0C6.71193 0 8.51091 1.85234 8.51091 4.1295C8.51091 6.4065 6.71193 8.258 4.5005 8.258C2.28915 8.258 0.491055 6.4065 0.491055 4.1295C0.491055 1.85234 2.28913 0 4.5005 0ZM4.5005 2.4195C3.58525 2.4195 2.84098 3.18698 2.84098 4.1295C2.84098 5.07163 3.58523 5.83851 4.5005 5.83851C5.41594 5.83851 6.16098 5.07165 6.16098 4.1295C6.16098 3.18698 5.41594 2.4195 4.5005 2.4195ZM7.8069 8.3985C8.20367 8.39214 8.59384 8.59355 8.82018 8.96499C9.16608 9.53086 9.00038 10.2776 8.45215 10.6335C7.72699 11.102 6.9401 11.4344 6.12407 11.626L8.36524 13.935C8.82404 14.4077 8.82365 15.1733 8.36476 15.646C8.13475 15.8819 7.83477 16 7.53402 16C7.23359 16 6.9326 15.8817 6.70329 15.6455L4.50145 13.377L2.29766 15.6455C1.83925 16.1181 1.09591 16.1181 0.636697 15.6455C0.177696 15.1731 0.177696 14.4067 0.636697 13.935L2.87884 11.6265C2.06258 11.4349 1.27543 11.1023 0.550763 10.6335C0.00144768 10.2776 -0.1645 9.53006 0.181285 8.96501C0.527458 8.39901 1.25224 8.22851 1.80196 8.58501C3.44376 9.64851 5.5592 9.64781 7.20048 8.58501C7.38941 8.46246 7.59906 8.40184 7.8069 8.39851V8.3985Z"
+                                          fill="#F8F8F8"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_179:665">
+                                        <rect width="9" height="16" fill="white" transform="matrix(-1 0 0 1 9 0)"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                    </a> 
+                    <a  onclick="javascript: share('tg://msg_url?url=')" class="blog-item__socials-item">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.4987 2.78762L2.2012 7.91537C1.2937 8.27987 1.29895 8.78611 2.0347 9.01186L5.4487 10.0769L13.3477 5.09311C13.7212 4.86586 14.0624 4.98811 13.7819 5.23711L7.3822 11.0129H7.3807L7.3822 11.0136L7.1467 14.5326C7.4917 14.5326 7.64395 14.3744 7.83745 14.1876L9.4957 12.5751L12.9449 15.1229C13.5809 15.4731 14.0377 15.2931 14.1959 14.5341L16.4602 3.86312C16.6919 2.93387 16.1054 2.51312 15.4987 2.78762Z"
+                                      fill="#F8F8F8"/>
+                            </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class='blog'>
+    <div class='container'>
+        <div class='blog__top'>
+            <h2 class="blog__title">читайте также</h2>
+            <a href="{% url 'blog:articles' %}" class="blog__all">Показать все</a>
+        </div>
+        <div class="blog__items">
+            {% for article in articles_set %}
+            <div class="blog__item">
+                <a href="{{ article.get_absolute_url }}" class="blog__item-img">
+                    <img src="{{ article.image.url }}" alt="{{ article.alt_image }}">
+                </a>
+                <a href="{{ article.get_absolute_url }}" class="blog__item-title">{{ article.title }}</a>
+                <div class="blog__item-desc">{{ article.description }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %} 
+<script src="{% static 'js/share.js' %}"></script>
+{% endblock %}

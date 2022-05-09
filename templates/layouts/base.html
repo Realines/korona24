@@ -1,0 +1,322 @@
+{% load static %}
+
+
+<!DOCTYPE html> {% if visually_impaired %}
+<html lang="en" impaired="true">
+{% else %}
+<html lang="ru">
+{% endif %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Главная{% endblock %}</title>
+    <meta name="keywords" content="частная стоматология Красноярск
+    стоматология на киренского красноярск
+    стоматология на киренского
+    платная стоматология
+    стоматология в октябрьском районе
+    стоматологический клиника"> {% block description %}
+    <meta name="description" content="Частная стоматология в Октябрьском районе города Красноярск (на ул. Киренского) СК Корона. Платная современная стоматология с выгодными ценами!"> {% endblock %}
+
+    <link rel="stylesheet" href="{%  static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{%  static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%  static 'css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{%  static 'css/jquery.fancybox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'favicon.png' %}" />
+
+</head>
+
+<body>
+    <header class="header">
+        <section class='header-top'>
+            <div class='container'>
+                <div class='header-top__inner  '>
+                    <a href="{% url 'main:index' %}" class="header__logo">
+                        <img src="{% static 'img/logo.png' %}" alt="СК Корона">
+                    </a>
+                    <div class="header__address">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 0C5.8363 0 2.46094 3.37535 2.46094 7.53907C2.46094 8.93152 2.73349 10.3697 3.51562 11.4063L10 20L16.4844 11.4063C17.1948 10.4648 17.5391 8.80032 17.5391 7.53907C17.5391 3.37535 14.1637 0 10 0ZM10 4.36645C11.7519 4.36645 13.1726 5.78713 13.1726 7.53905C13.1726 9.291 11.7519 10.7117 10 10.7117C8.24807 10.7117 6.8274 9.291 6.8274 7.53907C6.8274 5.78713 8.24807 4.36645 10 4.36645Z" fill="#C39F7B"/>
+                        </svg>
+                        <span>Белорусская 7, Киренского 71</span>
+                    </div>
+                    <a href="{% url 'visual_version_handler:set_version' visually_impaired|yesno:'0,1' %}">
+                        <button class="header__vision-impared">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.28139 12C9.28139 12.6962 9.55795 13.3639 10.0502 13.8562C10.5425 14.3484 11.2102 14.625 11.9064 14.625C12.6026 14.625 13.2703 14.3484 13.7625 13.8562C14.2548 13.3639 14.5314 12.6962 14.5314 12C14.5314 11.3038 14.2548 10.6361 13.7625 10.1438C13.2703 9.65156 12.6026 9.375 11.9064 9.375C11.2102 9.375 10.5425 9.65156 10.0502 10.1438C9.55795 10.6361 9.28139 11.3038 9.28139 12ZM22.0829 11.3953C19.8611 6.71484 16.5025 4.35938 12.0001 4.35938C7.49545 4.35938 4.1392 6.71484 1.91732 11.3977C1.8282 11.5864 1.78198 11.7925 1.78198 12.0012C1.78198 12.2099 1.8282 12.416 1.91732 12.6047C4.1392 17.2852 7.49779 19.6406 12.0001 19.6406C16.5048 19.6406 19.8611 17.2852 22.0829 12.6023C22.2634 12.2227 22.2634 11.782 22.0829 11.3953ZM11.9064 16.125C9.62826 16.125 7.78139 14.2781 7.78139 12C7.78139 9.72188 9.62826 7.875 11.9064 7.875C14.1845 7.875 16.0314 9.72188 16.0314 12C16.0314 14.2781 14.1845 16.125 11.9064 16.125Z" fill="#C39F7B"/>
+                            </svg>
+                            <span>Версия для слабовидящих</span>
+                        </button>
+                    </a>
+                    <button class="header__make-order btn" data-toggle="modal" data-target="#modal1">Записаться на прием</button>
+                    <a href="tel:+73912232339" class="header__phone">+7 (391) 223-23-39</a>
+                </div>
+            </div>
+        </section>
+        <section class='header-bottom'>
+            <div class='container'>
+                <div class='header-bottom__inner'>
+                    <div class="header__service">
+                        <div class="header__service-btn">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="1.75" cy="1.75" r="1.75" fill="#282626"/>
+                                <circle cx="1.75" cy="7" r="1.75" fill="#282626"/>
+                                <circle cx="1.75" cy="12.25" r="1.75" fill="#282626"/>
+                                <circle cx="7" cy="1.75" r="1.75" fill="#282626"/>
+                                <circle cx="7" cy="7" r="1.75" fill="#282626"/>
+                                <circle cx="7" cy="12.25" r="1.75" fill="#282626"/>
+                                <circle cx="12.25" cy="1.75" r="1.75" fill="#282626"/>
+                                <circle cx="12.25" cy="7" r="1.75" fill="#282626"/>
+                                <circle cx="12.25" cy="12.25" r="1.75" fill="#282626"/>
+                            </svg>
+                            <span>Услуги клиники</span>
+                            <i>
+                                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1.32581L6 6.32581L11 1.32581" stroke="#282626" stroke-width="1.5"/>
+                                </svg>
+                            </i>
+                        </div>
+                        <div class="header__service-menu">
+                            {% for service in all_services %}
+                            <div class="header__service-item">
+                                <div class="header__service-show">
+                                    <span>
+                                        <a href="{{ service.get_absolute_url }}">
+                                            {{ service.name }}
+                                        </a>
+                                    </span>
+                                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <div class="header__service-hidden">
+                                    {% for article in service.service_articles.all %}
+                                    <a href="{{ article.get_absolute_url }}" class="header__service-link">{{ article.title }}</a> 
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="nav">
+                        <a href="{% url 'prices' %}" class="nav__item">Цены</a>
+                        <a href="{% url 'services:services' %}" class="nav__item">Услуги</a>
+                        <a href="{% url 'comments:comments' %}" class="nav__item">Отзывы</a>
+                        <a href="{% url 'pages:about' %}" class="nav__item">О нас</a>
+                        <a href="{% url 'blog:articles' %}" class="nav__item">Блог</a>
+                        <a href="{% url 'gallery:gallery' %}" class="nav__item">Галерея</a>
+                        <a href="{% url 'main:contacts' %}" class="nav__item">Контакты</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <section class='header-mob'>
+        <div class='container'>
+            <div class='header-mob__inner'>
+                <a href="{% url 'main:index' %}" class="header-mob__logo">
+                    <img src="{% static 'img/logo.png' %}" alt="СК Корона">
+                </a>
+                <button class="header__burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    {% block content %}{% endblock %}
+
+    <section class='map'>
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aad968702fc0c4c82b36712cf0bd9a8d025adc12c0ebddc61cd89ae40f2811dd4&amp;width=100%&amp;height=100%&amp;lang=ru_RU&amp;scroll=true"></script>
+    </section>
+
+    <footer class='footer'>
+        <div class='container'>
+            <div class='footer__top'>
+                <div class="footer__col">
+                    <a href="{% url 'services:services' %}" class="footer__item">Услуги</a>
+                    <a href="{% url 'prices' %}" class="footer__item">Цены</a>
+                    <a href="{% url 'comments:comments' %}" class="footer__item">Отзывы</a>
+                    <a href="{% url 'pages:about' %}" class="footer__item">О нас</a>
+                    <a href="{% url 'blog:articles' %}" class="footer__item">Блог</a>  
+                    <a href="{% url 'main:contacts' %}" class="footer__item">Контакты</a>
+                </div>
+                <div class="footer__col">
+                    {% for service in footer_services %} 
+                    <div class="footer__group">
+                        <a href="{{ service.get_absolute_url }}" class="footer__item">{{ service.get_title_small }}</a>
+                        {% for article in service.service_articles.all %}
+                        <a href="{{ article.get_absolute_url }}" class="footer__link">{{ article.get_title_small }}</a> 
+                        {% endfor %}
+                    </div>
+                    {% endfor %} 
+                </div>
+                <div class="footer__col">
+                    {% for service in footer_services_2 %} 
+                    <div class="footer__group">
+                        <a href="{{ service.get_absolute_url }}" class="footer__item">{{ service.get_title_small }}</a>
+                        {% for article in service.service_articles.all %}
+                        <a href="{{ article.get_absolute_url }}" class="footer__link">{{ article.get_title_small }}</a> 
+                        {% endfor %}
+                    </div>
+                    {% endfor %} 
+                </div>
+                <div class="footer__col"> 
+                    {% for phone_and_address in site_settings.phone_and_address_set.all %}
+                    <div class="footer__contacts">
+                        <div class="footer__address">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 0C5.8363 0 2.46094 3.37535 2.46094 7.53907C2.46094 8.93152 2.73349 10.3697 3.51562 11.4063L10 20L16.4844 11.4063C17.1948 10.4648 17.5391 8.80032 17.5391 7.53907C17.5391 3.37535 14.1637 0 10 0ZM10 4.36645C11.7519 4.36645 13.1726 5.78713 13.1726 7.53905C13.1726 9.291 11.7519 10.7117 10 10.7117C8.24807 10.7117 6.8274 9.291 6.8274 7.53907C6.8274 5.78713 8.24807 4.36645 10 4.36645Z" fill="#C39F7B"/>
+                            </svg>
+                            <span>{{phone_and_address.address}}</span>
+                        </div>
+                        <a href="tel:{{phone_and_address.phone_number}}" class="footer__phone">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.6669 9.16567H18.3335C18.3335 4.89067 15.106 1.6665 10.8252 1.6665V3.33317C14.2102 3.33317 16.6669 5.78567 16.6669 9.16567Z" fill="#C39F7B"/>
+                                <path d="M10.8336 6.66654C12.5861 6.66654 13.3336 7.41404 13.3336 9.16654H15.0002C15.0002 6.47904 13.5211 4.99987 10.8336 4.99987V6.66654ZM13.6852 11.2024C13.5251 11.0568 13.3147 10.9792 13.0984 10.9859C12.8821 10.9926 12.6769 11.0831 12.5261 11.2382L10.5319 13.289C10.0519 13.1974 9.0869 12.8965 8.09357 11.9057C7.10023 10.9115 6.7994 9.94404 6.71023 9.46737L8.7594 7.47237C8.91474 7.32165 9.00535 7.11639 9.01204 6.90005C9.01872 6.6837 8.94097 6.47324 8.79523 6.31321L5.71607 2.92737C5.57027 2.76684 5.36763 2.66946 5.1512 2.65592C4.93476 2.64239 4.72157 2.71376 4.5569 2.85487L2.74857 4.40571C2.60449 4.5503 2.5185 4.74275 2.5069 4.94654C2.4944 5.15487 2.25607 10.0899 6.08273 13.9182C9.42107 17.2557 13.6027 17.4999 14.7544 17.4999C14.9227 17.4999 15.0261 17.4949 15.0536 17.4932C15.2573 17.4818 15.4497 17.3954 15.5936 17.2507L17.1436 15.4415C17.2848 15.277 17.3563 15.0639 17.3429 14.8474C17.3295 14.631 17.2323 14.4283 17.0719 14.2824L13.6852 11.2024Z" fill="#C39F7B"/>
+                            </svg>
+                            <span>{{phone_and_address.phone_number}}</span>
+                        </a>
+                    </div>
+                    {% endfor %}
+                    <div class="footer__socials"> 
+                        <a href="https://vk.com/korona_krsk" target="_blank"  class="footer__socials-item">
+                            <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24.2137 4.86475C24.3781 4.31206 24.2137 3.90527 23.4229 3.90527H20.806C20.1395 3.90527 19.833 4.25458 19.6686 4.64367C19.6686 4.64367 18.3357 7.87583 16.4519 9.97165C15.8432 10.5774 15.5633 10.772 15.2301 10.772C15.0657 10.772 14.8125 10.5774 14.8125 10.0247V4.86475C14.8125 4.20152 14.6259 3.90527 14.075 3.90527H9.96082C9.54318 3.90527 9.29438 4.21478 9.29438 4.50218C9.29438 5.13005 10.2363 5.27596 10.334 7.04458V10.8825C10.334 11.7226 10.183 11.8773 9.84974 11.8773C8.96116 11.8773 6.8019 8.63192 5.52234 4.91781C5.26465 4.1971 5.0114 3.90527 4.34052 3.90527H1.72364C0.977231 3.90527 0.826172 4.25458 0.826172 4.64367C0.826172 5.33344 1.71476 8.76015 4.96253 13.2878C7.12623 16.3785 10.1741 18.0543 12.9465 18.0543C14.6126 18.0543 14.8169 17.6829 14.8169 17.0417C14.8169 14.0881 14.6659 13.8096 15.5011 13.8096C15.8877 13.8096 16.5541 14.0041 18.1091 15.4942C19.8863 17.2628 20.1795 18.0543 21.1747 18.0543H23.7916C24.538 18.0543 24.9157 17.6829 24.698 16.9489C24.2004 15.4058 20.8371 12.2311 20.686 12.0188C20.2995 11.5236 20.4106 11.3025 20.686 10.8604C20.6905 10.856 23.8849 6.38135 24.2137 4.86475Z" fill="#C39F7B"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/korona_krsk/" target="_blank"  class="footer__socials-item">
+                            <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.8947 9.10012C11.1309 9.10012 9.69146 10.5395 9.69146 12.3033C9.69146 14.0672 11.1309 15.5066 12.8947 15.5066C14.6585 15.5066 16.0979 14.0672 16.0979 12.3033C16.0979 10.5395 14.6585 9.10012 12.8947 9.10012ZM22.502 12.3033C22.502 10.9769 22.514 9.66242 22.4395 8.33836C22.365 6.80043 22.0142 5.43551 20.8895 4.3109C19.7625 3.18388 18.4 2.83544 16.8621 2.76095C15.5356 2.68645 14.2212 2.69847 12.8971 2.69847C11.5706 2.69847 10.2562 2.68645 8.93211 2.76095C7.39418 2.83544 6.02926 3.18628 4.90465 4.3109C3.77763 5.43791 3.42919 6.80043 3.3547 8.33836C3.2802 9.66483 3.29222 10.9793 3.29222 12.3033C3.29222 13.6274 3.2802 14.9443 3.3547 16.2683C3.42919 17.8063 3.78003 19.1712 4.90465 20.2958C6.03166 21.4228 7.39418 21.7712 8.93211 21.8457C10.2586 21.9202 11.573 21.9082 12.8971 21.9082C14.2236 21.9082 15.538 21.9202 16.8621 21.8457C18.4 21.7712 19.7649 21.4204 20.8895 20.2958C22.0166 19.1688 22.365 17.8063 22.4395 16.2683C22.5164 14.9443 22.502 13.6298 22.502 12.3033ZM12.8947 17.2319C10.1673 17.2319 7.96609 15.0308 7.96609 12.3033C7.96609 9.57591 10.1673 7.37475 12.8947 7.37475C15.6221 7.37475 17.8233 9.57591 17.8233 12.3033C17.8233 15.0308 15.6221 17.2319 12.8947 17.2319ZM18.0251 8.32394C17.3883 8.32394 16.8741 7.80969 16.8741 7.17289C16.8741 6.53609 17.3883 6.02185 18.0251 6.02185C18.6619 6.02185 19.1762 6.53609 19.1762 7.17289C19.1764 7.3241 19.1467 7.47387 19.089 7.6136C19.0312 7.75334 18.9464 7.88031 18.8395 7.98723C18.7326 8.09415 18.6056 8.17893 18.4659 8.23671C18.3261 8.29449 18.1764 8.32413 18.0251 8.32394Z" fill="#C39F7B"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/koronakrsk" target="_blank" class="footer__socials-item">
+                            <svg width="12" height="23" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_95:316)">
+                                <path d="M2.96214 22.6385V12.4777H0.198242V8.81939H2.96214V5.69468C2.96214 3.23926 4.59478 0.984375 8.35674 0.984375C9.8799 0.984375 11.0062 1.12632 11.0062 1.12632L10.9175 4.5426C10.9175 4.5426 9.76881 4.53173 8.51535 4.53173C7.15873 4.53173 6.94138 5.13945 6.94138 6.14812V8.81939H11.0253L10.8476 12.4777H6.94138V22.6385H2.96214Z" fill="#C39F7B"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_95:316">
+                                <rect width="10.8271" height="21.6541" fill="white" transform="translate(0.198242 0.984375)"/>
+                                </clipPath>
+                                </defs>
+                            </svg>
+                        </a> 
+                    </div>
+                </div>
+            </div>
+            <div class="footer__center">
+                <div class="footer__col">
+                    <a href="{% url 'main:index' %}" class="footer__logo">
+                        <img src="{% static 'img/logo2.png' %}" alt="СК Корона">
+                    </a>
+                </div>
+                <div class="footer__col">
+                    <div class="footer__privacy">
+                        Корона 2021 <br>Все права защищены.
+                    </div>
+                </div>
+                <div class="footer__col">
+                    <a href="/about/reglament-vyizova-dlya-malomobilnyix-grupp" class="footer__licensy">
+                        Лицензия № ЛО-24-01-003729 
+                    </a>
+                    <a href="/about/egrul" class="footer__licensy">
+                        Свидетельство о внесении в ЕГРЮЛ
+                    </a> 
+                </div>
+                
+                <div class="footer__col"> 
+                    <a href="/about/politika-obrabotki-i-zashiti-dannih" class="footer__licensy">
+                        Политика обработки и защиты персональных данных
+                    </a> 
+                
+                </div>
+            </div>
+           
+            <div class="footer__bottom"> 
+                <a href="https://prodoctorov.ru/krasnoyarsk/lpu/27705-korona/" rel="nofollow" target="_blank">
+                    <img src="{% static 'img/prodoctorov.png' %}" title="ПроДокторов - Стоматологическая клиника «Корона», Красноярск" alt="ПроДокторов - Стоматологическая клиника «Корона», Красноярск">
+                </a>
+            </div>
+            <p style="text-align: center;">Имеются противопоказания. Необходима консультация специалиста.
+                Обращаем Ваше внимание на то, что данный интернет-ресурс носит исключительно информационный характер и не является публичной офертой, определяемой положениями ч. 2 ст. 437 Гражданского кодекса Российской Федерации. Для получения подробной информации о наименовании, стоимости и сроках оказания услуг обращайтесь по контактным телефонам или непосредственно в отделение клиники. Конкретный перечень услуг и порядок их предоставления определяется в договоре оказания услуг, оформляемым между клиникой и пациентом.
+                </p>
+        </div>
+    </footer>
+
+    <!-- Пример вызова модалки
+    <button data-toggle="modal" data-target="#modal1">Modal 1</button> -->
+
+    <div id='modal1' class='modal fade' role='dialog'>
+        <div class='modal-dialog'>
+            <button type='button' class='close' data-dismiss='modal'>
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 14.4885L22.7544 24.7456L24.7456 22.7572L14.4884 12.5L24.7456 2.24564L22.7572 0.254395L12.5 10.5116L2.24564 0.254395L0.257202 2.24564L10.5116 12.5L0.257202 22.7544L2.24564 24.7456L12.5 14.4885Z" fill="#282626"/>
+                </svg>
+            </button>
+            <div class="modal__content">
+                <div class="modal__title text-druk">
+                    Запишитесь на прием <br>
+                    <span>к нашим специалистам</span>
+                </div>
+                <div class="modal__desc">Заполните форму ниже и в ближайшее время с Вами свяжется наш специалист, чтобы уточнить подробности</div>
+                <form id="modal_app_form" onsubmit="javascript:popapSend('modal1','modal_app_form','{% url 'main:send_app' %}',modal_succes_id='modal2',hide=6500); return false;" class="modal__form">
+                    {% csrf_token %}
+                    <div class="modal__form-group">
+                        <label>Ваше имя</label>
+                        <input name="client_name" type="text" placeholder="Ввведите имя">
+                    </div>
+                    <div class="modal__form-group">
+                        <label>Ваш телефон</label>
+                        <input name="phone_number" type="tel" placeholder="Введите телефон">
+                    </div>
+                    <button class="modal__form-btn btn btn-brown">Записаться на прием</button>
+                    <div class="modal__form-hint">
+                        Нажимая кнопку “Записаться на прием” вы подстверждаете свое <a href="/about/soglasie_na_obrabotku_dannyih">согласие на обработку персональных данных</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id='modal2' class='modal modal2 fade' role='dialog'>
+        <div class='modal-dialog'>
+            <button type='button' class='close' data-dismiss='modal'>
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 14.4885L22.7544 24.7456L24.7456 22.7572L14.4884 12.5L24.7456 2.24564L22.7572 0.254395L12.5 10.5116L2.24564 0.254395L0.257202 2.24564L10.5116 12.5L0.257202 22.7544L2.24564 24.7456L12.5 14.4885Z" fill="#282626"/>
+                </svg>
+            </button>
+            <div class="modal__content">
+                <div class="modal__title text-druk">
+                    Спасибо <span> за заявку!</span>
+                </div>
+                <div class="modal__desc">Мы свяжемся с Вами в течение суток</div>
+                <div class="modal__icon">
+                    <img src="{% static 'img/modal-icon.png' %}" alt="Зуб">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/swiper.js' %}"></script>
+    <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'js/ajax.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+
+    <script> 
+    </script>
+
+    {% block scripts %} {% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+html[impaired="true"] {
+    body,
+    .title span,
+    .title2 span,
+    .header__make-order,
+    .about-index__item-num,
+    .about-index__link span,
+    .service__item-title span,
+    .mission,
+    .info__video-desc,
+    .info__video-desc span,
+    .make-order__form-group label,
+    .make-order__form-hint a,
+    .feedback__left,
+    .footer,
+    .footer__link,
+    .footer__licensy,
+    .services__item-link,
+    .service-page__item-link,
+    .contacts__middle-link,
+    .contacts__bottom-desc,
+    .feedback-form,
+    .feedback-form__group input,
+    .feedback-form__group textarea,
+    .feedback-form__group input::placeholder,
+    .feedback-form__group textarea::placeholder,
+    .feedback-form__title,
+    .pagination__btn,
+    .pagination__item--active {
+        color: #000;
+    }
+    .contacts__middle-link,
+    .footer__socials {
+        path {
+            fill: #000;
+        }
+    }
+    .header,
+    .mission__inner,
+    .make-order__inner,
+    .feedback__left,
+    .footer,
+    .feedback-form__inner {
+        background: #dcdce0;
+    }
+    .about-index__img,
+    .service__item-icon,
+    .mission__bg,
+    .info__item-icon,
+    .make-order__bg {
+        display: none;
+    }
+    .main__slider-prev,
+    .main__slider-next,
+    .service__item-link,
+    .info__video-btn,
+    .make-order__form-btn,
+    .feedback__slider-prev,
+    .feedback__slider-next,
+    .feedback__left-link i,
+    .our-feedback__slider-prev,
+    .our-feedback__slider-next {
+        background: #000;
+        path {
+            stroke: #fff;
+        }
+    }
+    .our-feedback__slider-rating {
+        path {
+            fill: #000;
+        }
+    }
+    .main__slider-pagination .swiper-pagination-bullet-active,
+    .service-page__table table thead,
+    .btn-brown {
+        background: #000;
+    }
+    .header__address,
+    .header__vision-impared {
+        svg {
+            display: none;
+        }
+    }
+    .mission__link,
+    .zone__link,
+    .expert__link {
+        span {
+            color: #000;
+        }
+        path {
+            fill: #000;
+        }
+    }
+    .service-page__back {
+        span {
+            color: #000;
+        }
+        path {
+            stroke: #000;
+        }
+    }
+    label {
+        font-size: 16px !important;
+    }
+    .make-order__form-group input,
+    .feedback-form__group input,
+    .feedback-form__group textarea {
+        border-color: #000;
+    }
+    .feedback-form__btn {
+        background: #000;
+        color: #fff;
+    }
+    .footer__address,
+    .footer__phone {
+        svg {
+            display: none;
+        }
+    }
+}

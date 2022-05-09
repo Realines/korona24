@@ -1,0 +1,87 @@
+{% extends 'layouts/base.html' %} 
+
+{% load static %} 
+
+{% block title %} {{ current_service.name_seo }}{% endblock %}
+{% block description %}
+<meta name="description" content="{{ current_service.description }}"> {% endblock %} {% block content %}
+
+
+
+<section class='service-page'>
+    <div class='container'> 
+        <a onclick="javascript:history.back();" class="service-page__back">
+            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 1L2 8L9 15" stroke="#C39F7B" stroke-width="1.5"/>
+                </svg>
+            <span>Назад</span>
+        </a>
+        <div class='service-page__inner'>
+            <div class="service-page__sidebar">
+                <h3 class="service-page__title">Категории</h3>
+                <div class="service-page__sidebar-items">
+                    {% for service in all_services %}
+                    <a href="{{ service.get_absolute_url }}" class="service-page__sidebar-item">
+                        <span>{{ service.name }}</span>
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 11L6 6L1 1" stroke="#CCCCCC" stroke-width="1.5"/>
+                            </svg>
+                    </a>
+                    {% endfor %}
+                </div> 
+            </div>
+            <div class="service-page__content">
+                <h1 class="service-page__title">{{ current_service.name }}</h1>
+                <div class="blog-item__text">
+                    <p>
+                        {{ current_service.description | safe }}
+                    </p>  
+                    <h4>{{ current_service.title_price_block }}</h4>
+                    <p>
+                        {{ current_service.description_price_block | safe }}
+                    </p>
+
+                    <div class="service-page__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span class="service-page__table-title text-druk">
+                                            лечение
+                                        </span>
+                                    </th>
+                                    <th>Цена, руб</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for therapy in current_service.therapies.all %}
+                                <tr>
+                                    <td>{{ therapy.name }}</td>
+                                    <td>{{ therapy.price }} руб</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div> 
+                    <div>
+                        {{ current_service.information.information_html | safe }}
+                    </div>
+                    <div class="service-page__items-block">
+                        <div class="service-page__items">
+                            {% for article in current_service.service_articles.all %}
+                            <div class="service-page__item">
+                                <div class="service-page__item-img">
+                                    <img src="{{ article.image.url }}" alt="{{ article.alt_image }}">
+                                </div>
+                                <div class="service-page__item-title">{{ article.title }}</div>
+                                <a href="{{ article.get_absolute_url }}" class="service-page__item-link">Подробнее</a>
+                            </div>
+                            {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+</section> 
+{% include 'main/application.html' %} 
+
+{% endblock %}

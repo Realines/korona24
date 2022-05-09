@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %} 
+
+{% load static %} 
+
+
+{% block description %}
+<meta name="description" content="Профессиональные услуги врачей-стоматологов в Красноярске в клинике Корона."> 
+{% endblock %} 
+
+
+{% block title %} Услуги {% endblock %} 
+
+
+{% block content %}
+<section class='services'>
+    <div class='container'>
+        <h1 class="services__title title">Услуги</h1>
+        <div class='services__items'>
+            {% for preview_service in preview_services %}
+            <div class="services__item">
+                <div class="services__item-icon">
+                    <img src="{{ preview_service.icon.url }}" alt="{{ preview_service.alt_image }}">
+                </div>
+                <div class="services__item-title">{{ preview_service.name_html | safe }}</div>
+                <a href="{{ preview_service.service.get_absolute_url }}" class="services__item-link">Подробнее</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,110 @@
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 0px;
+}
+
+.btn-brown {
+    background: #C39F7B;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 150%;
+    color: #FFFFFF;
+    transition: all .3s;
+    &:hover {
+        background: #A58668;
+    }
+}
+
+.text-druk {
+    font-family: $druk;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    &__btn {
+        font-weight: bold;
+        font-size: 17px;
+        line-height: 140%;
+        text-decoration-line: underline;
+        color: #C39F7B;
+        &:hover {
+            color: #A58668;
+        }
+    }
+    &__items {
+        margin: 0 45px;
+        display: flex;
+        align-items: center;
+    }
+    &__item {
+        font-weight: bold;
+        font-size: 17px;
+        line-height: 140%;
+        margin: 0 5px;
+        &:hover {
+            color: #C39F7B;
+        }
+    }
+    &__item--active {
+        text-decoration-line: underline;
+        color: #C39F7B;
+        pointer-events: none;
+    }
+}
+
+.input-filled {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='12' viewBox='0 0 16 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.3658 1.5792L5.34832 11.5959L0.634155 6.88336L1.80916 5.70836L5.34832 9.23836L14.19 0.405029L15.365 1.58003L15.3658 1.5792Z' fill='%23C39F7B'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 22px center;
+    transition: all .0s;
+    padding-right: 60px;
+}
+
+.back-link {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 150%;
+    color: #C39F7B;
+    display: flex;
+    align-items: center;
+    &:hover {
+        span {
+            color: #A58668;
+        }
+        path {
+            stroke: #A58668;
+        }
+    }
+    span {
+        margin-left: 15px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .back-link {
+        font-size: 14px;
+        svg {
+            width: 20px;
+        }
+    }
+    .pagination {
+        &__btn {
+            font-size: 12px;
+            &:nth-child(1) {
+                display: none;
+            }
+        }
+        &__items {
+            margin-right: 14px;
+            margin-left: 0;
+        }
+        &__item {
+            font-size: 12px;
+        }
+    }
+}
