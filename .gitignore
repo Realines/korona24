@@ -128,5 +128,5 @@ dmypy.json
 
 # Added by the user
 .idea/
-.vs/VSWorkspaceState.json
-.vs/korona24/v17/.suo
+db.sqlite3
+media/
